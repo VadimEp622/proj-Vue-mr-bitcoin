@@ -1,6 +1,6 @@
 <script>
-import { userService } from '../services/userService.js'
-import { contactService } from '../services/contactService.js'
+import { userService } from '../services/userService'
+import { contactService } from '../services/contactService'
 
 export default {
     data() {
@@ -11,15 +11,17 @@ export default {
     },
     created() {
         this.loggedinUser = userService.getUser()
-        contactService.getContacts()
-            .then(contacts => {
-                console.log('contacts', contacts)
-                this.contacts = contacts
-            })
-
+        this.setContacts()
     },
     unmounted() { },
-    methods: {}
+    methods: {
+        setContacts() {
+            contactService.getContacts()
+                .then(contacts => {
+                    this.contacts = contacts
+                })
+        }
+    }
 }
 </script>
 
@@ -42,7 +44,6 @@ export default {
 <style lang="scss">
 .my-profile {
     padding-inline: 10px;
-    // padding-block: 10px;
 
     & .greeting {
         padding-block: 20px;
@@ -52,6 +53,13 @@ export default {
             font-weight: 600;
             // color: $main-clr0;//<--change to this upon moving to styles
             color: rgb(186, 170, 81);
+        }
+    }
+
+    & .exchange-rate {
+        span {
+            font-size: 1.5em;
+            font-weight: 600;
         }
     }
 
@@ -66,7 +74,7 @@ export default {
             background-color: rgb(177, 255, 255);
             padding: 10px;
 
-            & span{
+            & span {
                 font-weight: 600;
             }
         }

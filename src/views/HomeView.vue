@@ -3,7 +3,7 @@
 
 <template>
   <main>
-    <h2>This Is The Main Page</h2>
+    <h2>Hello From Main Page</h2>
   </main>
 </template>
 
