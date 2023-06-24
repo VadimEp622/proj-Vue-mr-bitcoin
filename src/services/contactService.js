@@ -126,26 +126,13 @@ const contacts = [
 ]
 
 
-function sort(arr) {
-    return arr.sort((a, b) => {
-        if (a.name.toLocaleLowerCase() < b.name.toLocaleLowerCase()) {
-            return -1;
-        }
-        if (a.name.toLocaleLowerCase() > b.name.toLocaleLowerCase()) {
-            return 1;
-        }
-
-        return 0;
-    })
-}
-
 function getContacts(filterBy = null) {
     return new Promise((resolve, reject) => {
         var contactsToReturn = contacts;
         if (filterBy && filterBy.term) {
-            contactsToReturn = filter(filterBy.term)
+            contactsToReturn = _filter(filterBy.term)
         }
-        resolve(sort(contactsToReturn))
+        resolve(_sort(contactsToReturn))
     })
 }
 
@@ -179,14 +166,6 @@ function getEmptyContact() {
     }
 }
 
-function filter(term) {
-    term = term.toLocaleLowerCase()
-    return contacts.filter(contact => {
-        return contact.name.toLocaleLowerCase().includes(term) ||
-            contact.phone.toLocaleLowerCase().includes(term) ||
-            contact.email.toLocaleLowerCase().includes(term)
-    })
-}
 
 
 // *************************************************************************************
@@ -218,5 +197,27 @@ function _addContact(contact) {
         contact._id = _makeId()
         contacts.push(contact)
         resolve(contact)
+    })
+}
+
+function _filter(term) {
+    term = term.toLocaleLowerCase()
+    return contacts.filter(contact => {
+        return contact.name.toLocaleLowerCase().includes(term) ||
+            contact.phone.toLocaleLowerCase().includes(term) ||
+            contact.email.toLocaleLowerCase().includes(term)
+    })
+}
+
+function _sort(arr) {
+    return arr._sort((a, b) => {
+        if (a.name.toLocaleLowerCase() < b.name.toLocaleLowerCase()) {
+            return -1;
+        }
+        if (a.name.toLocaleLowerCase() > b.name.toLocaleLowerCase()) {
+            return 1;
+        }
+
+        return 0;
     })
 }
