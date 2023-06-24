@@ -210,7 +210,7 @@ function _filter(term) {
 }
 
 function _sort(arr) {
-    return arr._sort((a, b) => {
+    return arr.sort((a, b) => {
         if (a.name.toLocaleLowerCase() < b.name.toLocaleLowerCase()) {
             return -1;
         }
