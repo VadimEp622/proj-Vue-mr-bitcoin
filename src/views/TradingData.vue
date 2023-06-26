@@ -68,6 +68,8 @@ export default {
 <style lang="scss">
 .trading-data {
     & .exchange-rate {
+        text-align: center;
+        margin-block-start: 1.33em;
         & span {
             font-size: 1.5em;
             font-weight: 600;
