@@ -58,11 +58,6 @@ export default {
         <p v-if="exchangeRate" class="exchange-rate">Exchange Rate: <span>{{ exchangeRate }}</span></p>
         <section v-if="marketPriceHistory" class="market-price-history">
             <h4>Market Price History:</h4>
-            <!-- <p>Unit: <span>{{ marketPriceHistory.unit }}</span></p> -->
-            <!-- <p>Period: <span>{{ marketPriceHistory.period }}</span></p> -->
-            <!-- <p>Description: <span>{{ marketPriceHistory.description }}</span></p> -->
-
-            <!-- <LineChart :datasets="[{ label: 'USD, Day', data: marketPriceHistory.values }]" /> -->
             <section class="chart-container">
                 <LineChart :datasets="makeDataset" />
             </section>
@@ -92,7 +87,8 @@ export default {
 
         & .chart-container {
             padding-block: 20px;
-            width: 800px;
+            width: 70vw;
+            min-width: 800px;
             margin-inline: auto;
         }
     }

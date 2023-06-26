@@ -1,6 +1,4 @@
 <script >
-// import { RouterLink, RouterView } from 'vue-router'
-
 import AppHeader from '@/cmps/AppHeader.vue'
 import AppFooter from '@/cmps/AppFooter.vue'
 import UserMsg from '@/cmps/UserMsg.vue'

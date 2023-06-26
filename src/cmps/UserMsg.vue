@@ -41,7 +41,7 @@ export default {
 <style lang="scss">
 /* we will explain what these classes do next! */
 .user-msg {
-    transform-origin: right;
+    transform-origin: top;
 }
 .v-enter-active,
 .v-leave-active {
@@ -50,7 +50,7 @@ export default {
 
 .v-enter-from,
 .v-leave-to {
-    scale: 0 1;
+    scale: 1 0;
     opacity: 0;
 }
 </style>
