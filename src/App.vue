@@ -12,6 +12,7 @@ export default {
 }
 </script>
 
+<!-- TODO MQ width 750px, max for current header & contact column switch from 2 to 1 -->
 <template>
   <AppHeader />
   <main>

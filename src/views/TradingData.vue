@@ -89,8 +89,9 @@ export default {
 
         & .chart-container {
             padding-block: 20px;
-            width: 60vw;
-            min-width: 800px;
+            width: 95vw;
+
+            max-width: 1400px;
             margin-inline: auto;
         }
     }
