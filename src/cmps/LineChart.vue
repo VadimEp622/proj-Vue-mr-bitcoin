@@ -5,10 +5,12 @@ import {
     Tooltip,
     Legend,
     PointElement,
-    LinearScale
+    LinearScale,
+    TimeScale,
 } from 'chart.js'
+import 'chartjs-adapter-date-fns'; // Import the date adapter you want to use, such as 'chartjs-adapter-date-fns'
 
-ChartJS.register(LinearScale, PointElement, Tooltip, Legend)
+ChartJS.register(LinearScale, PointElement, Tooltip, Legend, TimeScale)
 
 export default {
     props: ['datasets'],
@@ -20,7 +22,15 @@ export default {
                 datasets: []
             },
             chartOptions: {
-                responsive: true
+                responsive: true,
+                scales: {
+                    x: {
+                        type: 'time',
+                        time: {
+                            unit: 'day',
+                        },
+                    },
+                }
             }
         }
     },

@@ -30,6 +30,19 @@ export default {
                 })
         }
     },
+    computed: {
+        makeDataset() {
+            const label = this.marketPriceHistory.description
+            const data = this.marketPriceHistory.values.map(value => {
+                return {
+                    x: new Date(value.x * 1000),
+                    y: value.y,
+                }
+            })
+            console.log('data', data)
+            return [{ label, data }]
+        }
+    },
     components: {
         LineChart,
     }
@@ -45,7 +58,10 @@ export default {
             <p>Period: <span>{{ marketPriceHistory.period }}</span></p>
             <p>Description: <span>{{ marketPriceHistory.description }}</span></p>
 
-            <LineChart :datasets="[{ label: 'USD, Day', data: marketPriceHistory.values }]" />
+            <!-- <LineChart :datasets="[{ label: 'USD, Day', data: marketPriceHistory.values }]" /> -->
+            <section class="chart-container">
+                <LineChart :datasets="makeDataset" />
+            </section>
         </section>
     </section>
 </template>
@@ -68,6 +84,12 @@ export default {
         & span {
             font-size: 1.5em;
             font-weight: 600;
+        }
+
+        & .chart-container {
+            padding-block:20px;
+            width: 800px;
+            margin-inline: auto;
         }
     }
 }
