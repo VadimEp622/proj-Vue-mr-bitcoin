@@ -4,7 +4,6 @@
 // @import "setup/functions";
 // @import "setup/mixins";
 
-
 // ************** Basics **************
 @import "basics/base";
 @import "basics/helpers";
@@ -12,14 +11,11 @@
 // @import "basics/links";
 // @import "basics/forms";
 
-
 // ************** Components **************
-// Reuseable 
+// Reuseable
 
-// header 
 @import "cmps/app-header";
-
-
+@import "cmps/app-footer";
 
 // ************** Pages **************
 // @import "pages/home-page";

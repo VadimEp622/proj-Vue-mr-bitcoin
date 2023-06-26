@@ -1,5 +1,5 @@
 <script>
-import { bitcoinService } from '../services/bitcoinService'
+import { bitcoinService } from '../services/bitcoin.service'
 
 import LineChart from '../cmps/LineChart.vue'
 

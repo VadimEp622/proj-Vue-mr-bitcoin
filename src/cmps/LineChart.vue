@@ -8,7 +8,7 @@ import {
     LinearScale,
     TimeScale,
 } from 'chart.js'
-import 'chartjs-adapter-date-fns'; // Import the date adapter you want to use, such as 'chartjs-adapter-date-fns'
+import 'chartjs-adapter-date-fns' // Import the date adapter you want to use, such as 'chartjs-adapter-date-fns'
 
 ChartJS.register(LinearScale, PointElement, Tooltip, Legend, TimeScale)
 

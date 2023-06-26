@@ -1,7 +1,7 @@
 export const contactService = {
-    getContacts,
-    getContactById,
-    deleteContact,
+    query,
+    getById,
+    remove,
     saveContact,
     getEmptyContact
 }
@@ -126,7 +126,7 @@ const contacts = [
 ]
 
 
-function getContacts(filterBy = null) {
+function query(filterBy = null) {
     return new Promise((resolve, reject) => {
         var contactsToReturn = contacts;
         if (filterBy && filterBy.term) {
@@ -136,14 +136,14 @@ function getContacts(filterBy = null) {
     })
 }
 
-function getContactById(id) {
+function getById(id) {
     return new Promise((resolve, reject) => {
         const contact = contacts.find(contact => contact._id === id)
         contact ? resolve(contact) : reject(`Contact id ${id} not found!`)
     })
 }
 
-function deleteContact(id) {
+function remove(id) {
     return new Promise((resolve, reject) => {
         const index = contacts.findIndex(contact => contact._id === id)
         if (index !== -1) {

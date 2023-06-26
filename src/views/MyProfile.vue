@@ -1,29 +1,39 @@
 <script>
-import { userService } from '../services/userService'
-import { contactService } from '../services/contactService'
+import { userService } from '../services/user.service.js'
+import { contactService } from '../services/contact.service.js'
+import { showSuccessMsg, showErrorMsg } from '@/services/event-bus.service.js'
 
-import ContactPreview from '../cmps/ContactPreview.vue'
+import ContactList from '../cmps/ContactList.vue'
+
+
 export default {
     data() {
         return {
             loggedinUser: null,
-            contacts: null,
-        };
-    },
-    created() {
-        this.loggedinUser = userService.getUser();
-        this.setContacts();
-    },
-    unmounted() { },
-    methods: {
-        setContacts() {
-            contactService.getContacts()
-                .then(contacts => {
-                    this.contacts = contacts;
-                });
         }
     },
-    components: { ContactPreview }
+    created() {
+        this.loggedinUser = userService.getUser()
+        this.getContacts()
+    },
+    computed: {
+        contacts() { return this.$store.getters.contacts }
+    },
+    methods: {
+        getContacts() {
+            this.$store.dispatch({ type: 'loadContacts' })
+        },
+        async removeContact(contactId) {
+            console.log('hi from remove contact', contactId)
+            try {
+                this.$store.dispatch({ type: 'removeContact', contactId })
+                showSuccessMsg('Contact removed')
+            } catch (err) {
+                showErrorMsg('Cannot remove contact')
+            }
+        }
+    },
+    components: { ContactList }
 }
 </script>
 
@@ -32,16 +42,10 @@ export default {
 <template>
     <section class="my-profile">
         <p class="greeting">Hello, <span>{{ loggedinUser.name }}</span></p>
-        <section v-if="contacts" class="contacts">
-            <p>Contacts:</p>
-            <ul>
-                <li v-for="contact in contacts">
-                    <ContactPreview :contact="contact" :key="contact._id" />
-                </li>
-            </ul>
-        </section>
+        <ContactList v-if="loggedinUser" @remove="removeContact" :contacts="contacts" />
     </section>
 </template>
+
 
 <style lang="scss">
 .my-profile {

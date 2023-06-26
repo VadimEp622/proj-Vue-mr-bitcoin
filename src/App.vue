@@ -1,22 +1,24 @@
-<script setup>
-import { RouterLink, RouterView } from 'vue-router'
+<script >
+// import { RouterLink, RouterView } from 'vue-router'
+
+import AppHeader from '@/cmps/AppHeader.vue'
+import AppFooter from '@/cmps/AppFooter.vue'
+import UserMsg from '@/cmps/UserMsg.vue'
+
+export default {
+  components: {
+    AppHeader,
+    AppFooter,
+    UserMsg
+  }
+}
 </script>
 
 <template>
-  <header class="app-header">
-
-    <!-- <section class="logo">Mr. Bitcoin</section> -->
-    <!-- <section class="logo" @click="this.router.push({ path: '/' })">Mr. Bitcoin</section> -->
-    <RouterLink class="logo" to="/">Mr. Bitcoin</RouterLink>
-
-    <nav>
-      <RouterLink to="/">Home</RouterLink>
-      <RouterLink to="/trading-data">Trading & Data</RouterLink>
-      <!-- <RouterLink to="/about">About</RouterLink> -->
-      <RouterLink to="/my-profile">My Profile</RouterLink>
-    </nav>
-
-  </header>
-
-  <RouterView />
+  <AppHeader />
+  <main>
+    <RouterView />
+  </main>
+  <AppFooter />
+  <UserMsg />
 </template>
