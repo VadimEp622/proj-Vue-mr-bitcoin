@@ -2,39 +2,41 @@
 import { userService } from '../services/userService'
 import { contactService } from '../services/contactService'
 
+import ContactPreview from '../cmps/ContactPreview.vue'
 export default {
     data() {
         return {
             loggedinUser: null,
             contacts: null,
-        }
+        };
     },
     created() {
-        this.loggedinUser = userService.getUser()
-        this.setContacts()
+        this.loggedinUser = userService.getUser();
+        this.setContacts();
     },
     unmounted() { },
     methods: {
         setContacts() {
             contactService.getContacts()
                 .then(contacts => {
-                    this.contacts = contacts
-                })
+                    this.contacts = contacts;
+                });
         }
-    }
+    },
+    components: { ContactPreview }
 }
 </script>
 
+
+<!-- TODO: make contact preview + CRUDL -->
 <template>
     <section class="my-profile">
         <p class="greeting">Hello, <span>{{ loggedinUser.name }}</span></p>
         <section v-if="contacts" class="contacts">
             <p>Contacts:</p>
             <ul>
-                <li v-for="contact in this.contacts">
-                    <p>Name: <span> {{ contact.name }}</span></p>
-                    <p>Mail: <span> {{ contact.email }}</span></p>
-                    <p>Phone: <span> {{ contact.phone }}</span></p>
+                <li v-for="contact in contacts">
+                    <ContactPreview :contact="contact" :key="contact._id" />
                 </li>
             </ul>
         </section>
@@ -65,14 +67,30 @@ export default {
 
     & .contacts ul {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(auto, 300px));
+        grid-template-columns: repeat(auto-fit, minmax(auto, 350px));
         justify-content: center;
         gap: 10px;
+        min-width: fit-content;
 
         & li {
-            display: block;
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
             background-color: rgb(177, 255, 255);
             padding: 10px;
+
+
+            & .content {
+                white-space: nowrap;
+                // overflow-x: scroll;
+            }
+
+            & .buttons {
+                display: flex;
+                flex-direction: column;
+                width: max-content;
+                justify-content: space-between;
+            }
 
             & span {
                 font-weight: 600;
