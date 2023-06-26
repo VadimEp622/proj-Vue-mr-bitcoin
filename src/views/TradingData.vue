@@ -33,6 +33,10 @@ export default {
     computed: {
         makeDataset() {
             const label = this.marketPriceHistory.description
+            const styling = {
+                backgroundColor: '#64CCC5',
+                radius: 4,
+            }
             const data = this.marketPriceHistory.values.map(value => {
                 return {
                     x: new Date(value.x * 1000),
@@ -40,7 +44,7 @@ export default {
                 }
             })
             console.log('data', data)
-            return [{ label, data }]
+            return [{ label, data, ...styling }]
         }
     },
     components: {
@@ -87,7 +91,7 @@ export default {
         }
 
         & .chart-container {
-            padding-block:20px;
+            padding-block: 20px;
             width: 800px;
             margin-inline: auto;
         }

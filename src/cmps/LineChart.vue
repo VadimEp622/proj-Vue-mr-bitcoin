@@ -23,13 +23,29 @@ export default {
             },
             chartOptions: {
                 responsive: true,
+                plugins: {
+                    legend: {
+                        labels: {
+                            color: 'rgb(220, 220, 220)',
+                        }
+                    }
+                },
                 scales: {
                     x: {
                         type: 'time',
                         time: {
                             unit: 'day',
                         },
+                        ticks: {
+                            color: 'rgb(220, 220, 220)',
+                            // backgroundColor:'green',
+                        },
                     },
+                    y: {
+                        ticks: {
+                            color: 'rgb(220, 220, 220)',
+                        },
+                    }
                 }
             }
         }

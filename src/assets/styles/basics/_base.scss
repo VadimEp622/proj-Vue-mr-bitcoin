@@ -1,6 +1,8 @@
 body {
     margin: 0;
-    background-color: rgb(245, 245, 245);
+    // background-color: rgb(245, 245, 245);
+    background-color: #176B87;
+    height: 100vh;
 }
 
 ul,
@@ -20,4 +22,5 @@ p{
 a {
     text-decoration: none;
     color: initial;
+    // color:unset;
 }

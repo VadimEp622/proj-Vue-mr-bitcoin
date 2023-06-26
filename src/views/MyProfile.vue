@@ -28,7 +28,7 @@ export default {
 </script>
 
 
-<!-- TODO: make contact preview + CRUDL -->
+<!-- TODO: make CRUDL -->
 <template>
     <section class="my-profile">
         <p class="greeting">Hello, <span>{{ loggedinUser.name }}</span></p>
@@ -49,6 +49,7 @@ export default {
 
     & .greeting {
         padding-block: 20px;
+        white-space: nowrap;
 
         span {
             font-size: 1.5em;
@@ -76,7 +77,9 @@ export default {
             display: flex;
             justify-content: space-between;
             gap: 10px;
-            background-color: rgb(177, 255, 255);
+            // background-color: rgb(177, 255, 255);
+            background-color: #DAFFFB;
+            background-color: #64CCC5;
             padding: 10px;
 
 
