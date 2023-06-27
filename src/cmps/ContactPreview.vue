@@ -9,12 +9,12 @@ export default {
         }
     },
     async created() {
-        try {
-            const url = await this.contactAvatar()
-            this.avatarUrl = url
-        } catch (err) {
-            console.log('err', err)
-        }
+        // try {
+        //     const url = await this.contactAvatar()
+        //     this.avatarUrl = url
+        // } catch (err) {
+        //     console.log('err', err)
+        // }
     },
     methods: {
         async contactAvatar() {
@@ -33,7 +33,7 @@ export default {
 
 <template>
     <section class="avatar">
-        <img :src="avatarUrl" alt="avatar">
+        <!-- <img :src="avatarUrl" alt="avatar"> -->
     </section>
     <section class="content">
         <p>Name: <span> {{ contact.name }}</span></p>
