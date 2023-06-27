@@ -7,4 +7,10 @@
   </section>
 </template>
 
-<style></style>
+<style lang="scss">
+.home-page {
+  & h2 {
+    text-align: center;
+  }
+}
+</style>

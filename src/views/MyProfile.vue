@@ -72,7 +72,7 @@ export default {
 
     & .contacts ul {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(auto, 350px));
+        grid-template-columns: repeat(auto-fit, minmax(auto, 400px));
         justify-content: center;
         gap: 10px;
         min-width: fit-content;
@@ -86,6 +86,10 @@ export default {
             background-color: #64CCC5;
             padding: 10px;
 
+            & .avatar {
+                display: flex;
+                justify-content: center;
+            }
 
             & .content {
                 white-space: nowrap;
