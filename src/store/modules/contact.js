@@ -1,5 +1,9 @@
 import { contactService } from '@/services/contact.service.js'
 
+// Issues: 
+//  1. currently removing both contact.service contacts & store contacts, which is redundant
+//  2. contacts can be null or array, so possible error is to run array operations on a null
+
 export default {
     state() {
         return {
