@@ -185,6 +185,11 @@
     display: grid;
 }
 
+// ======================= Display =======================
+.dis-block {
+    display: block;
+}
+
 // ======================= Text =======================
 .text-align-center {
     text-align: center;
@@ -237,4 +242,13 @@
 
 .left-0 {
     left: 0;
+}
+
+// ======================= Sizes =======================
+.width-100-percent {
+    width: 100%;
+}
+
+.height-100-percent {
+    height: 100%;
 }

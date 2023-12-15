@@ -5,25 +5,27 @@ export default {
 
 <template>
     <header class="app-header flex space-between align-center bg-clr-blue-0 white-space-nowrap">
-        <section class="logo fs34 fw800 clr-gold-0">
-            <RouterLink to="/" class="flex"><span class="pd-10">Mr. Bitcoin</span></RouterLink>
+        <section class="logo fs34 fw800 clr-gold-0 flex height-100-percent">
+            <RouterLink to="/" class="flex align-center pd-10"><span>Mr. Bitcoin</span></RouterLink>
         </section>
-        <nav class="fs25 fw600 clr-gray-0">
-            <ul class="flex">
-                <li>
-                    <RouterLink to="/" class="flex pos-rel"><span class="pd-in-10 pd-bl-15">Home</span></RouterLink>
-                </li>
-                <li>
-                    <RouterLink to="/trading-data" class="flex pos-rel"><span class="pd-in-10 pd-bl-15">Trading</span>
+        <nav class="fs25 fw600 clr-gray-0 height-100-percent">
+            <ul class="flex height-100-percent">
+                <li class="flex">
+                    <RouterLink to="/" class="flex align-center pos-rel pd-in-10 pd-bl-15">
+                        <span>Home</span>
                     </RouterLink>
                 </li>
-                <li>
-                    <RouterLink to="/my-profile" class="flex pos-rel"><span class="pd-in-10 pd-bl-15">Profile</span>
+                <li class="flex">
+                    <RouterLink to="/trading-data" class="flex align-center pos-rel pd-in-10 pd-bl-15">
+                        <span>Trading</span>
                     </RouterLink>
                 </li>
-                <!-- <li>
-                    <RouterLink to="/about" class="flex pos-rel"><span class="pd-in-10 pd-bl-15">About</span></RouterLink>
-                </li> -->
+                <li class="flex">
+                    <RouterLink to="/my-profile" class="flex align-center pos-rel pd-in-10 pd-bl-15">
+                        <span>Profile</span>
+                    </RouterLink>
+                </li>
+                <!-- <li class="flex"><RouterLink to="/about" class="flex align-center pos-rel pd-in-10 pd-bl-15"><span>About</span></RouterLink></li> -->
             </ul>
         </nav>
     </header>
