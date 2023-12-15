@@ -71,8 +71,7 @@ Fix Ideas:
         span {
             font-size: 1.5em;
             font-weight: 600;
-            // color: $main-clr0;//<--change to this upon moving to styles
-            color: rgb(186, 170, 81);
+            color: #baaa51;
         }
     }
 

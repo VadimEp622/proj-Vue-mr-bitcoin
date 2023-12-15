@@ -14,3 +14,9 @@ export default {
         </nav>
     </header>
 </template>
+
+<style lang="scss" scoped>
+.logo {
+    color: map-get($map-clr, 'main-gold', 'gold-0');
+}
+</style>
