@@ -1,5 +1,116 @@
-// COLORS:
-$main-clr0: rgb(186, 170, 81);
+// ======================== COLORS ========================
+// ************** Color Map **************
+$map-clr: (
+    "pure": (
+        "white": "white",
+        "black": "black"
+    ),
+    "main-gold": (
+        "gold-0": #baaa51
+    ),
+    "main-blue": (
+        "blue-0": #001c30
+    ),
+    "main-gray": (
+        "gray-0": #dcdcdc,
+        "gray-1": #858f7e
+    )
+);
 
+// ======================== FONTS ========================
+// ************** Font Size Map **************
+$map-font-size: (
+    "25": 25px,
+    "34": 34px
+);
 
-// Spacing:
+// ************** Font Weight Map **************
+$map-font-weight: (
+    "100": 100,
+    "200": 200,
+    "300": 300,
+    "400": 400,
+    "500": 500,
+    "600": 600,
+    "700": 700,
+    "800": 800,
+    "900": 900
+);
+
+// ======================== SPACING ========================
+// ************** Spacing Map **************
+$map-spacing: (
+    "0": 0,
+    "10": 10px,
+    "15": 15px
+);
+
+// ************** Padding Map **************
+$map-padding: (
+    "0": map-get($map-spacing, "0"),
+    "10": map-get($map-spacing, "10")
+);
+
+// ************** Padding Inline Map **************
+$map-padding-inline: (
+    "0": map-get($map-spacing, "0"),
+    "10": map-get($map-spacing, "10")
+);
+
+$map-padding-inline-start: (
+    "0": map-get($map-spacing, "0")
+);
+
+$map-padding-inline-end: (
+    "0": map-get($map-spacing, "0")
+);
+
+// ************** Padding Block Map **************
+$map-padding-block: (
+    "0": map-get($map-spacing, "0"),
+    "15": map-get($map-spacing, "15")
+);
+
+$map-padding-block-start: (
+    "0": map-get($map-spacing, "0")
+);
+
+$map-padding-block-end: (
+    "0": map-get($map-spacing, "0")
+);
+
+// ************** Margin Map **************
+$map-margin: (
+    "0": map-get($map-spacing, "0")
+);
+
+// ************** Margin Inline Map **************
+$map-margin-inline: (
+    "0": map-get($map-spacing, "0")
+);
+
+$map-margin-inline-start: (
+    "0": map-get($map-spacing, "0")
+);
+
+$map-margin-inline-end: (
+    "0": map-get($map-spacing, "0")
+);
+
+// ************** Margin Block Map **************
+$map-margin-block: (
+    "0": map-get($map-spacing, "0")
+);
+
+$map-margin-block-start: (
+    "0": map-get($map-spacing, "0")
+);
+
+$map-margin-block-end: (
+    "0": map-get($map-spacing, "0")
+);
+
+// ************** Gap Map **************
+$map-gap: (
+    "0": map-get($map-spacing, "0")
+);
