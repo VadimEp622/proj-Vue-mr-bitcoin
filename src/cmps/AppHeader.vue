@@ -16,7 +16,11 @@ export default {
 </template>
 
 <style lang="scss" scoped>
-.logo {
-    color: map-get($map-clr, 'main-gold', 'gold-0');
+header {
+    background-color: map-get($map-clr, 'main-blue', 'blue-0');
+
+    & .logo {
+        color: map-get($map-clr, 'main-gold', 'gold-0');
+    }
 }
 </style>
