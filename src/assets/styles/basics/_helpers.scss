@@ -1,7 +1,27 @@
+// ======================== Colors ========================
+@each $colorType, $colors in $map-clr {
+    @each $colorName, $colorValue in $colors {
+        .clr-#{$colorName} {
+            color: $colorValue;
+        }
+
+        .bg-clr-#{$colorName} {
+            background-color: $colorValue;
+        }
+    }
+}
+
 // ======================= Font Size =======================
 @each $class-name, $font-size in $map-font-size {
     .fs#{$class-name} {
         font-size: rem($font-size);
+    }
+}
+
+// ======================= Font Weight =======================
+@each $class-name, $font-weight in $map-font-weight {
+    .fw#{$class-name} {
+        font-weight: $font-weight;
     }
 }
 
@@ -168,4 +188,53 @@
 // ======================= Text =======================
 .text-align-center {
     text-align: center;
+}
+
+.underline {
+    text-decoration: underline;
+}
+
+.uppercase {
+    text-transform: uppercase;
+}
+
+.italic {
+    font-style: italic;
+}
+
+.white-space-nowrap {
+    white-space: nowrap;
+}
+
+// ======================= Position =======================
+.pos-rel {
+    position: relative;
+}
+
+.pos-abs {
+    position: absolute;
+}
+
+.pos-fix {
+    position: fixed;
+}
+
+.overflow-hidden {
+    overflow: hidden;
+}
+
+.top-0 {
+    top: 0;
+}
+
+.right-0 {
+    right: 0;
+}
+
+.bottom-0 {
+    bottom: 0;
+}
+
+.left-0 {
+    left: 0;
 }
