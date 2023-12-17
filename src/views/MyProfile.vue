@@ -53,9 +53,12 @@ Fix Ideas:
 -->
 
 <template>
-    <section class="my-profile">
+    <section v-if="loggedinUser" class="my-profile">
         <p class="greeting">Hello, <span>{{ loggedinUser.name }}</span></p>
-        <ContactList v-if="loggedinUser" @remove="removeContact" :contacts="contacts" />
+        <ContactList @remove="removeContact" :contacts="contacts" />
+    </section>
+    <section v-else>
+        <p class="text-align-center">No logged-in user</p>
     </section>
 </template>
 
