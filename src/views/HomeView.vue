@@ -1,16 +1,30 @@
 <script>
+
+export default {
+  computed: {
+    loggedinUser() { return this.$store.getters.user }
+  }
+}
+
 </script>
 
 <template>
   <section class="home-page">
-    <h2>Hello From Main Page</h2>
+    <p class="greeting text-align-center">Welcome to Home Page, <span>{{ loggedinUser.name }}</span></p>
   </section>
 </template>
 
 <style lang="scss">
 .home-page {
-  & h2 {
-    text-align: center;
+  & .greeting {
+    padding-block: 20px;
+    white-space: nowrap;
+
+    span {
+      font-size: 1.5em;
+      font-weight: 600;
+      color: #baaa51;
+    }
   }
 }
 </style>

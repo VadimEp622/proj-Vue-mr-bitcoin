@@ -7,17 +7,12 @@ import ContactList from '../cmps/ContactList.vue'
 
 
 export default {
-    data() {
-        return {
-            loggedinUser: null,
-        }
-    },
     created() {
-        this.loggedinUser = userService.getUser()
         this.getContacts()
     },
     computed: {
-        contacts() { return this.$store.getters.contacts }
+        contacts() { return this.$store.getters.contacts },
+        loggedinUser() { return this.$store.getters.user }
     },
     methods: {
         getContacts() {
