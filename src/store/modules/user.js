@@ -12,8 +12,8 @@ export default {
         }
     },
     actions: {
-        loadUser({ commit }) {
-            const user = userService.getUser()
+        async loadUser({ commit }) {
+            const user = await userService.getUser()
             commit({ type: 'setUser', user })
         }
     },

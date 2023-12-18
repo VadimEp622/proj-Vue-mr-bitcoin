@@ -1,18 +1,22 @@
 <script>
-
 export default {
-    data() {
-        return {}
+    computed: {
+        loggedinUser() { return this.$store.getters.user }
     },
-    created() { },
-    unmounted() { },
     methods: {
         getUser() {
             this.$store.dispatch({ type: 'loadUser' })
         },
         onLogin() {
             this.getUser()
+        },
+        redirectToHome() {
             this.$router.push('/')
+        }
+    },
+    watch: {
+        loggedinUser(user) {
+            if (user && Object.keys(user).length > 0) this.redirectToHome()
         }
     }
 }
