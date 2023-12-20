@@ -16,7 +16,8 @@ export default {
 <!-- TODO:
 1. make a user store.
     * in actions, there will be:
-        a) loadUser -> will get a user from userService. [High priority]
+        a) loadUser ✔ -> will get a user from userService. [High priority]
+              ** make getting user from cookie [High priority]
         b) updateUser -> will update user name/balance/transactions/contacts [Mid priority]
 
     * user object will have id key

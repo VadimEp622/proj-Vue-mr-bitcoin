@@ -1,8 +1,6 @@
 import { contactService } from '@/services/contact.service.js'
+import { showErrorMsg, showSuccessMsg } from '../../services/event-bus.service'
 
-// Issues: 
-//  1. currently removing both contact.service contacts & store contacts, which is redundant
-//  2. contacts can be null or array, so possible error is to run array operations on a null
 
 export default {
     state() {
@@ -21,12 +19,23 @@ export default {
     },
     actions: {
         async loadContacts({ commit }) {
-            const contacts = await contactService.query()
-            commit({ type: 'setContacts', contacts })
+            try {
+                const contacts = await contactService.getContacts()
+                commit({ type: 'setContacts', contacts })
+            } catch (err) {
+                console.log('Failed loading contacts', err)
+                showErrorMsg('Failed loading contacts')
+            }
         },
         async removeContact({ commit }, { contactId }) {
-            await contactService.remove(contactId)
-            commit({ type: 'removeContact', contactId })
+            try {
+                await contactService.removeContact(contactId)
+                commit({ type: 'removeContact', contactId })
+                showSuccessMsg('Contact removed')
+            } catch (err) {
+                console.log('Failed removing contact', err)
+                showErrorMsg('Failed removing contact')
+            }
         }
     },
     getters: {
