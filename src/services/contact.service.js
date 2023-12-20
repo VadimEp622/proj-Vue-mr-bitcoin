@@ -3,11 +3,11 @@ import { utilService } from "./util.service"
 
 export const contactService = {
     getContacts,
-    query,
-    getById,
-    remove,
-    saveContact,
-    getEmptyContact
+    removeContact,
+    getContactById,
+    // query,
+    // saveContact,
+    // getEmptyContact
 }
 
 
@@ -134,71 +134,53 @@ const contacts = [
 
 function getContacts() {
     return storageService.query(CONTACT_KEY)
-        .then(contactItem => {
-            const contact = contactItem.length < 1 ? _setDemoContacts() : contactItem
-            return contact
-        })
+        .then(contacts => contacts.length < 1 ? _setDemoContacts() : contacts)
         .then(contacts => {
             const returnContacts = _sort(contacts)
             return returnContacts
         })
 }
 
-
-function setDemoCars() {
-    // const apiStr = "https://randomuser.me/api/?inc=name,picture,email,phone"
-
+function removeContact(contactId) {
+    return storageService.remove(CONTACT_KEY, contactId)
 }
 
-function query(filterBy = null) {
-    return new Promise((resolve, reject) => {
-        var contactsToReturn = contacts;
-        if (filterBy && filterBy.term) {
-            contactsToReturn = _filter(filterBy.term)
-        }
-        resolve(_sort(contactsToReturn))
-    })
+function getContactById(contactId) {
+    return storageService.get(CONTACT_KEY, contactId)
 }
 
-function getById(id) {
-    return new Promise((resolve, reject) => {
-        const contact = contacts.find(contact => contact._id === id)
-        contact ? resolve(contact) : reject(`Contact id ${id} not found!`)
-    })
-}
 
-function remove(id) {
-    return new Promise((resolve, reject) => {
-        console.log('contacts before splice', contacts)
-        const index = contacts.findIndex(contact => contact._id === id)
-        if (index !== -1) {
-            contacts.splice(index, 1)
-        }
+// function setDemoCars() {
+// const apiStr = "https://randomuser.me/api/?inc=name,picture,email,phone"
+// }
 
-        console.log('contacts after splice', contacts)
+// function query(filterBy = null) {
+//     return new Promise((resolve, reject) => {
+//         var contactsToReturn = contacts;
+//         if (filterBy && filterBy.term) {
+//             contactsToReturn = _filter(filterBy.term)
+//         }
+//         resolve(_sort(contactsToReturn))
+//     })
+// }
 
-        resolve(contacts)
-    })
-}
+// function saveContact(contact) {
+//     return contact._id ? _updateContact(contact) : _addContact(contact)
+// }
 
-function saveContact(contact) {
-    return contact._id ? _updateContact(contact) : _addContact(contact)
-}
-
-function getEmptyContact() {
-    return {
-        name: '',
-        email: '',
-        phone: ''
-    }
-}
+// function getEmptyContact() {
+//     return {
+//         name: '',
+//         email: '',
+//         phone: ''
+//     }
+// }
 
 
 
 // *************************************************************************************
 // ********************************* Private Functions *********************************
 // *************************************************************************************
-
 function _setDemoContacts() {
     const contacts = _getDemoContacts()
     utilService.saveToStorage(CONTACT_KEY, contacts)
@@ -324,43 +306,6 @@ function _getDemoContacts() {
     ]
 }
 
-function _createContact(name, email, phone) {
-    return {
-        _id: utilService.makeId(),
-        name,
-        email,
-        phone
-    }
-}
-
-
-function _updateContact(contact) {
-    return new Promise((resolve, reject) => {
-        const index = contacts.findIndex(c => contact._id === c._id)
-        if (index !== -1) {
-            contacts[index] = contact
-        }
-        resolve(contact)
-    })
-}
-
-function _addContact(contact) {
-    return new Promise((resolve, reject) => {
-        contact._id = utilService.makeId()
-        contacts.push(contact)
-        resolve(contact)
-    })
-}
-
-function _filter(term) {
-    term = term.toLocaleLowerCase()
-    return contacts.filter(contact => {
-        return contact.name.toLocaleLowerCase().includes(term) ||
-            contact.phone.toLocaleLowerCase().includes(term) ||
-            contact.email.toLocaleLowerCase().includes(term)
-    })
-}
-
 function _sort(arr) {
     return arr.sort((a, b) => {
         if (a.name.toLocaleLowerCase() < b.name.toLocaleLowerCase()) {
@@ -373,3 +318,41 @@ function _sort(arr) {
         return 0;
     })
 }
+
+
+
+// function _createContact(name, email, phone) {
+//     return {
+//         _id: utilService.makeId(),
+//         name,
+//         email,
+//         phone
+//     }
+// }
+
+// function _updateContact(contact) {
+//     return new Promise((resolve, reject) => {
+//         const index = contacts.findIndex(c => contact._id === c._id)
+//         if (index !== -1) {
+//             contacts[index] = contact
+//         }
+//         resolve(contact)
+//     })
+// }
+
+// function _addContact(contact) {
+//     return new Promise((resolve, reject) => {
+//         contact._id = utilService.makeId()
+//         contacts.push(contact)
+//         resolve(contact)
+//     })
+// }
+
+// function _filter(term) {
+//     term = term.toLocaleLowerCase()
+//     return contacts.filter(contact => {
+//         return contact.name.toLocaleLowerCase().includes(term) ||
+//             contact.phone.toLocaleLowerCase().includes(term) ||
+//             contact.email.toLocaleLowerCase().includes(term)
+//     })
+// }

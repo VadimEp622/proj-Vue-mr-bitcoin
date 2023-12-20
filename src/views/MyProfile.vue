@@ -1,10 +1,5 @@
 <script>
-import { userService } from '../services/user.service.js'
-import { contactService } from '../services/contact.service.js'
-import { showSuccessMsg, showErrorMsg } from '@/services/event-bus.service.js'
-
 import ContactList from '../cmps/ContactList.vue'
-
 
 export default {
     created() {
@@ -18,14 +13,8 @@ export default {
         getContacts() {
             this.$store.dispatch({ type: 'loadContacts' })
         },
-        async removeContact(contactId) {
-            console.log('hi from remove contact', contactId)
-            try {
-                this.$store.dispatch({ type: 'removeContact', contactId })
-                showSuccessMsg('Contact removed')
-            } catch (err) {
-                showErrorMsg('Cannot remove contact')
-            }
+        removeContact(contactId) {
+            this.$store.dispatch({ type: 'removeContact', contactId })
         }
     },
     components: { ContactList }

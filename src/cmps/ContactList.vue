@@ -14,7 +14,6 @@ export default {
             console.log('hello from contactId', contactId)
         },
         onRemove(contactId) {
-            console.log('hello from DELETE contactId', contactId)
             this.$emit('remove', contactId)
         }
     },
