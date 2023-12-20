@@ -5,6 +5,10 @@ import { utilService } from "./util.service"
 const USER_KEY = 'user'
 
 
+export const userService = {
+    getUser
+}
+
 function getUser() {
     return storageService.query(USER_KEY)
         .then(userItem => {
@@ -12,12 +16,6 @@ function getUser() {
             return user
         })
 }
-
-export const userService = {
-    getUser,
-}
-
-
 
 
 // =========== private functions ===========
