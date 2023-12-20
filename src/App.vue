@@ -2,7 +2,6 @@
 import AppHeader from '@/cmps/AppHeader.vue'
 import AppFooter from '@/cmps/AppFooter.vue'
 import UserMsg from '@/cmps/UserMsg.vue'
-import { userService } from './services/user.service'
 
 export default {
   components: {

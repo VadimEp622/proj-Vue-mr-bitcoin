@@ -21,12 +21,16 @@ export default {
     },
     actions: {
         async loadContacts({ commit }) {
-            const contacts = await contactService.query()
+            // --> previous | global contacts
+            // const contacts = await contactService.query()
+
+            // --> new | async delayed local-storage contacts
+            const contacts = await contactService.getContacts()
             commit({ type: 'setContacts', contacts })
         },
         async removeContact({ commit }, { contactId }) {
             await contactService.remove(contactId)
-            commit({ type: 'removeContact', contactId })
+            // commit({ type: 'removeContact', contactId })
         }
     },
     getters: {
