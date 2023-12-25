@@ -2,6 +2,7 @@
     <component :is="iconCmp" />
 </template>
   
+
 <script>
 import { defineAsyncComponent, markRaw } from 'vue'
 import { ICON_DEFAULT_USER } from '../../services/icon-handler.service'

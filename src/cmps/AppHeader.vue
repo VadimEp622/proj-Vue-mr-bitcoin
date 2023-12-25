@@ -1,8 +1,3 @@
-<script>
-export default {
-}
-</script>
-
 <template>
     <header class="app-header flex space-between align-center bg-clr-blue-0 white-space-nowrap">
         <section class="logo fs34 fw800 clr-gold-0 flex height-100-percent">
@@ -30,6 +25,13 @@ export default {
         </nav>
     </header>
 </template>
+
+
+<script>
+export default {
+}
+</script>
+
 
 <style lang="scss" scoped>
 header {
