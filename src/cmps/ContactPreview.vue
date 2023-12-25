@@ -1,39 +1,24 @@
 <script>
-import axios from 'axios'
+import { ICON_DEFAULT_USER } from '../services/icon-handler.service'
+import IconHandler from './_reusable/IconHandler.vue'
 
 export default {
     props: ['contact'],
-    data() {
-        return {
-            avatarUrl: ''
+    computed: {
+        ICON_DEFAULT_USER() {
+            return ICON_DEFAULT_USER
         }
     },
-    async created() {
-        // try {
-        //     const url = await this.contactAvatar()
-        //     this.avatarUrl = url
-        // } catch (err) {
-        //     console.log('err', err)
-        // }
-    },
-    methods: {
-        async contactAvatar() {
-            try {
-                const res = await axios.get('https://randomuser.me/api/')
-                const avatarUrl = res.data.results[0].picture.thumbnail
-                return avatarUrl
-            } catch (err) {
-                console.log('err', err)
-            }
-
-        },
+    components: {
+        IconHandler
     }
 }
 </script>
 
+
 <template>
     <section class="avatar">
-        <!-- <img :src="avatarUrl" alt="avatar"> -->
+        <IconHandler :name="ICON_DEFAULT_USER" />
     </section>
     <section class="content">
         <p>Name: <span> {{ contact.name }}</span></p>
