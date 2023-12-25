@@ -3,12 +3,6 @@ import ContactPreview from './ContactPreview.vue'
 
 export default {
     props: ["contacts"],
-    data() {
-        return {}
-    },
-    created() {
-    },
-    unmounted() { },
     methods: {
         onDetails(contactId) {
             console.log('hello from contactId', contactId)
@@ -22,9 +16,9 @@ export default {
 </script>
 
 <template>
-    <section v-if="contacts" class="contacts">
+    <section class="contact-list">
         <p>Contacts:</p>
-        <ul>
+        <TransitionGroup name="list" tag="ul">
             <li v-for="contact in contacts" :key="contact._id">
                 <ContactPreview :contact="contact" />
                 <section class="buttons">
@@ -32,12 +26,12 @@ export default {
                     <button @click="onRemove(contact._id)">Remove</button>
                 </section>
             </li>
-        </ul>
+        </TransitionGroup>
     </section>
 </template>
 
 <style lang="scss">
-.contacts ul {
+.contact-list ul {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(auto, 400px));
     justify-content: center;
@@ -73,5 +67,24 @@ export default {
             font-weight: 600;
         }
     }
+}
+
+.list-move,
+/* apply transition to moving elements */
+.list-enter-active,
+.list-leave-active {
+    transition: all 0.5s ease;
+}
+
+.list-enter-from,
+.list-leave-to {
+    opacity: 0;
+    transform: translateX(30px);
+}
+
+/* ensure leaving items are taken out of layout flow so that moving
+   animations can be calculated correctly. */
+.list-leave-active {
+    position: absolute;
 }
 </style>

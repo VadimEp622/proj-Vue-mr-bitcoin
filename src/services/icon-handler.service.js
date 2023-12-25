@@ -1,0 +1,1 @@
+export const ICON_DEFAULT_USER = "user-nav-profile"

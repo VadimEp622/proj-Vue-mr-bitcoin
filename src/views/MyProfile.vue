@@ -21,25 +21,12 @@ export default {
 }
 </script>
 
-
 <!-- TODO: make CRUDL -->
-
-<!-- 
-Issue:
-* why make "ContactList" conditional by "loggedinUser", but greeting assumes "loggedinUser" exists?
-
-Fix Ideas:
-1. make a log in request component which is conditionally tied to loggedinUser,
-    and the normal greeting + "ContactList" component which is also tied to it.
-    when user clicks "ok" in log-in cmp, loggedinUser state gets updated.
-
-2. additionally employ cookies to remember the user after refresh 
--->
 
 <template>
     <section v-if="loggedinUser" class="my-profile">
         <p class="greeting">Hello, <span>{{ loggedinUser.name }}</span></p>
-        <ContactList @remove="removeContact" :contacts="contacts" />
+        <ContactList v-if="contacts" @remove="removeContact" :contacts="contacts" />
     </section>
     <section v-else>
         <p class="text-align-center">No logged-in user</p>
