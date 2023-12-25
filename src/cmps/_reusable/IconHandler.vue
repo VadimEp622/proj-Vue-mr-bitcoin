@@ -34,7 +34,10 @@ export default {
                     break
 
                 default:
-                    component = defineAsyncComponent(() => import(/* @vite-ignore */ `../../assets/imgs/user-nav-profile.svg`))
+                    // component = defineAsyncComponent(() => import(/* @vite-ignore */ `../../assets/imgs/user-nav-profile.svg`))
+                    component = "div"
+                    this.iconCmp = component
+                    return
             }
             this.iconCmp = markRaw(component)
         }

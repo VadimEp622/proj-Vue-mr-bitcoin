@@ -19,7 +19,7 @@ export default {
     <section class="contact-list">
         <p>Contacts:</p>
         <TransitionGroup name="list" tag="ul">
-            <li v-for="contact in contacts" :key="contact._id">
+            <li class="contact-preview-container" v-for="contact in contacts" :key="contact._id">
                 <ContactPreview :contact="contact" />
                 <section class="buttons">
                     <button @click="onDetails(contact._id)">Details</button>
@@ -37,34 +37,19 @@ export default {
     justify-content: center;
     gap: 10px;
     min-width: fit-content;
-    // transition: all .5s ease-in-out;
 
-    & li {
+    & li.contact-preview-container {
         display: flex;
         justify-content: space-between;
         gap: 10px;
         background-color: #64CCC5;
         padding: 10px;
 
-        & .avatar {
-            display: flex;
-            justify-content: center;
-        }
-
-        & .content {
-            white-space: nowrap;
-            // overflow-x: scroll;
-        }
-
         & .buttons {
             display: flex;
             flex-direction: column;
             width: max-content;
             justify-content: space-between;
-        }
-
-        & span {
-            font-weight: 600;
         }
     }
 }
