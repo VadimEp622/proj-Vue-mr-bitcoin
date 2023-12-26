@@ -1,3 +1,4 @@
+import axios from "axios"
 import { storageService } from "./async-storage.service"
 import { utilService } from "./util.service"
 
@@ -5,6 +6,7 @@ export const contactService = {
     getContacts,
     removeContact,
     getContactById,
+    getRealContacts,
     // query,
     // saveContact,
     // getEmptyContact
@@ -149,6 +151,23 @@ function getContactById(contactId) {
     return storageService.get(CONTACT_KEY, contactId)
 }
 
+async function getRealContacts() {
+    const LocalStorageContacts = utilService.loadFromStorage(CONTACT_KEY + '_real')
+    if (!LocalStorageContacts || LocalStorageContacts.length < 1) {
+        console.log('Axios get - Real Contacts')
+        try {
+            const FetchedContacts = await _fetchRealContacts()
+            utilService.saveToStorage(CONTACT_KEY + '_real', FetchedContacts)
+            return FetchedContacts
+        } catch (err) {
+            console.log('Failed fetching contacts', err)
+            throw err
+        }
+    }
+    console.log('Local Storage - Real Contacts')
+    return LocalStorageContacts
+}
+
 
 // function setDemoCars() {
 // const apiStr = "https://randomuser.me/api/?inc=name,picture,email,phone"
@@ -181,6 +200,18 @@ function getContactById(contactId) {
 // *************************************************************************************
 // ********************************* Private Functions *********************************
 // *************************************************************************************
+function _fetchRealContacts() {
+    return axios.get(_getUrlRandomContacts())
+        .then(res => res.data.results)
+        .then(fetchedContacts => {
+            const contacts = fetchedContacts.map(contact => {
+                contact._id = utilService.makeId()
+                return contact
+            })
+            return contacts
+        })
+}
+
 function _setDemoContacts() {
     const contacts = _getDemoContacts()
     utilService.saveToStorage(CONTACT_KEY, contacts)
@@ -319,6 +350,9 @@ function _sort(arr) {
     })
 }
 
+function _getUrlRandomContacts() {
+    return `https://randomuser.me/api/?results=10&inc=name,picture,email,phone`
+}
 
 
 // function _createContact(name, email, phone) {
