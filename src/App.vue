@@ -4,6 +4,9 @@ import AppFooter from '@/cmps/AppFooter.vue'
 import UserMsg from '@/cmps/UserMsg.vue'
 
 export default {
+  // computed: {
+  //   loggedinUser() { return this.$store.getters.user }
+  // },
   components: {
     AppHeader,
     AppFooter,
@@ -41,8 +44,7 @@ IV. homepage will be fancy, with a "welcome <user.name>" greeting, with user tra
 
 <!-- TODO: 
 1. responsive header
-2. animated contact-list movement on delete
-3. create/edit contact
+2. create/edit contact
   -->
 
 

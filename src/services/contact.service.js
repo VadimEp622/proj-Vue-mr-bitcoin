@@ -71,13 +71,13 @@ function _getUrlRandomContacts() {
 function _sort(arr) {
     return arr.sort((a, b) => {
         if (a.name.first.toLocaleLowerCase() < b.name.first.toLocaleLowerCase()) {
-            return -1;
+            return -1
         }
         if (a.name.first.toLocaleLowerCase() > b.name.first.toLocaleLowerCase()) {
-            return 1;
+            return 1
         }
 
-        return 0;
+        return 0
     })
 }
 
