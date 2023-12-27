@@ -1,10 +1,11 @@
 import { authService } from "../../services/auth.service"
 import { showErrorMsg, showSuccessMsg } from "../../services/event-bus.service"
+import { userService } from "../../services/user.service"
 
 export default {
     state() {
         return {
-            user: null,
+            user: userService.getLoggedinUser(),
         }
     },
     mutations: {

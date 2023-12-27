@@ -17,7 +17,10 @@ const router = createRouter({
     {
       path: '/login',
       name: 'login',
-      component: LoginView
+      component: LoginView,
+      beforeEnter: (to, from) => {
+        if (store.state.user.user) next({ name: 'home' })
+      },
     },
     // {
     //   path: '/about',

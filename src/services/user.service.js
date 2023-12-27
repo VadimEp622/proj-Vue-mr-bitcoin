@@ -8,7 +8,10 @@ const USER_KEY = 'user'
 export const userService = {
     query,
     getUserByName,
-    postNewUser
+    postNewUser,
+    getLoggedinUser,
+    saveLocalUser,
+    clearLocalUser
 }
 
 
@@ -26,15 +29,20 @@ function postNewUser(user) {
     return storageService.post(USER_KEY, user)
 }
 
-function clearLocalUser() {
-    sessionStorage.removeItem(BASE_URL)
+function getLoggedinUser() {
+    return JSON.parse(sessionStorage.getItem(USER_KEY))
 }
 
 function saveLocalUser(user) {
-    user = { name: user.name }
-    sessionStorage.setItem(BASE_URL, JSON.stringify(user))
+    const userToStore = { _id: user._id, name: user.name, balance: user.balance, transaction: user.transaction }
+    sessionStorage.setItem(USER_KEY, JSON.stringify(userToStore))
     return user
 }
+
+function clearLocalUser() {
+    sessionStorage.removeItem(USER_KEY)
+}
+
 
 
 // ====================== private functions ======================
