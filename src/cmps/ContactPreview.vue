@@ -1,10 +1,13 @@
 <template>
     <section class="contact-preview">
-        <section class="avatar">
-            <IconHandler :name="ICON_DEFAULT_USER" />
+        <section class="avatar-container">
+            <section class="avatar">
+                <!-- <IconHandler :name="ICON_DEFAULT_USER" /> -->
+                <img :src="contact.picture.medium" alt="contact">
+            </section>
         </section>
         <section class="content">
-            <p> {{ contact.name }}</p>
+            <p> {{ contactName }}</p>
             <p> {{ contact.email }}</p>
             <p> {{ contact.phone }}</p>
         </section>
@@ -21,7 +24,10 @@ export default {
     computed: {
         ICON_DEFAULT_USER() {
             return ICON_DEFAULT_USER
-        }
+        },
+        contactName() {
+            return `${this.contact.name.first} ${this.contact.name.last}`
+        },
     },
     components: {
         IconHandler
@@ -35,10 +41,18 @@ export default {
     display: flex;
     gap: 10px;
 
-    & .avatar {
+    & .avatar-container {
         display: flex;
         justify-content: center;
-        width: 50px;
+        align-items: center;
+
+        & .avatar {
+            width: 61px;
+            height: 61px;
+            border-radius: 50%;
+            overflow: hidden;
+        }
+
     }
 
     & .content {

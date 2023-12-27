@@ -13,24 +13,18 @@
 
 <script>
 import ContactList from '../cmps/ContactList.vue'
-import { contactService } from '../services/contact.service'
 
 export default {
     created() {
         this.getContacts()
-        this.getRealContacts()
     },
     computed: {
         contacts() { return this.$store.getters.contacts },
-        realContacts() { return this.$store.getters.realContacts },
         loggedinUser() { return this.$store.getters.user }
     },
     methods: {
         getContacts() {
             this.$store.dispatch({ type: 'loadContacts' })
-        },
-        getRealContacts() {
-            this.$store.dispatch({ type: 'loadRealContacts' })
         },
         removeContact(contactId) {
             this.$store.dispatch({ type: 'removeContact', contactId })
