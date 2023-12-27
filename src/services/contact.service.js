@@ -14,7 +14,11 @@ const CONTACT_KEY = 'contact'
 
 
 function query(filterBy = {}) {
-    return _getContacts()
+    return _getContacts(CONTACT_KEY)
+        .then(contacts => {
+            const filteredContacts = contacts
+            return _sort(filteredContacts)
+        })
 }
 
 function getContactById(contactId) {
@@ -31,13 +35,13 @@ function removeContact(contactId) {
 // *************************************************************************************
 // ********************************* Private Functions *********************************
 // *************************************************************************************
-async function _getContacts() {
-    const LocalStorageContacts = utilService.loadFromStorage(CONTACT_KEY)
+async function _getContacts(entityType) {
+    const LocalStorageContacts = utilService.loadFromStorage(entityType)
     if (!LocalStorageContacts || LocalStorageContacts.length < 1) {
         console.log('Axios get - Contacts')
         try {
             const FetchedContacts = await _fetchContacts()
-            utilService.saveToStorage(CONTACT_KEY, FetchedContacts)
+            utilService.saveToStorage(entityType, FetchedContacts)
             return FetchedContacts
         } catch (err) {
             console.log('Failed fetching contacts', err)
@@ -62,6 +66,19 @@ function _fetchContacts() {
 
 function _getUrlRandomContacts() {
     return `https://randomuser.me/api/?results=10&inc=name,picture,email,phone`
+}
+
+function _sort(arr) {
+    return arr.sort((a, b) => {
+        if (a.name.first.toLocaleLowerCase() < b.name.first.toLocaleLowerCase()) {
+            return -1;
+        }
+        if (a.name.first.toLocaleLowerCase() > b.name.first.toLocaleLowerCase()) {
+            return 1;
+        }
+
+        return 0;
+    })
 }
 
 
@@ -190,18 +207,6 @@ function _getUrlRandomContacts() {
 //     ]
 // }
 
-// function _sort(arr) {
-//     return arr.sort((a, b) => {
-//         if (a.name.toLocaleLowerCase() < b.name.toLocaleLowerCase()) {
-//             return -1;
-//         }
-//         if (a.name.toLocaleLowerCase() > b.name.toLocaleLowerCase()) {
-//             return 1;
-//         }
-
-//         return 0;
-//     })
-// }
 
 // function _createContact(name, email, phone) {
 //     return {
