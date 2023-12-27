@@ -1,5 +1,5 @@
 <template>
-    <component :is="iconCmp" />
+    <component :is="iconCmp" alt="no-icon" />
 </template>
   
 
@@ -35,8 +35,7 @@ export default {
                     break
 
                 default:
-                    // component = defineAsyncComponent(() => import(/* @vite-ignore */ `../../assets/imgs/user-nav-profile.svg`))
-                    component = "div"
+                    component = "img"
                     this.iconCmp = component
                     return
             }

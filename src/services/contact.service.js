@@ -169,9 +169,6 @@ async function getRealContacts() {
 }
 
 
-// function setDemoCars() {
-// const apiStr = "https://randomuser.me/api/?inc=name,picture,email,phone"
-// }
 
 // function query(filterBy = null) {
 //     return new Promise((resolve, reject) => {
