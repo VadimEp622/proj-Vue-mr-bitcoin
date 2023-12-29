@@ -78,8 +78,17 @@ IV. homepage will be fancy, with a "welcome <user.name>" greeting, with user tra
   grid-template-rows: auto 1fr auto;
   height: 100vh;
 
-  &.header-footer-hidden>* {
-    &:is(header, footer) {
+  & .login-page {
+    &::before {
+      // experimenting if this solves background image in login-page not loading, when redirecting to login-page
+      background-image: url('@/assets/imgs/bg-pic/bg-bitcoin.jpg');
+    }
+  }
+
+  &.header-footer-hidden {
+    grid-template-rows: 1fr;
+
+    &>*:is(header, footer) {
       display: none;
     }
   }

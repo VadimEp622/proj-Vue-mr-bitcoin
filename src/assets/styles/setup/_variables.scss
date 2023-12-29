@@ -2,8 +2,8 @@
 // ************** Color Map **************
 $map-clr: (
     "pure": (
-        "white": "white",
-        "black": "black"
+        "white": white,
+        "black": black
     ),
     "main-gold": (
         "gold-0": #baaa51
@@ -112,5 +112,6 @@ $map-margin-block-end: (
 
 // ************** Gap Map **************
 $map-gap: (
-    "0": map-get($map-spacing, "0")
+    "0": map-get($map-spacing, "0"),
+    "10": map-get($map-spacing, "10")
 );

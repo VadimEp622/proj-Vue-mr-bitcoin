@@ -1,22 +1,9 @@
 import { userService } from "./user.service"
 
 export const authService = {
-    login
+    login,
+    logout
 }
-
-
-// async function login(name) {
-//     try {
-//         const user = await userService.getUserByName(name)
-//         if (user) return user
-
-//         const newUser = await userService.postNewUser(_createUser(name))
-//         return newUser
-//     } catch (err) {
-//         console.log('Login failed', err)
-//         throw err
-//     }
-// }
 
 async function login(name) {
     try {
@@ -33,6 +20,11 @@ async function login(name) {
         console.log('Login failed', err)
         throw err
     }
+}
+
+
+function logout() {
+    userService.clearLocalUser()
 }
 
 
