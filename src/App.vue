@@ -55,10 +55,12 @@ IV. homepage will be fancy, with a "welcome <user.name>" greeting, with user tra
 
 
 <template>
-  <AppHeader />
-  <main>
-    <RouterView />
-  </main>
-  <AppFooter />
+  <section class="app">
+    <AppHeader />
+    <main>
+      <RouterView />
+    </main>
+    <AppFooter />
+  </section>
   <UserMsg />
 </template>

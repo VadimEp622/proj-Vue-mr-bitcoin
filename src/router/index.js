@@ -20,6 +20,7 @@ const router = createRouter({
       component: LoginView,
       beforeEnter: (to, from, next) => {
         if (store.state.user.user) next({ name: 'home' })
+        else next()
       },
     },
     // {
