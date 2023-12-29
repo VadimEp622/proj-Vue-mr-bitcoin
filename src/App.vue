@@ -1,12 +1,31 @@
+<template>
+  <section class="app" :class="appClass">
+    <AppHeader />
+    <main>
+      <RouterView />
+    </main>
+    <AppFooter />
+  </section>
+  <UserMsg />
+</template>
+
+
 <script >
 import AppHeader from '@/cmps/AppHeader.vue'
 import AppFooter from '@/cmps/AppFooter.vue'
 import UserMsg from '@/cmps/UserMsg.vue'
 
 export default {
-  // computed: {
-  //   loggedinUser() { return this.$store.getters.user }
-  // },
+  computed: {
+    currentRoute() {
+      return this.$route.name
+    },
+    appClass() {
+      return {
+        'header-footer-hidden': this.currentRoute === 'login'
+      }
+    }
+  },
   components: {
     AppHeader,
     AppFooter,
@@ -53,14 +72,16 @@ IV. homepage will be fancy, with a "welcome <user.name>" greeting, with user tra
 2. make graph responsive (possible to enlarge/shrink without needing to refresh page)
 -->
 
+<style lang="scss" scoped>
+.app {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  height: 100vh;
 
-<template>
-  <section class="app">
-    <AppHeader />
-    <main>
-      <RouterView />
-    </main>
-    <AppFooter />
-  </section>
-  <UserMsg />
-</template>
+  &.header-footer-hidden>* {
+    &:is(header, footer) {
+      display: none;
+    }
+  }
+}
+</style>
