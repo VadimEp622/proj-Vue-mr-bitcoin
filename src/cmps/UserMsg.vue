@@ -43,6 +43,7 @@ export default {
 .user-msg {
     transform-origin: top;
 }
+
 .v-enter-active,
 .v-leave-active {
     transition: 0.8s ease;

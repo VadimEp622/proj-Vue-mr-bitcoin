@@ -1,5 +1,11 @@
-<script>
+<template>
+    <footer>
+        <h2>Hello From Footer</h2>
+    </footer>
+</template>
 
+
+<script>
 export default {
     data() {
         return {}
@@ -10,10 +16,5 @@ export default {
 }
 </script>
 
-<template>
-    <footer>
-        <h2>Hello From Footer</h2>
-    </footer>
-</template>
 
 <style lang="scss"></style>

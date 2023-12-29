@@ -5,7 +5,7 @@ import { showErrorMsg, showSuccessMsg } from '../../services/event-bus.service'
 export default {
     state() {
         return {
-            contacts: null,
+            contacts: null
         }
     },
     mutations: {
@@ -20,7 +20,7 @@ export default {
     actions: {
         async loadContacts({ commit }) {
             try {
-                const contacts = await contactService.getContacts()
+                const contacts = await contactService.query()
                 commit({ type: 'setContacts', contacts })
             } catch (err) {
                 console.log('Failed loading contacts', err)

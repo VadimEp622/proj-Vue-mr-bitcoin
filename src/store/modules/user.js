@@ -1,9 +1,11 @@
+import { authService } from "../../services/auth.service"
+import { showErrorMsg, showSuccessMsg } from "../../services/event-bus.service"
 import { userService } from "../../services/user.service"
 
 export default {
     state() {
         return {
-            user: null,
+            user: userService.getLoggedinUser(),
         }
     },
     mutations: {
@@ -12,9 +14,15 @@ export default {
         }
     },
     actions: {
-        async loadUser({ commit }) {
-            const user = await userService.getUser()
-            commit({ type: 'setUser', user })
+        async login({ commit }, { name }) {
+            try {
+                const user = await authService.login(name)
+                commit({ type: 'setUser', user })
+                showSuccessMsg('Login Successful')
+            } catch (err) {
+                console.log('Login failed', err)
+                showErrorMsg('Login failed')
+            }
         }
     },
     getters: {

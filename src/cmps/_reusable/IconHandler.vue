@@ -1,7 +1,8 @@
 <template>
-    <component :is="iconCmp" />
+    <component :is="iconCmp" alt="no-icon" />
 </template>
   
+
 <script>
 import { defineAsyncComponent, markRaw } from 'vue'
 import { ICON_DEFAULT_USER } from '../../services/icon-handler.service'
@@ -34,7 +35,9 @@ export default {
                     break
 
                 default:
-                    component = defineAsyncComponent(() => import(/* @vite-ignore */ `../../assets/imgs/user-nav-profile.svg`))
+                    component = "img"
+                    this.iconCmp = component
+                    return
             }
             this.iconCmp = markRaw(component)
         }

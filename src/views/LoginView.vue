@@ -1,14 +1,16 @@
 <script>
 export default {
+    data() {
+        return {
+            loginName: ''
+        }
+    },
     computed: {
         loggedinUser() { return this.$store.getters.user }
     },
     methods: {
-        getUser() {
-            this.$store.dispatch({ type: 'loadUser' })
-        },
         onLogin() {
-            this.getUser()
+            this.$store.dispatch({ type: 'login', name: this.loginName })
         },
         redirectToHome() {
             this.$router.push('/')
@@ -26,6 +28,7 @@ export default {
     <section class="login-page">
         <p class="text-align-center">Hi from login page</p>
         <section class="flex justify-center">
+            <input type="text" v-model="loginName">
             <button @click="onLogin">login</button>
         </section>
     </section>

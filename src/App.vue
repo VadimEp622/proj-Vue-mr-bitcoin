@@ -1,9 +1,31 @@
+<template>
+  <section class="app" :class="appClass">
+    <AppHeader />
+    <main>
+      <RouterView />
+    </main>
+    <AppFooter />
+  </section>
+  <UserMsg />
+</template>
+
+
 <script >
 import AppHeader from '@/cmps/AppHeader.vue'
 import AppFooter from '@/cmps/AppFooter.vue'
 import UserMsg from '@/cmps/UserMsg.vue'
 
 export default {
+  computed: {
+    currentRoute() {
+      return this.$route.name
+    },
+    appClass() {
+      return {
+        'header-footer-hidden': this.currentRoute === 'login'
+      }
+    }
+  },
   components: {
     AppHeader,
     AppFooter,
@@ -41,8 +63,7 @@ IV. homepage will be fancy, with a "welcome <user.name>" greeting, with user tra
 
 <!-- TODO: 
 1. responsive header
-2. animated contact-list movement on delete
-3. create/edit contact
+2. create/edit contact
   -->
 
 
@@ -51,12 +72,16 @@ IV. homepage will be fancy, with a "welcome <user.name>" greeting, with user tra
 2. make graph responsive (possible to enlarge/shrink without needing to refresh page)
 -->
 
+<style lang="scss" scoped>
+.app {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  height: 100vh;
 
-<template>
-  <AppHeader />
-  <main>
-    <RouterView />
-  </main>
-  <AppFooter />
-  <UserMsg />
-</template>
+  &.header-footer-hidden>* {
+    &:is(header, footer) {
+      display: none;
+    }
+  }
+}
+</style>
