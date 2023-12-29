@@ -12,13 +12,13 @@ export default {
         onLogin() {
             this.$store.dispatch({ type: 'login', name: this.loginName })
         },
-        redirectToHome() {
-            this.$router.push('/')
+        redirectTo(pathName) {
+            this.$router.push(pathName)
         }
     },
     watch: {
         loggedinUser(user) {
-            if (user && Object.keys(user).length > 0) this.redirectToHome()
+            if (user && Object.keys(user).length > 0) this.redirectTo('/')
         }
     }
 }
@@ -33,13 +33,10 @@ export default {
                 <button @click="onLogin">login</button>
             </section>
         </section>
-        <!-- <section class="pos-abs top-0 left-0 bottom-0 right-0">
-            <img src="@/assets/imgs/bg-pic/bg-bitcoin.jpg" alt="">
-        </section> -->
     </section>
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .login-page {
     height: 100%;
 

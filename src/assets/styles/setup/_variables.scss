@@ -41,6 +41,7 @@ $map-font-weight: (
 // ************** Spacing Map **************
 $map-spacing: (
     "0": 0,
+    "6": 6px,
     "10": 10px,
     "15": 15px
 );
@@ -112,5 +113,6 @@ $map-margin-block-end: (
 
 // ************** Gap Map **************
 $map-gap: (
-    "0": map-get($map-spacing, "0")
+    "0": map-get($map-spacing, "0"),
+    "6": map-get($map-spacing, "6")
 );

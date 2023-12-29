@@ -23,6 +23,11 @@ export default {
                 console.log('Login failed', err)
                 showErrorMsg('Login failed')
             }
+        },
+        logout({ commit }) {
+            authService.logout()
+            showSuccessMsg('Logging out')//add a normal msg (not green success/red error, but gray notification?)
+            commit({ type: 'setUser', user: null })
         }
     },
     getters: {
