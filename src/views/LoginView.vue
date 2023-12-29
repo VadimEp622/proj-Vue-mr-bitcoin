@@ -1,3 +1,27 @@
+<template>
+    <section class="login-page">
+        <section class="greeting flex column justify-center height-100-percent">
+            <h2 class="text-align-center clr-white">Welcome to Mr. Bitcoin!</h2>
+            <section class="flex justify-center">
+                <input type="text" v-model="loginName">
+                <button @click="onLogin">login</button>
+            </section>
+        </section>
+    </section>
+</template>
+
+
+<!-- TODO: (High Priority) 
+    add input protection, so only English letters can be used to login, with a minimum of 1 letter, maximum 25(?) 
+ -->
+
+<!-- TODO: (Low Priority) 
+    make is so regardless of caps in user name,
+    only lowercase letters update the database (aka local-storage - tentative),
+    but greetings always happen with first letter capitalized 
+-->
+
+
 <script>
 export default {
     data() {
@@ -24,25 +48,14 @@ export default {
 }
 </script>
 
-<template>
-    <section class="login-page">
-        <section class="greeting flex column justify-center height-100-percent">
-            <h2 class="text-align-center clr-white">Welcome to Mr. Bitcoin!</h2>
-            <section class="flex justify-center">
-                <input type="text" v-model="loginName">
-                <button @click="onLogin">login</button>
-            </section>
-        </section>
-    </section>
-</template>
 
 <style lang="scss" scoped>
 .login-page {
     height: 100%;
 
-    &:before {
+    &::before {
         content: '';
-        background-image: url('@/assets/imgs/bg-pic/bg-bitcoin.jpg');
+        // background-image: url('@/assets/imgs/bg-pic/bg-bitcoin.jpg');
         background-size: cover;
         background-position-x: right;
         background-position-y: center;

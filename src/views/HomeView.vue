@@ -21,6 +21,7 @@ export default {
     white-space: nowrap;
 
     span {
+      text-transform: capitalize;
       font-size: 1.5em;
       font-weight: 600;
       color: #baaa51;
