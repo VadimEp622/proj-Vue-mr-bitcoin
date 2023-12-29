@@ -31,7 +31,7 @@ export default {
             let component
             switch (this.name) {
                 case ICON_DEFAULT_USER:
-                    component = defineAsyncComponent(() => import(/* @vite-ignore */ `../../assets/imgs/user-nav-profile.svg`))
+                    component = defineAsyncComponent(() => import(/* @vite-ignore */ `../../assets/imgs/icon/user-nav-profile.svg`))
                     break
 
                 default:
