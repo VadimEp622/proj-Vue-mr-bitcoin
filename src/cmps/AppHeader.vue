@@ -28,12 +28,18 @@
                     <!-- <li class="flex"><RouterLink to="/about" class="flex align-center pos-rel pd-in-10 pd-bl-15"><span>About</span></RouterLink></li> -->
                 </ul>
             </nav>
+            <section class="hamburger-icon">
+                <IconHandler :name="ICON_HAMBURGER" />
+            </section>
         </section>
     </header>
 </template>
 
 
 <script>
+import { ICON_HAMBURGER } from '../services/icon-handler.service'
+import IconHandler from './_reusable/IconHandler.vue'
+
 export default {
     props: { layoutClass: String, required: true },
     watch: {
@@ -42,7 +48,8 @@ export default {
         }
     },
     computed: {
-        loggedinUser() { return this.$store.getters.user }
+        loggedinUser() { return this.$store.getters.user },
+        ICON_HAMBURGER() { return ICON_HAMBURGER }
     },
     methods: {
         logout() {
@@ -96,6 +103,11 @@ header {
         &:hover {
             background-color: #858f7e;
         }
+    }
+
+    & .hamburger-icon {
+        width: 20px;
+        height: 20px;
     }
 }
 </style>

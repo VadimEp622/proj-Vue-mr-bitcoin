@@ -2,8 +2,8 @@
     <section class="contact-preview">
         <section class="avatar-container">
             <section class="avatar">
-                <!-- <IconHandler :name="ICON_DEFAULT_USER" /> -->
-                <img :src="contact.picture.medium" alt="contact">
+                <IconHandler :name="ICON_DEFAULT_USER" />
+                <!-- <img :src="contact.picture.medium" alt="contact"> -->
             </section>
         </section>
         <section class="content">

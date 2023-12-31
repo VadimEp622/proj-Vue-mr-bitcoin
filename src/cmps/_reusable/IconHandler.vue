@@ -5,7 +5,7 @@
 
 <script>
 import { defineAsyncComponent, markRaw } from 'vue'
-import { ICON_DEFAULT_USER } from '../../services/icon-handler.service'
+import { ICON_DEFAULT_USER, ICON_HAMBURGER } from '../../services/icon-handler.service'
 
 
 export default {
@@ -31,7 +31,11 @@ export default {
             let component
             switch (this.name) {
                 case ICON_DEFAULT_USER:
-                    component = defineAsyncComponent(() => import(/* @vite-ignore */ `../../assets/imgs/icon/user-nav-profile.svg`))
+                    component = defineAsyncComponent(() => import(/* @vite-ignore */ `../../assets/imgs/icon/user/user-nav-profile.svg`))
+                    break
+
+                case ICON_HAMBURGER:
+                    component = defineAsyncComponent(() => import(/* @vite-ignore */ `../../assets/imgs/icon/config/icon-hamburger.svg`))
                     break
 
                 default:
