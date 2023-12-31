@@ -9,7 +9,7 @@
 
 <script>
 export default {
-    props: { layoutClass: String, required: true },
+    props: { layoutClass: Object, required: true },
     data() {
         return {}
     },

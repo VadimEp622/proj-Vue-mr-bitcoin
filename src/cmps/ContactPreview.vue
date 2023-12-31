@@ -2,8 +2,8 @@
     <section class="contact-preview">
         <section class="avatar-container">
             <section class="avatar">
-                <IconHandler :name="ICON_DEFAULT_USER" />
-                <!-- <img :src="contact.picture.medium" alt="contact"> -->
+                <!-- <IconHandler :name="ICON_DEFAULT_USER" /> -->
+                <img :src="contact.picture.medium" alt="contact">
             </section>
         </section>
         <section class="content">
@@ -17,14 +17,12 @@
 
 <script>
 import { ICON_DEFAULT_USER } from '../services/icon-handler.service'
-import IconHandler from './_reusable/IconHandler.vue'
+import IconHandler from './app-reusable/IconHandler.vue'
 
 export default {
     props: ['contact'],
     computed: {
-        ICON_DEFAULT_USER() {
-            return ICON_DEFAULT_USER
-        },
+        ICON_DEFAULT_USER() { return ICON_DEFAULT_USER },
         contactName() {
             return `${this.contact.name.first} ${this.contact.name.last}`
         },

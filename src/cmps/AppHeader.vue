@@ -38,10 +38,10 @@
 
 <script>
 import { ICON_HAMBURGER } from '../services/icon-handler.service'
-import IconHandler from './_reusable/IconHandler.vue'
+import IconHandler from './app-reusable/IconHandler.vue'
 
 export default {
-    props: { layoutClass: String, required: true },
+    props: { layoutClass: Object, required: true },
     watch: {
         loggedinUser(user) {
             if (!user) this.redirectTo('/login')
@@ -59,6 +59,9 @@ export default {
             this.$router.push(pathName)
         }
     },
+    components: {
+        IconHandler
+    }
 }
 </script>
 
@@ -108,6 +111,10 @@ header {
     & .hamburger-icon {
         width: 20px;
         height: 20px;
+
+        &:hover {
+            cursor: pointer;
+        }
     }
 }
 </style>
