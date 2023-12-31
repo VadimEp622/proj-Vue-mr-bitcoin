@@ -1,5 +1,5 @@
 <template>
-    <section class="login-page">
+    <section class="login-page full">
         <section class="greeting flex column justify-center height-100-percent">
             <h2 class="text-align-center clr-white">Welcome to Mr. Bitcoin!</h2>
             <section class="flex justify-center">

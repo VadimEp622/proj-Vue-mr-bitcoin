@@ -1,12 +1,15 @@
 <template>
-    <footer>
-        <h2>Hello From Footer</h2>
+    <footer class="full bg-clr-blue-0" :class="layoutClass">
+        <section class="app-footer">
+            <h2>Hello From Footer</h2>
+        </section>
     </footer>
 </template>
 
 
 <script>
 export default {
+    props: { layoutClass: Object, required: true },
     data() {
         return {}
     },
@@ -17,4 +20,13 @@ export default {
 </script>
 
 
-<style lang="scss"></style>
+<style lang="scss" scoped>
+footer {
+    color: rgb(220, 220, 220);
+
+    & h2 {
+        margin-block: 0.3em;
+        text-align: center;
+    }
+}
+</style>

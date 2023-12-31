@@ -17,6 +17,11 @@ $map-clr: (
     )
 );
 
+/* =================== Breakpoints =================== */
+$mobile-breakpoint: 375px;
+$tablet-breakpoint: 1050px;
+$desktop-breakpoint: 1440px;
+
 // ======================== FONTS ========================
 // ************** Font Size Map **************
 $map-font-size: (

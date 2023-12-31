@@ -17,14 +17,12 @@
 
 <script>
 import { ICON_DEFAULT_USER } from '../services/icon-handler.service'
-import IconHandler from './_reusable/IconHandler.vue'
+import IconHandler from './app-reusable/IconHandler.vue'
 
 export default {
     props: ['contact'],
     computed: {
-        ICON_DEFAULT_USER() {
-            return ICON_DEFAULT_USER
-        },
+        ICON_DEFAULT_USER() { return ICON_DEFAULT_USER },
         contactName() {
             return `${this.contact.name.first} ${this.contact.name.last}`
         },

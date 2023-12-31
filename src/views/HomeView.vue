@@ -9,8 +9,9 @@ export default {
 </script>
 
 <template>
-  <section class="home-page">
-    <p class="greeting text-align-center">Welcome to Home Page, <span>{{ loggedinUser.name }}</span></p>
+  <section class="home-page full main-layout">
+    <p v-if="loggedinUser" class="greeting text-align-center">Welcome to Home Page, <span>{{ loggedinUser.name }}</span>
+    </p>
   </section>
 </template>
 
