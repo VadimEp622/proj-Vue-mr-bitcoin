@@ -12,6 +12,7 @@
 
 
 <!-- TODO: (High Priority) 
+    ^[a-zA-Z ]{2,20}$
     add input protection, so only English letters can be used to login, with a minimum of 1 letter, maximum 25(?) 
  -->
 

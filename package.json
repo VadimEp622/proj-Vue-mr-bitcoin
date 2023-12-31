@@ -12,6 +12,7 @@
     "chartjs-adapter-date-fns": "^3.0.0",
     "normalize.css": "^8.0.1",
     "sass": "^1.63.6",
+    "vee-validate": "^4.12.4",
     "vue": "^3.3.4",
     "vue-chartjs": "^5.2.0",
     "vue-router": "^4.2.2",
