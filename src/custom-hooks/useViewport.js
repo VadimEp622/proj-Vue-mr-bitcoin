@@ -32,6 +32,9 @@ export const useViewport = (config = {}) => {
     });
 
     return {
-        device
+        device,
+        isMobile: device === MOBILE,
+        isTablet: device === TABLET,
+        isDesktop: device === DESKTOP
     }
 }

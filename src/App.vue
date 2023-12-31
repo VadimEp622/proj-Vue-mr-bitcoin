@@ -2,7 +2,6 @@
   <section class="app" :class="[appClass, layoutClass]">
     <AppHeader :layoutClass="layoutClass" />
     <main class="full" :class="layoutClass">
-      <!-- {{ currentDevice }} -->
       <RouterView />
     </main>
     <AppFooter :layoutClass="layoutClass" />
@@ -15,18 +14,9 @@
 import AppHeader from '@/cmps/AppHeader.vue'
 import AppFooter from '@/cmps/AppFooter.vue'
 import UserMsg from '@/cmps/UserMsg.vue'
-import { useViewport } from './custom-hooks/useViewport'
 
 export default {
-  setup() {
-    // const { device } = useViewport(
-    //   // { mobile: 700, table: 900 }
-    // )
-  },
   computed: {
-    // currentDevice() {
-    //   return this.device
-    // },
     currentRoute() {
       return this.$route.name
     },
