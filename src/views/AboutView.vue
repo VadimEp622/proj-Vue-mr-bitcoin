@@ -2,9 +2,9 @@
 </script>
 
 <template>
-  <div class="about">
+  <section class="about full details-layout">
     <h2>Hello From About Page</h2>
-  </div>
+  </section>
 </template>
 
 <style></style>

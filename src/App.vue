@@ -1,10 +1,10 @@
 <template>
-  <section class="app" :class="appClass">
-    <AppHeader />
-    <main>
+  <section class="app" :class="[appClass, layoutClass]">
+    <AppHeader :layoutClass="layoutClass" />
+    <main class="full" :class="layoutClass">
       <RouterView />
     </main>
-    <AppFooter />
+    <AppFooter :layoutClass="layoutClass" />
   </section>
   <UserMsg />
 </template>
@@ -24,8 +24,15 @@ export default {
       return {
         'header-footer-hidden': this.currentRoute === 'login'
       }
+    },
+    layoutClass() {
+      return {
+        'main-layout': this.currentRoute === 'home',
+        'details-layout': this.currentRoute !== 'home'
+      }
     }
   },
+  methods: {},
   components: {
     AppHeader,
     AppFooter,
@@ -70,6 +77,13 @@ IV. homepage will be fancy, with a "welcome <user.name>" greeting, with user tra
 <!-- TODO:
 1. change trading page graph to lines
 2. make graph responsive (possible to enlarge/shrink without needing to refresh page)
+-->
+
+
+<!-- TODO:
+figure out a way to put dynamic layout class once on top of section.app,
+and make each layout dependant element below it in the whole app abstracted,
+for easier scaling of layouts & debugging
 -->
 
 <style lang="scss" scoped>

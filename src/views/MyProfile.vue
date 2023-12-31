@@ -1,11 +1,15 @@
 <!-- TODO: make CRUDL -->
 
+<!-- TODO: check how to have multiple v-ifs on 1 cmp -->
+
 <template>
-    <section v-if="loggedinUser" class="my-profile">
-        <ContactList v-if="contacts" @remove="removeContact" :contacts="contacts" />
-    </section>
-    <section v-else>
-        <p class="text-align-center">No logged-in user</p>
+    <section class="my-profile full details-layout">
+        <section v-if="loggedinUser">
+            <ContactList v-if="contacts" @remove="removeContact" :contacts="contacts" />
+        </section>
+        <section v-else>
+            <p class="text-align-center">No logged-in user</p>
+        </section>
     </section>
 </template>
 
@@ -36,7 +40,7 @@ export default {
 
 <style lang="scss">
 .my-profile {
-    padding-inline: 10px;
+    // padding-inline: 10px;
     padding-block: 20px;
 }
 </style>

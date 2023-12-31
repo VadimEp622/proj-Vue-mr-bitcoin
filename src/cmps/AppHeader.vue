@@ -1,38 +1,41 @@
 <template>
-    <header class="app-header flex space-between align-center bg-clr-blue-0 white-space-nowrap">
-        <section class="logo fs34 fw800 clr-gold-0 flex height-100-percent">
-            <RouterLink to="/" class="flex align-center pd-10"><span>Mr. Bitcoin</span></RouterLink>
+    <header class="full bg-clr-blue-0" :class="layoutClass">
+        <section class="app-header flex space-between align-center white-space-nowrap">
+            <section class="logo fs34 fw800 clr-gold-0 flex height-100-percent">
+                <RouterLink to="/" class="flex align-center pd-10"><span>Mr. Bitcoin</span></RouterLink>
+            </section>
+            <section v-if="loggedinUser" class="greeting flex align-center gap-10">
+                <p>Greetings, <span class="clr-gold-0 fw600">{{ loggedinUser.name }}</span></p>
+                <button @click="logout">Logout</button>
+            </section>
+            <nav class="fs25 fw600 clr-gray-0 height-100-percent">
+                <ul class="flex height-100-percent">
+                    <li class="flex">
+                        <RouterLink to="/" class="flex align-center pos-rel pd-in-10 pd-bl-15">
+                            <span>Home</span>
+                        </RouterLink>
+                    </li>
+                    <li class="flex">
+                        <RouterLink to="/trading-data" class="flex align-center pos-rel pd-in-10 pd-bl-15">
+                            <span>Trading</span>
+                        </RouterLink>
+                    </li>
+                    <li class="flex">
+                        <RouterLink to="/my-profile" class="flex align-center pos-rel pd-in-10 pd-bl-15">
+                            <span>Profile</span>
+                        </RouterLink>
+                    </li>
+                    <!-- <li class="flex"><RouterLink to="/about" class="flex align-center pos-rel pd-in-10 pd-bl-15"><span>About</span></RouterLink></li> -->
+                </ul>
+            </nav>
         </section>
-        <section v-if="loggedinUser" class="greeting flex align-center gap-10">
-            <p>Greetings, <span class="clr-gold-0 fw600">{{ loggedinUser.name }}</span></p>
-            <button @click="logout">Logout</button>
-        </section>
-        <nav class="fs25 fw600 clr-gray-0 height-100-percent">
-            <ul class="flex height-100-percent">
-                <li class="flex">
-                    <RouterLink to="/" class="flex align-center pos-rel pd-in-10 pd-bl-15">
-                        <span>Home</span>
-                    </RouterLink>
-                </li>
-                <li class="flex">
-                    <RouterLink to="/trading-data" class="flex align-center pos-rel pd-in-10 pd-bl-15">
-                        <span>Trading</span>
-                    </RouterLink>
-                </li>
-                <li class="flex">
-                    <RouterLink to="/my-profile" class="flex align-center pos-rel pd-in-10 pd-bl-15">
-                        <span>Profile</span>
-                    </RouterLink>
-                </li>
-                <!-- <li class="flex"><RouterLink to="/about" class="flex align-center pos-rel pd-in-10 pd-bl-15"><span>About</span></RouterLink></li> -->
-            </ul>
-        </nav>
     </header>
 </template>
 
 
 <script>
 export default {
+    props: { layoutClass: String, required: true },
     watch: {
         loggedinUser(user) {
             if (!user) this.redirectTo('/login')
