@@ -1,12 +1,12 @@
 <template>
   <section class="app" :class="[appClass, layoutClass]">
-    <AppHeader :layoutClass="layoutClass" @toggleMainMenu="toggleMainMenu" />
+    <AppHeader :layoutClass="layoutClass" @setMainMenu="setMainMenu" />
     <main class="full" :class="layoutClass">
       <RouterView />
     </main>
     <AppFooter :layoutClass="layoutClass" />
   </section>
-  <ResponsiveMainMenu :isMainMenuActive="isMainMenuActive" />
+  <ResponsiveMainMenu :isMainMenuActive="isMainMenuActive" @setMainMenu="setMainMenu" />
   <UserMsg />
 </template>
 
@@ -40,8 +40,8 @@ export default {
     }
   },
   methods: {
-    toggleMainMenu() {
-      this.isMainMenuActive = !this.isMainMenuActive
+    setMainMenu(booleanState) {
+      this.isMainMenuActive = booleanState
     }
   },
   components: {
