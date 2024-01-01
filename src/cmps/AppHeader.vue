@@ -28,7 +28,6 @@ export default {
             this.$router.push(pathName)
         },
         toggleMainMenu() {
-            console.log('hi2')
             this.$emit('toggleMainMenu')
         }
     },

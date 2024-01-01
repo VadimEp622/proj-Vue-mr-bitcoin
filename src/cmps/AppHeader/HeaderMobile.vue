@@ -21,7 +21,6 @@ export default {
     },
     methods: {
         onToggleMainMenu() {
-            console.log('hi1')
             this.$emit('toggleMainMenu')
         }
     },
