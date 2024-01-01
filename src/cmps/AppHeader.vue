@@ -1,7 +1,7 @@
 <template>
     <header class="full bg-clr-blue-0" :class="layoutClass">
         <HeaderDesktop :loggedinUser="loggedinUser" @logout="logout" />
-        <HeaderMobile :loggedinUser="loggedinUser" />
+        <HeaderMobile :loggedinUser="loggedinUser" @toggleMainMenu="toggleMainMenu" />
     </header>
 </template>
 
@@ -26,6 +26,10 @@ export default {
         },
         redirectTo(pathName) {
             this.$router.push(pathName)
+        },
+        toggleMainMenu() {
+            console.log('hi2')
+            this.$emit('toggleMainMenu')
         }
     },
     components: {
