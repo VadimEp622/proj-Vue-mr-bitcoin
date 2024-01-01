@@ -44,6 +44,11 @@ export default {
       this.isMainMenuActive = booleanState
     }
   },
+  watch: {
+    '$route'(to, from) {
+      this.isMainMenuActive = false
+    }
+  },
   components: {
     AppHeader,
     AppFooter,

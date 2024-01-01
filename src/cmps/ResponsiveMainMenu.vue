@@ -129,13 +129,18 @@ export default {
             }
 
             & nav {
-                & ul>* {
+                & ul>* a {
                     padding-inline: 12px;
                     border-top: 1px solid #2f3138;
                     border-bottom: 1px solid #000000;
+                    position: relative;
 
                     & span {
                         line-height: 2.5em;
+                    }
+
+                    &:hover {
+                        box-shadow: 0px 0px 8px rgba(255, 255, 255, 0.1);
                     }
                 }
             }
