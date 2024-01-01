@@ -3,7 +3,7 @@
         <section class="logo fs34 fw800 clr-gold-0 flex height-100-percent">
             <RouterLink to="/" class="flex align-center pd-10"><span>Mr. Bitcoin</span></RouterLink>
         </section>
-        <section class="hamburger-icon">
+        <section class="hamburger-icon" @click="onSetMainMenu(true)">
             <IconHandler :name="ICON_HAMBURGER" />
         </section>
     </section>
@@ -18,6 +18,11 @@ export default {
     props: { loggedinUser: Object, required: true },
     computed: {
         ICON_HAMBURGER() { return ICON_HAMBURGER }
+    },
+    methods: {
+        onSetMainMenu(booleanState) {
+            this.$emit('setMainMenu', booleanState)
+        }
     },
     components: { IconHandler }
 }

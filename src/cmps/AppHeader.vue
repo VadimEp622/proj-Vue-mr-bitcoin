@@ -1,7 +1,7 @@
 <template>
     <header class="full bg-clr-blue-0" :class="layoutClass">
         <HeaderDesktop :loggedinUser="loggedinUser" @logout="logout" />
-        <HeaderMobile :loggedinUser="loggedinUser" />
+        <HeaderMobile :loggedinUser="loggedinUser" @setMainMenu="setMainMenu" />
     </header>
 </template>
 
@@ -26,6 +26,9 @@ export default {
         },
         redirectTo(pathName) {
             this.$router.push(pathName)
+        },
+        setMainMenu(booleanState) {
+            this.$emit('setMainMenu', booleanState)
         }
     },
     components: {

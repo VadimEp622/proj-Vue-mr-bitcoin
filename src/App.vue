@@ -1,11 +1,12 @@
 <template>
   <section class="app" :class="[appClass, layoutClass]">
-    <AppHeader :layoutClass="layoutClass" />
+    <AppHeader :layoutClass="layoutClass" @setMainMenu="setMainMenu" />
     <main class="full" :class="layoutClass">
       <RouterView />
     </main>
     <AppFooter :layoutClass="layoutClass" />
   </section>
+  <ResponsiveMainMenu :isMainMenuActive="isMainMenuActive" @setMainMenu="setMainMenu" />
   <UserMsg />
 </template>
 
@@ -14,8 +15,14 @@
 import AppHeader from '@/cmps/AppHeader.vue'
 import AppFooter from '@/cmps/AppFooter.vue'
 import UserMsg from '@/cmps/UserMsg.vue'
+import ResponsiveMainMenu from './cmps/ResponsiveMainMenu.vue'
 
 export default {
+  data() {
+    return {
+      isMainMenuActive: false
+    }
+  },
   computed: {
     currentRoute() {
       return this.$route.name
@@ -32,11 +39,21 @@ export default {
       }
     }
   },
-  methods: {},
+  methods: {
+    setMainMenu(booleanState) {
+      this.isMainMenuActive = booleanState
+    }
+  },
+  watch: {
+    '$route'(to, from) {
+      this.isMainMenuActive = false
+    }
+  },
   components: {
     AppHeader,
     AppFooter,
-    UserMsg
+    UserMsg,
+    ResponsiveMainMenu
   }
 }
 </script>
