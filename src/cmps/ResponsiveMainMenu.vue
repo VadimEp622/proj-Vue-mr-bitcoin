@@ -3,7 +3,24 @@
         <div class="responsive-page-content-overlay" @click="onSetMainMenu(false)"></div>
         <section class="main-menu-container">
             <section class="main-menu">
-                <p>hi from main-menu</p>
+                <section class="logged-in-user-preview">
+                    <p>hi from logged-in-user-preview</p>
+                </section>
+
+                <nav>
+                    <ul>
+                        <li>
+                            <p>route 1</p>
+                        </li>
+                        <li>
+                            <p>route 2</p>
+                        </li>
+                        <li>
+                            <p>route 3</p>
+                        </li>
+                    </ul>
+                </nav>
+
             </section>
         </section>
     </div>
@@ -36,6 +53,7 @@ export default {
     position: absolute;
     inset: 0;
     overflow: hidden;
+    transition: visibility .2s ease-in-out;
 
 
     & .responsive-page-content-overlay {
@@ -43,17 +61,35 @@ export default {
         position: fixed;
         background-color: black;
         inset: 0;
+        transition: opacity .2s ease-in-out;
         // z-index: 25;
         // pointer-events: none;
     }
 
     & .main-menu-container {
+        color: #9b9b9b;
         position: absolute;
         right: -280px;
         top: 0;
         bottom: 0;
         width: 280px;
-        background-color: green;
+        background: linear-gradient(225deg, #122f44 0%, #021522 33%);
+        transition: right .2s ease-in-out;
+
+        & .main-menu {
+            & .logged-in-user-preview {
+                padding-block: 24px;
+                padding-inline: 12px;
+            }
+
+            & nav {
+                & ul>* {
+                    padding-inline: 12px;
+                    border-top: 1px solid #2f3138;
+                    border-bottom: 1px solid #000000;
+                }
+            }
+        }
     }
 
     &.main-menu-active {
