@@ -2,19 +2,11 @@
     <section class="login-page full">
         <section class="greeting flex column justify-center height-100-percent">
             <h2 class="text-align-center clr-white">Welcome to Mr. Bitcoin!</h2>
-            <section class="flex justify-center">
-                <input type="text" v-model="loginName">
-                <button @click="onLogin">login</button>
-            </section>
+            <FormLogin :initial-values="initialValues" @onSubmit="onLogin" />
         </section>
     </section>
 </template>
 
-
-<!-- TODO: (High Priority) 
-    ^[a-zA-Z ]{2,20}$
-    add input protection, so only English letters can be used to login, with a minimum of 1 letter, maximum 25(?) 
- -->
 
 <!-- TODO: (Low Priority) 
     make is so regardless of caps in user name,
@@ -24,28 +16,35 @@
 
 
 <script>
+import FormLogin from '../cmps/app-reusable/forms/FormLogin.vue'
+
 export default {
     data() {
         return {
-            loginName: 'Sam'
+            // loginName: 'Sam Sung',
+            initialValues: {
+                name: 'Sam Sung'
+            }
         }
     },
     computed: {
-        loggedinUser() { return this.$store.getters.user }
+        loggedinUser() { return this.$store.getters.user; }
     },
     methods: {
-        onLogin() {
-            this.$store.dispatch({ type: 'login', name: this.loginName })
+        onLogin(params) {
+            this.$store.dispatch({ type: 'login', name: params.name });
         },
         redirectTo(pathName) {
-            this.$router.push(pathName)
+            this.$router.push(pathName);
         }
     },
     watch: {
         loggedinUser(user) {
-            if (user && Object.keys(user).length > 0) this.redirectTo('/')
+            if (user && Object.keys(user).length > 0)
+                this.redirectTo('/');
         }
-    }
+    },
+    components: { FormLogin }
 }
 </script>
 
