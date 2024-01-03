@@ -1,5 +1,5 @@
 <template>
-    <section class="trading-data full details-layout">
+    <section class="trading-home full details-layout">
         <p v-if="exchangeRate" class="exchange-rate">Exchange Rate: <span>{{ exchangeRate }}</span></p>
         <section v-if="marketPriceHistory" class="market-price-history">
             <h4>Market Price History:</h4>
@@ -71,7 +71,7 @@ export default {
 
 
 <style lang="scss">
-.trading-data {
+.trading-home {
     & .exchange-rate {
         text-align: center;
         margin-block-start: 1.33em;
