@@ -1,9 +1,9 @@
 import { createRouter, createWebHashHistory, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
-import MyProfile from '../views/ProfileView.vue'
-import TradingData from '../views/TradingData.vue'
+import ProfileView from '../views/ProfileView.vue'
+import TradingIndex from '../views/TradingIndex.vue'
 import LoginView from '../views/LoginView.vue'
-import ContactList from '../cmps/ContactList.vue'
+import ContactIndex from '../views/ContactIndex.vue'
 import store from '../store'
 
 const router = createRouter({
@@ -35,18 +35,17 @@ const router = createRouter({
     {
       path: '/profile',
       name: 'profile',
-      component: MyProfile,
-      children: [
-        {
-          path: '/contacts',
-          component: ContactList
-        }
-      ]
+      component: ProfileView,
+    },
+    {
+      path: '/contact',
+      name: 'contact',
+      component: ContactIndex,
     },
     {
       path: '/trading',
       name: 'trading',
-      component: TradingData
+      component: TradingIndex
     },
   ]
 })

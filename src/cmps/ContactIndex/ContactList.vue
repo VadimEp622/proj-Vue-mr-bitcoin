@@ -1,6 +1,5 @@
 <template>
     <section class="contact-list">
-        <p class="title">Contacts:</p>
         <TransitionGroup name="list" tag="ul">
             <li class="contact-preview-container" v-for="contact in contacts" :key="contact._id">
                 <ContactPreview :contact="contact" />
@@ -15,7 +14,7 @@
 
 
 <script>
-import ContactPreview from './ContactPreview.vue'
+import ContactPreview from './contactpreview.vue'
 
 export default {
     props: ["contacts"],

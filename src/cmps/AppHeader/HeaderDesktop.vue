@@ -20,6 +20,11 @@
                     </RouterLink>
                 </li>
                 <li class="flex">
+                    <RouterLink to="/contact" class="flex align-center pos-rel pd-in-10 pd-bl-15">
+                        <span>Contacts</span>
+                    </RouterLink>
+                </li>
+                <li class="flex">
                     <RouterLink to="/profile" class="flex align-center pos-rel pd-in-10 pd-bl-15">
                         <span>Profile</span>
                     </RouterLink>

@@ -1,23 +1,20 @@
-<!-- TODO: make CRUDL -->
-
-<!-- TODO: check how to have multiple v-ifs on 1 cmp -->
-
-
-
 <template>
-    <section class="profile-home full details-layout">
-        <section v-if="loggedinUser">
-            <ContactList v-if="contacts" @remove="removeContact" :contacts="contacts" />
+    <section class="contact-index full main-layout">
+        <section>
+            <span>Hi from Contact Index</span>
         </section>
-        <section v-else>
-            <p class="text-align-center">No logged-in user</p>
+        <section v-if="loggedinUser" class="contact-list-container">
+            <ContactList v-if="contacts" @remove="removeContact" :contacts="contacts" />
         </section>
     </section>
 </template>
 
+<!-- TODO: see how to add multiple v-ifs in one element -->
+
 
 <script>
-import ContactList from '../cmps/contactindex/ContactList.vue'
+
+import ContactList from '../cmps/ContactIndex/ContactList.vue'
 
 export default {
     created() {
@@ -35,14 +32,19 @@ export default {
             this.$store.dispatch({ type: 'removeContact', contactId })
         },
     },
-    components: { ContactList }
+    components: {
+        ContactList
+    }
 }
 </script>
 
 
 <style lang="scss">
-.profile-home {
-    // padding-inline: 10px;
-    padding-block: 20px;
+.contact-index {
+    align-content: start;
+
+    & .contact-list-container{
+        margin-block: 20px;
+    }
 }
 </style>
