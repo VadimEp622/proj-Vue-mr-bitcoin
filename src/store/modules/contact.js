@@ -5,12 +5,18 @@ import { showErrorMsg, showSuccessMsg } from '../../services/event-bus.service'
 export default {
     state() {
         return {
-            contacts: null
+            contacts: null,
+            contact: null,
+            loadingContacts: false,
+            loadingContact: false
         }
     },
     mutations: {
         setContacts(state, { contacts }) {
             state.contacts = contacts
+        },
+        setContact(state, { contact }) {
+            state.contact = contact
         },
         removeContact(state, { contactId }) {
             const idx = state.contacts.findIndex(contact => contact._id === contactId)
@@ -28,7 +34,12 @@ export default {
             }
         },
         async loadContact({ commit }, { contactId }) {
-            console.log('hi from contact store - loadContact', contactId)
+            try {
+                const contact = await contactService.getContactById(contactId)
+                commit({ type: 'setContact', contact })
+            } catch (err) {
+                console.log('could not fetch contact', err)
+            }
         },
         async removeContact({ commit }, { contactId }) {
             try {
@@ -45,6 +56,8 @@ export default {
         contacts(state) {
             return state.contacts
         },
-        getContact: (state) => (contactId) => state.contacts.find(contact => contact._id === contactId)
+        contact(state) {
+            return state.contact
+        }
     },
 }

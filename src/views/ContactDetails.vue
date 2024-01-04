@@ -1,32 +1,78 @@
 <template>
-    <section>
-        <span>
-            hi from contact details
-        </span>
+    <section v-if="contact" class="contact-details full main-layout grid align-content-start">
+        <section class="picture-container flex justify-center">
+            <section class="picture">
+                <!-- <IconHandler :name="ICON_DEFAULT_USER" /> -->
+                <img :src="contactPicture" alt="contact">
+            </section>
+        </section>
+        <section class="details text-align-center">
+            <section class="name clr-gold-0">
+                <p>{{ contactName }}</p>
+            </section>
+            <section class="email">
+                <p>{{ contactEmail }}</p>
+            </section>
+            <section class="phone">
+                <p>{{ contactPhone }}</p>
+            </section>
+        </section>
+        <!-- <pre>{{ JSON.stringify(contact, null, 2) }}</pre> -->
     </section>
 </template>
 
 
 <script>
+import IconHandler from '@/cmps/app-reusable/IconHandler.vue'
+import { ICON_DEFAULT_USER } from '@/services/icon-handler.service'
+
 export default {
-    data() {
-        return {}
-    },
     created() {
         this.loadContact(this.contactId)
     },
     computed: {
-        contactId() {
-            return this.$route.params.id
-        }
+        contactId() { return this.$route.params.id; },
+        contact() { return this.$store.getters.contact; },
+        contactName() { return `${this.contact.name.first} ${this.contact.name.last}` },
+        contactPicture() { return this.contact.picture.large },
+        contactPhone() { return this.contact.phone },
+        contactEmail() { return this.contact.email },
+        ICON_DEFAULT_USER() { return ICON_DEFAULT_USER }
     },
     methods: {
         loadContact(contactId) {
             this.$store.dispatch({ type: 'loadContact', contactId })
         }
-    }
+    },
+    components: { IconHandler }
 }
 </script>
 
 
-<style lang="scss"></style>
+<style lang="scss">
+.contact-details {
+
+    & .picture-container {
+        margin-block: 20px 40px;
+
+        & .picture {
+            width: 128px;
+            height: 128px;
+            border-radius: 50%;
+            overflow: hidden;
+        }
+    }
+
+    & .details {
+        &>*:not(:first-child) {
+            margin-block-start: 8px;
+            font-size: rem(18px);
+        }
+
+        & .name {
+            font-size: rem(30px);
+            font-weight: 600;
+        }
+    }
+}
+</style>
