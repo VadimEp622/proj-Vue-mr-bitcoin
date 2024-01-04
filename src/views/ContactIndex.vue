@@ -1,7 +1,8 @@
 <template>
-    <section class="contact-index full main-layout">
+    <section class="contact-index full details-layout">
         <section>
-            <span>Hi from Contact Index</span>
+            <p>Hi from Contact Index</p>
+            <p>Here will soon be: add-contact (button) & filter</p>
         </section>
         <section v-if="loggedinUser" class="contact-list-container">
             <ContactList v-if="contacts" @remove="removeContact" :contacts="contacts" />
@@ -45,7 +46,7 @@ export default {
 </script>
 
 
-<style lang="scss">
+<style lang="scss" scoped>
 .contact-index {
     align-content: start;
 

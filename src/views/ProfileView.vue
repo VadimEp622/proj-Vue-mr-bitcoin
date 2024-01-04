@@ -25,7 +25,7 @@ export default {
 </script>
 
 
-<style lang="scss">
+<style lang="scss" scoped>
 .profile-home {
     padding-block: 20px;
 }

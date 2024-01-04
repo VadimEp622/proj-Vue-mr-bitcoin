@@ -55,7 +55,7 @@ export default {
 
     &::before {
         content: '';
-        // background-image: url('@/assets/imgs/bg-pic/bg-bitcoin.jpg');
+        background-image: url('@/assets/imgs/bg-pic/bg-bitcoin.jpg');
         background-size: cover;
         background-position-x: right;
         background-position-y: center;
