@@ -1,8 +1,9 @@
 import { createRouter, createWebHashHistory, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
-import MyProfile from '../views/MyProfile.vue'
-import TradingData from '../views/TradingData.vue'
+import ProfileView from '../views/ProfileView.vue'
+import TradingIndex from '../views/TradingIndex.vue'
 import LoginView from '../views/LoginView.vue'
+import ContactIndex from '../views/ContactIndex.vue'
 import store from '../store'
 
 const router = createRouter({
@@ -32,14 +33,19 @@ const router = createRouter({
     //   component: () => import('../views/AboutView.vue')
     // },
     {
-      path: '/my-profile',
-      name: 'my-profile',
-      component: MyProfile
+      path: '/profile',
+      name: 'profile',
+      component: ProfileView,
     },
     {
-      path: '/trading-data',
-      name: 'trading-data',
-      component: TradingData
+      path: '/contact',
+      name: 'contact',
+      component: ContactIndex,
+    },
+    {
+      path: '/trading',
+      name: 'trading',
+      component: TradingIndex
     },
   ]
 })

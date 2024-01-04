@@ -7,8 +7,8 @@
 
 
 <script>
-import HeaderDesktop from './AppHeader/HeaderDesktop.vue'
-import HeaderMobile from './AppHeader/HeaderMobile.vue'
+import HeaderDesktop from './app-header/HeaderDesktop.vue'
+import HeaderMobile from './app-header/HeaderMobile.vue'
 
 export default {
     props: { layoutClass: Object, required: true },

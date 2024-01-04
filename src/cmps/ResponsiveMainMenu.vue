@@ -26,12 +26,17 @@
                             </RouterLink>
                         </li>
                         <li>
-                            <RouterLink to="/trading-data" class="flex align-center pos-rel">
+                            <RouterLink to="/trading" class="flex align-center pos-rel">
                                 <span>Trading</span>
                             </RouterLink>
                         </li>
                         <li>
-                            <RouterLink to="/my-profile" class="flex align-center pos-rel">
+                            <RouterLink to="/contact" class="flex align-center pos-rel">
+                                <span>Contacts</span>
+                            </RouterLink>
+                        </li>
+                        <li>
+                            <RouterLink to="/profile" class="flex align-center pos-rel">
                                 <span>Profile</span>
                             </RouterLink>
                         </li>

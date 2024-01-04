@@ -15,12 +15,17 @@
                     </RouterLink>
                 </li>
                 <li class="flex">
-                    <RouterLink to="/trading-data" class="flex align-center pos-rel pd-in-10 pd-bl-15">
+                    <RouterLink to="/trading" class="flex align-center pos-rel pd-in-10 pd-bl-15">
                         <span>Trading</span>
                     </RouterLink>
                 </li>
                 <li class="flex">
-                    <RouterLink to="/my-profile" class="flex align-center pos-rel pd-in-10 pd-bl-15">
+                    <RouterLink to="/contact" class="flex align-center pos-rel pd-in-10 pd-bl-15">
+                        <span>Contacts</span>
+                    </RouterLink>
+                </li>
+                <li class="flex">
+                    <RouterLink to="/profile" class="flex align-center pos-rel pd-in-10 pd-bl-15">
                         <span>Profile</span>
                     </RouterLink>
                 </li>
