@@ -1,5 +1,5 @@
 <template>
-    <section v-if="contact" class="contact-details full main-layout grid align-content-start">
+    <section v-if="isContactLoaded" class="contact-details full main-layout grid align-content-start">
         <section class="picture-container flex justify-center">
             <section class="picture">
                 <!-- <IconHandler :name="ICON_DEFAULT_USER" /> -->
@@ -19,25 +19,34 @@
         </section>
         <!-- <pre>{{ JSON.stringify(contact, null, 2) }}</pre> -->
     </section>
+    <section v-else class="flex justify-center align-center">
+        <span>loading...</span>
+    </section>
 </template>
 
 
 <script>
 import IconHandler from '@/cmps/app-reusable/IconHandler.vue'
 import { ICON_DEFAULT_USER } from '@/services/icon-handler.service'
+import { mapGetters } from 'vuex'
 
 export default {
     created() {
         this.loadContact(this.contactId)
     },
     computed: {
+        ...mapGetters([
+            'contact',
+            'isLoadingContact'
+        ]),
         contactId() { return this.$route.params.id; },
         contact() { return this.$store.getters.contact; },
         contactName() { return `${this.contact.name.first} ${this.contact.name.last}` },
         contactPicture() { return this.contact.picture.large },
         contactPhone() { return this.contact.phone },
         contactEmail() { return this.contact.email },
-        ICON_DEFAULT_USER() { return ICON_DEFAULT_USER }
+        ICON_DEFAULT_USER() { return ICON_DEFAULT_USER },
+        isContactLoaded() { return !this.isLoadingContact && this.contact },
     },
     methods: {
         loadContact(contactId) {

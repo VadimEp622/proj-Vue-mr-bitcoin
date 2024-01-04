@@ -7,8 +7,8 @@ export default {
         return {
             contacts: null,
             contact: null,
-            loadingContacts: false,
-            loadingContact: false
+            isLoadingContacts: false,
+            isLoadingContact: false
         }
     },
     mutations: {
@@ -21,6 +21,9 @@ export default {
         removeContact(state, { contactId }) {
             const idx = state.contacts.findIndex(contact => contact._id === contactId)
             state.contacts.splice(idx, 1)
+        },
+        setIsLoadingContact(state, { isLoadingContact }) {
+            state.isLoadingContact = isLoadingContact
         }
     },
     actions: {
@@ -35,10 +38,13 @@ export default {
         },
         async loadContact({ commit }, { contactId }) {
             try {
+                commit({ type: 'setIsLoadingContact', isLoadingContact: true })
                 const contact = await contactService.getContactById(contactId)
                 commit({ type: 'setContact', contact })
             } catch (err) {
                 console.log('could not fetch contact', err)
+            } finally {
+                commit({ type: 'setIsLoadingContact', isLoadingContact: false })
             }
         },
         async removeContact({ commit }, { contactId }) {
@@ -58,6 +64,12 @@ export default {
         },
         contact(state) {
             return state.contact
-        }
+        },
+        isLoadingContacts(state) {
+            return state.isLoadingContacts
+        },
+        isLoadingContact(state) {
+            return state.isLoadingContact
+        },
     },
 }
