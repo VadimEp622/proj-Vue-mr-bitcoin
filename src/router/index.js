@@ -1,9 +1,10 @@
 import { createRouter, createWebHashHistory, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
-import ProfileView from '../views/ProfileView.vue'
-import TradingIndex from '../views/TradingIndex.vue'
-import LoginView from '../views/LoginView.vue'
-import ContactIndex from '../views/ContactIndex.vue'
+import HomeView from '@/views/HomeView.vue'
+import ProfileView from '@/views/ProfileView.vue'
+import TradingIndex from '@/views/TradingIndex.vue'
+import LoginView from '@/views/LoginView.vue'
+import ContactIndex from '@/views/ContactIndex.vue'
+import ContactDetails from '@/views/ContactDetails.vue'
 import store from '../store'
 
 const router = createRouter({
@@ -39,9 +40,19 @@ const router = createRouter({
     },
     {
       path: '/contact',
-      name: 'contact',
-      component: ContactIndex,
+      name: 'contact-index',
+      component: ContactIndex
     },
+    {
+      path: '/contact/:id',
+      name: 'contact-details',
+      component: ContactDetails,
+    },
+    // {
+    //   path: '/contact/edit/:id',
+    //   name: 'contact-edit',
+    //   component: ContactEdit,
+    // },
     {
       path: '/trading',
       name: 'trading',

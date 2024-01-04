@@ -17,8 +17,8 @@
 
 
 <script>
-import { bitcoinService } from '../services/bitcoin.service'
-import LineChart from '../cmps/LineChart.vue'
+import { bitcoinService } from '@/services/bitcoin.service'
+import LineChart from '@/cmps/TradingLineChart.vue'
 
 export default {
     data() {

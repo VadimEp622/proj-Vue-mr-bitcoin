@@ -27,6 +27,9 @@ export default {
                 showErrorMsg('Failed loading contacts')
             }
         },
+        async loadContact({ commit }, { contactId }) {
+            console.log('hi from contact store - loadContact', contactId)
+        },
         async removeContact({ commit }, { contactId }) {
             try {
                 await contactService.removeContact(contactId)

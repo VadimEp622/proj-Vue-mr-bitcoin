@@ -9,14 +9,18 @@
     </section>
 </template>
 
-<!-- TODO: see how to add multiple v-ifs in one element -->
+<!-- TODO: 
+    see how to add multiple v-ifs in one element 
+    |
+    V
+    cannot add multiple v-ifs conditions on one element, must make a computed showList() func, which will perform the && operation
+ -->
 
 <!-- TODO: add CRUD -->
 
 
 <script>
-
-import ContactList from '../cmps/view-contact-index/ContactList.vue'
+import ContactList from '@/cmps/ContactList.vue'
 
 export default {
     created() {
