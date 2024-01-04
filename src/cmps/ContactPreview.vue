@@ -16,8 +16,8 @@
 
 
 <script>
-import { ICON_DEFAULT_USER } from '../../services/icon-handler.service'
-import IconHandler from '../app-reusable/IconHandler.vue'
+import { ICON_DEFAULT_USER } from '@/services/icon-handler.service'
+import IconHandler from '@/cmps/app-reusable/IconHandler.vue'
 
 export default {
     props: ['contact'],

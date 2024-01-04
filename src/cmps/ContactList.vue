@@ -14,13 +14,13 @@
 
 
 <script>
-import ContactPreview from './ContactPreview.vue'
+import ContactPreview from '@/cmps/ContactPreview.vue'
 
 export default {
     props: ["contacts"],
     methods: {
         onDetails(contactId) {
-            console.log('hello from contactId', contactId)
+            this.$router.push(`/contact/${contactId}`);
         },
         onRemove(contactId) {
             this.$emit('remove', contactId)

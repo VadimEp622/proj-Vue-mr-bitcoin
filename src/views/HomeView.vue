@@ -1,19 +1,19 @@
-<script>
-
-export default {
-  computed: {
-    loggedinUser() { return this.$store.getters.user }
-  }
-}
-
-</script>
-
 <template>
   <section class="home-page full main-layout">
     <p v-if="loggedinUser" class="greeting text-align-center">Welcome to Home Page, <span>{{ loggedinUser.name }}</span>
     </p>
   </section>
 </template>
+
+
+<script>
+export default {
+  computed: {
+    loggedinUser() { return this.$store.getters.user }
+  }
+}
+</script>
+
 
 <style lang="scss">
 .home-page {

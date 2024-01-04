@@ -16,7 +16,7 @@
 
 
 <script>
-import FormLogin from '../cmps/app-reusable/forms/FormLogin.vue'
+import FormLogin from '@/cmps/app-reusable/forms/FormLogin.vue'
 
 export default {
     data() {

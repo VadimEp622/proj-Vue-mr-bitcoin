@@ -14,8 +14,8 @@
 <script >
 import AppHeader from '@/cmps/AppHeader.vue'
 import AppFooter from '@/cmps/AppFooter.vue'
-import UserMsg from '@/cmps/UserMsg.vue'
-import ResponsiveMainMenu from './cmps/ResponsiveMainMenu.vue'
+import UserMsg from '@/cmps/AppUserMsg.vue'
+import ResponsiveMainMenu from '@/cmps/AppResponsiveMainMenu.vue'
 
 export default {
   data() {

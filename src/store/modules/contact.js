@@ -5,16 +5,25 @@ import { showErrorMsg, showSuccessMsg } from '../../services/event-bus.service'
 export default {
     state() {
         return {
-            contacts: null
+            contacts: null,
+            contact: null,
+            isLoadingContacts: false,
+            isLoadingContact: false
         }
     },
     mutations: {
         setContacts(state, { contacts }) {
             state.contacts = contacts
         },
+        setContact(state, { contact }) {
+            state.contact = contact
+        },
         removeContact(state, { contactId }) {
             const idx = state.contacts.findIndex(contact => contact._id === contactId)
             state.contacts.splice(idx, 1)
+        },
+        setIsLoadingContact(state, { isLoadingContact }) {
+            state.isLoadingContact = isLoadingContact
         }
     },
     actions: {
@@ -25,6 +34,17 @@ export default {
             } catch (err) {
                 console.log('Failed loading contacts', err)
                 showErrorMsg('Failed loading contacts')
+            }
+        },
+        async loadContact({ commit }, { contactId }) {
+            try {
+                commit({ type: 'setIsLoadingContact', isLoadingContact: true })
+                const contact = await contactService.getContactById(contactId)
+                commit({ type: 'setContact', contact })
+            } catch (err) {
+                console.log('could not fetch contact', err)
+            } finally {
+                commit({ type: 'setIsLoadingContact', isLoadingContact: false })
             }
         },
         async removeContact({ commit }, { contactId }) {
@@ -42,6 +62,14 @@ export default {
         contacts(state) {
             return state.contacts
         },
-        getContact: (state) => (contactId) => state.contacts.find(contact => contact._id === contactId)
+        contact(state) {
+            return state.contact
+        },
+        isLoadingContacts(state) {
+            return state.isLoadingContacts
+        },
+        isLoadingContact(state) {
+            return state.isLoadingContact
+        },
     },
 }
