@@ -31,6 +31,11 @@
                             </RouterLink>
                         </li>
                         <li>
+                            <RouterLink to="/contact" class="flex align-center pos-rel">
+                                <span>Contacts</span>
+                            </RouterLink>
+                        </li>
+                        <li>
                             <RouterLink to="/profile" class="flex align-center pos-rel">
                                 <span>Profile</span>
                             </RouterLink>

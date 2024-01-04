@@ -11,10 +11,12 @@
 
 <!-- TODO: see how to add multiple v-ifs in one element -->
 
+<!-- TODO: add CRUD -->
+
 
 <script>
 
-import ContactList from '../cmps/ContactIndex/ContactList.vue'
+import ContactList from '../cmps/view-contact-index/ContactList.vue'
 
 export default {
     created() {
@@ -43,7 +45,7 @@ export default {
 .contact-index {
     align-content: start;
 
-    & .contact-list-container{
+    & .contact-list-container {
         margin-block: 20px;
     }
 }

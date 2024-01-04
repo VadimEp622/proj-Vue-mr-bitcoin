@@ -6,43 +6,27 @@
 
 <template>
     <section class="profile-home full details-layout">
-        <section v-if="loggedinUser">
-            <ContactList v-if="contacts" @remove="removeContact" :contacts="contacts" />
-        </section>
-        <section v-else>
-            <p class="text-align-center">No logged-in user</p>
-        </section>
+        <span>Hi from profile!</span>
     </section>
 </template>
 
 
 <script>
-import ContactList from '../cmps/contactindex/ContactList.vue'
 
 export default {
     created() {
-        this.getContacts()
     },
     computed: {
-        contacts() { return this.$store.getters.contacts },
-        loggedinUser() { return this.$store.getters.user }
     },
     methods: {
-        getContacts() {
-            this.$store.dispatch({ type: 'loadContacts' })
-        },
-        removeContact(contactId) {
-            this.$store.dispatch({ type: 'removeContact', contactId })
-        },
     },
-    components: { ContactList }
+    components: {}
 }
 </script>
 
 
 <style lang="scss">
 .profile-home {
-    // padding-inline: 10px;
     padding-block: 20px;
 }
 </style>

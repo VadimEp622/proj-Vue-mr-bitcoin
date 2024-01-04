@@ -14,7 +14,7 @@
 
 
 <script>
-import ContactPreview from './contactpreview.vue'
+import ContactPreview from './ContactPreview.vue'
 
 export default {
     props: ["contacts"],
