@@ -1,5 +1,8 @@
 <template>
     <section v-if="isContactLoaded" class="contact-details full main-layout grid align-content-start">
+        <section class="return-btn-container flex">
+            <button class="return-btn" @click="onReturn">Return</button>
+        </section>
         <section class="picture-container flex justify-center">
             <section class="picture">
                 <!-- <IconHandler :name="ICON_DEFAULT_USER" /> -->
@@ -51,6 +54,12 @@ export default {
     methods: {
         loadContact(contactId) {
             this.$store.dispatch({ type: 'loadContact', contactId })
+        },
+        redirectTo(pathName) {
+            this.$router.push(pathName)
+        },
+        onReturn() {
+            this.redirectTo('/contact')
         }
     },
     components: { IconHandler }
@@ -60,6 +69,13 @@ export default {
 
 <style lang="scss" scoped>
 .contact-details {
+
+    & .return-btn-container {
+        margin-block-start: 20px;
+        justify-self: center;
+        justify-content: flex-start;
+        width: 250px;
+    }
 
     & .picture-container {
         margin-block: 20px 40px;
