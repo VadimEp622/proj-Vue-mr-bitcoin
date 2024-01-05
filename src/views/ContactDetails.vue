@@ -20,6 +20,9 @@
                 <p>{{ contactPhone }}</p>
             </section>
         </section>
+        <section class="btn-container flex justify-center">
+            <button class="btn-edit" @click="onEdit(contactId)">Edit</button>
+        </section>
         <!-- <pre>{{ JSON.stringify(contact, null, 2) }}</pre> -->
     </section>
     <section v-else class="flex justify-center align-center">
@@ -60,6 +63,9 @@ export default {
         },
         onReturn() {
             this.redirectTo('/contact')
+        },
+        onEdit(contactId) {
+            this.redirectTo(`/contact/${contactId}/edit`)
         }
     },
     components: { IconHandler }
@@ -98,6 +104,10 @@ export default {
             font-size: rem(30px);
             font-weight: 600;
         }
+    }
+
+    & .btn-container {
+        margin-block-start: 20px;
     }
 }
 </style>

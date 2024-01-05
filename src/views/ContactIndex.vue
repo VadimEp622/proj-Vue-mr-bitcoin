@@ -3,6 +3,9 @@
         <section>
             <p>Hi from Contact Index</p>
             <p>Here will soon be: add-contact (button) & filter</p>
+            <section>
+                <button class="btn-create" @click="onCreate">Create</button>
+            </section>
         </section>
         <section v-if="loggedinUser" class="contact-list-container">
             <ContactList v-if="contacts" @remove="removeContact" :contacts="contacts" />
@@ -37,6 +40,12 @@ export default {
         },
         removeContact(contactId) {
             this.$store.dispatch({ type: 'removeContact', contactId })
+        },
+        onCreate() {
+            this.redirectTo('/contact/create')
+        },
+        redirectTo(pathName) {
+            this.$router.push(pathName)
         },
     },
     components: {
