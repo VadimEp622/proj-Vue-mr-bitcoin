@@ -15,6 +15,12 @@
 </template>
 
 
+<!-- TODO: 
+figure out how to shrink contact-preview's .content even more, when screen width shrinks, instead of overflow/horizontal-scroll appearing
+maybe media-query for contact-list ul's styling of: grid-template-columns: repeat(auto-fit, minmax(auto, 400px)); to be replace with something else?
+-->
+
+
 <script>
 import { ICON_DEFAULT_USER } from '@/services/icon-handler.service'
 import IconHandler from '@/cmps/app-reusable/IconHandler.vue'
@@ -39,6 +45,7 @@ export default {
     display: flex;
     gap: 10px;
 
+
     & .avatar-container {
         display: flex;
         justify-content: center;
@@ -54,7 +61,8 @@ export default {
     }
 
     & .content {
-        white-space: nowrap;
+        max-width: 230px;
+        word-wrap: break-word;
 
         &>* {
             &:first-child {

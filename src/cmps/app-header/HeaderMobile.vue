@@ -34,6 +34,7 @@ export default {
     & .hamburger-icon {
         width: 20px;
         height: 20px;
+        padding-inline: 10px;
 
         &:hover {
             cursor: pointer;
