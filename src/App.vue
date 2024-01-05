@@ -62,6 +62,8 @@ export default {
 <!-- ================================================= -->
 
 
+
+<!-- TODO: refactor contact object so that name key will only store name string, instead of name object -->
 <!-- TODO: add loader spinner using "vue-loading-overlay" package -->
 <!-- TODO: fix responsive styling for contact-list in mobile -->
 <!-- TODO: make create/edit contact -->

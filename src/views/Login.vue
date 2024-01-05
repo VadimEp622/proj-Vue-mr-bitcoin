@@ -21,27 +21,26 @@ import FormLogin from '@/cmps/app-reusable/forms/FormLogin.vue'
 export default {
     data() {
         return {
-            // loginName: 'Sam Sung',
             initialValues: {
                 name: 'Sam Sung'
             }
         }
     },
     computed: {
-        loggedinUser() { return this.$store.getters.user; }
+        loggedinUser() { return this.$store.getters.user }
     },
     methods: {
         onLogin(params) {
-            this.$store.dispatch({ type: 'login', name: params.name });
+            this.$store.dispatch({ type: 'login', name: params.name })
         },
         redirectTo(pathName) {
-            this.$router.push(pathName);
+            this.$router.push(pathName)
         }
     },
     watch: {
         loggedinUser(user) {
             if (user && Object.keys(user).length > 0)
-                this.redirectTo('/');
+                this.redirectTo('/')
         }
     },
     components: { FormLogin }
