@@ -45,9 +45,9 @@ export default {
             'contact',
             'isLoadingContact'
         ]),
-        contactId() { return this.$route.params.id; },
-        contact() { return this.$store.getters.contact; },
-        contactName() { return `${this.contact.name.first} ${this.contact.name.last}` },
+        contactId() { return this.$route.params.id },
+        contact() { return this.$store.getters.contact },
+        contactName() { return this.contact.name },
         contactPicture() { return this.contact.picture.large },
         contactPhone() { return this.contact.phone },
         contactEmail() { return this.contact.email },

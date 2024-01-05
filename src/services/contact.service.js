@@ -55,13 +55,7 @@ async function _getContacts(entityType) {
 function _fetchContacts() {
     return axios.get(_getUrlRandomContacts())
         .then(res => res.data.results)
-        .then(fetchedContacts => {
-            const contacts = fetchedContacts.map(contact => {
-                contact._id = utilService.makeId()
-                return contact
-            })
-            return contacts
-        })
+        .then(fetchedContacts => fetchedContacts.map(contact => _makeAppContact(contact)))
 }
 
 function _getUrlRandomContacts() {
@@ -70,15 +64,37 @@ function _getUrlRandomContacts() {
 
 function _sort(arr) {
     return arr.sort((a, b) => {
-        if (a.name.first.toLocaleLowerCase() < b.name.first.toLocaleLowerCase()) {
+        if (a.name.toLocaleLowerCase() < b.name.toLocaleLowerCase()) {
             return -1
         }
-        if (a.name.first.toLocaleLowerCase() > b.name.first.toLocaleLowerCase()) {
+        if (a.name.toLocaleLowerCase() > b.name.toLocaleLowerCase()) {
             return 1
         }
 
         return 0
     })
+}
+
+function _makeAppContact(fetchedContact) {
+    const name = `${fetchedContact.name.first} ${fetchedContact.name.last}`
+    const { email, phone, picture } = fetchedContact
+    const newContact = {
+        name,
+        email,
+        phone,
+        picture
+    }
+    return _createContact(newContact)
+}
+
+function _createContact({ name, email, phone, picture }) {
+    return {
+        _id: utilService.makeId(),
+        name,
+        email,
+        phone,
+        picture
+    }
 }
 
 

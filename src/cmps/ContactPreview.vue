@@ -7,7 +7,7 @@
             </section>
         </section>
         <section class="content">
-            <p> {{ contactName }}</p>
+            <p> {{ contact.name }}</p>
             <p> {{ contact.email }}</p>
             <p> {{ contact.phone }}</p>
         </section>
@@ -28,10 +28,7 @@ import IconHandler from '@/cmps/app-reusable/IconHandler.vue'
 export default {
     props: ['contact'],
     computed: {
-        ICON_DEFAULT_USER() { return ICON_DEFAULT_USER },
-        contactName() {
-            return `${this.contact.name.first} ${this.contact.name.last}`
-        },
+        ICON_DEFAULT_USER() { return ICON_DEFAULT_USER }
     },
     components: {
         IconHandler
