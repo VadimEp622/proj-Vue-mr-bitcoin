@@ -64,9 +64,10 @@ export default {
 
 <!-- TODO: add loader spinner using "vue-loading-overlay" package -->
 <!-- TODO: fix responsive styling for contact-list in mobile -->
-<!-- TODO: add media-query for layouts for mobile/tablet/desktop -->
 <!-- TODO: make create/edit contact -->
 <!-- TODO: add styling to back/return button in stay-details -->
+<!-- TODO: shrink desktop header's nav items, to fit more -->
+<!-- TODO: ✔ add media-query for layouts for mobile/tablet/desktop -->
 
 
 <!-- ================================================= -->
