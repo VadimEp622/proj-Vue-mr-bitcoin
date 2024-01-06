@@ -8,7 +8,8 @@ export default {
             contacts: null,
             contact: null,
             isLoadingContacts: false,
-            isLoadingContact: false
+            isLoadingContact: false,
+            isUpdatingContacts: false
         }
     },
     mutations: {
@@ -24,6 +25,13 @@ export default {
         },
         setIsLoadingContact(state, { isLoadingContact }) {
             state.isLoadingContact = isLoadingContact
+        },
+        updateContact(state, { contact }) {
+            const idx = state.contacts.findIndex(contactItem => contactItem._id === contact._id)
+            state.contacts.splice(idx, 1, contact)
+        },
+        setIsUpdatingContact(state, { isUpdatingContacts }) {
+            state.isUpdatingContacts = isUpdatingContacts
         }
     },
     actions: {
@@ -56,6 +64,19 @@ export default {
                 console.log('Failed removing contact', err)
                 showErrorMsg('Failed removing contact')
             }
+        },
+        async updateContact({ commit }, { contact }) {
+            try {
+                commit({ type: 'setIsUpdatingContact', isUpdatingContacts: true })
+                const updatedContact = await contactService.updateContact(contact)
+                commit({ type: 'updateContact', contact: updatedContact })
+                showSuccessMsg('Contact updated')
+            } catch (err) {
+                console.log('Failed updating contact', err)
+                showErrorMsg('Failed updating contact')
+            } finally {
+                commit({ type: 'setIsUpdatingContact', isUpdatingContacts: false })
+            }
         }
     },
     getters: {
@@ -71,5 +92,8 @@ export default {
         isLoadingContact(state) {
             return state.isLoadingContact
         },
+        isUpdatingContacts(state) {
+            return state.isUpdatingContacts
+        }
     },
 }

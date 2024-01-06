@@ -12,6 +12,13 @@
 // 1440px - infinity
 @include for-screen(desktop) {
     // ...
+    .main-layout {
+        grid-template-columns: 20px 1fr 20px;
+    }
+
+    .details-layout {
+        grid-template-columns: 60px 1fr 60px;
+    }
 }
 
 /* =================== from-to =================== */
@@ -33,6 +40,10 @@
 // 0 - 1439px
 @include for-screen(null-to-desktop) {
     // ...
+    .main-layout,
+    .details-layout {
+        grid-template-columns: 5px 1fr 5px;
+    }
 }
 
 // 375px - 1439px

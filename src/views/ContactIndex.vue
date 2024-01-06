@@ -1,8 +1,12 @@
 <template>
-    <section class="contact-index full main-layout">
-        <section>
-            <span>Hi from Contact Index</span>
-        </section>
+    <section class="contact-index full details-layout">
+        <!-- <section>
+            <p>Hi from Contact Index</p>
+            <p>Here will soon be: add-contact (button) & filter</p>
+            <section>
+                <button class="btn-create" @click="onCreate">Create</button>
+            </section>
+        </section> -->
         <section v-if="loggedinUser" class="contact-list-container">
             <ContactList v-if="contacts" @remove="removeContact" :contacts="contacts" />
         </section>
@@ -37,6 +41,12 @@ export default {
         removeContact(contactId) {
             this.$store.dispatch({ type: 'removeContact', contactId })
         },
+        onCreate() {
+            this.redirectTo('/contact/create')
+        },
+        redirectTo(pathName) {
+            this.$router.push(pathName)
+        },
     },
     components: {
         ContactList
@@ -45,7 +55,7 @@ export default {
 </script>
 
 
-<style lang="scss">
+<style lang="scss" scoped>
 .contact-index {
     align-content: start;
 

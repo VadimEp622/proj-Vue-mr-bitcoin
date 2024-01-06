@@ -1,5 +1,8 @@
 <template>
     <section v-if="isContactLoaded" class="contact-details full main-layout grid align-content-start">
+        <section class="return-btn-container flex">
+            <button class="return-btn" @click="onReturn">Return</button>
+        </section>
         <section class="picture-container flex justify-center">
             <section class="picture">
                 <!-- <IconHandler :name="ICON_DEFAULT_USER" /> -->
@@ -17,12 +20,18 @@
                 <p>{{ contactPhone }}</p>
             </section>
         </section>
+        <section class="btn-container flex justify-center">
+            <button class="btn-edit" @click="onEdit(contactId)">Edit</button>
+        </section>
         <!-- <pre>{{ JSON.stringify(contact, null, 2) }}</pre> -->
     </section>
     <section v-else class="flex justify-center align-center">
         <span>loading...</span>
     </section>
 </template>
+
+
+<!-- TODO: style contact-details with similar structure to contact-edit -->
 
 
 <script>
@@ -39,9 +48,9 @@ export default {
             'contact',
             'isLoadingContact'
         ]),
-        contactId() { return this.$route.params.id; },
-        contact() { return this.$store.getters.contact; },
-        contactName() { return `${this.contact.name.first} ${this.contact.name.last}` },
+        contactId() { return this.$route.params.id },
+        contact() { return this.$store.getters.contact },
+        contactName() { return this.contact.name },
         contactPicture() { return this.contact.picture.large },
         contactPhone() { return this.contact.phone },
         contactEmail() { return this.contact.email },
@@ -51,6 +60,15 @@ export default {
     methods: {
         loadContact(contactId) {
             this.$store.dispatch({ type: 'loadContact', contactId })
+        },
+        redirectTo(pathName) {
+            this.$router.push(pathName)
+        },
+        onReturn() {
+            this.redirectTo('/contact')
+        },
+        onEdit(contactId) {
+            this.redirectTo(`/contact/${contactId}/edit`)
         }
     },
     components: { IconHandler }
@@ -58,8 +76,15 @@ export default {
 </script>
 
 
-<style lang="scss">
+<style lang="scss" scoped>
 .contact-details {
+
+    & .return-btn-container {
+        margin-block-start: 20px;
+        justify-self: center;
+        justify-content: flex-start;
+        width: 250px;
+    }
 
     & .picture-container {
         margin-block: 20px 40px;
@@ -82,6 +107,10 @@ export default {
             font-size: rem(30px);
             font-weight: 600;
         }
+    }
+
+    & .btn-container {
+        margin-block-start: 20px;
     }
 }
 </style>

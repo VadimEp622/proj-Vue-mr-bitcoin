@@ -7,12 +7,18 @@
             </section>
         </section>
         <section class="content">
-            <p> {{ contactName }}</p>
+            <p> {{ contact.name }}</p>
             <p> {{ contact.email }}</p>
             <p> {{ contact.phone }}</p>
         </section>
     </section>
 </template>
+
+
+<!-- TODO: 
+figure out how to shrink contact-preview's .content even more, when screen width shrinks, instead of overflow/horizontal-scroll appearing
+maybe media-query for contact-list ul's styling of: grid-template-columns: repeat(auto-fit, minmax(auto, 400px)); to be replace with something else?
+-->
 
 
 <script>
@@ -22,10 +28,7 @@ import IconHandler from '@/cmps/app-reusable/IconHandler.vue'
 export default {
     props: ['contact'],
     computed: {
-        ICON_DEFAULT_USER() { return ICON_DEFAULT_USER },
-        contactName() {
-            return `${this.contact.name.first} ${this.contact.name.last}`
-        },
+        ICON_DEFAULT_USER() { return ICON_DEFAULT_USER }
     },
     components: {
         IconHandler
@@ -38,6 +41,7 @@ export default {
 .contact-preview {
     display: flex;
     gap: 10px;
+
 
     & .avatar-container {
         display: flex;
@@ -54,7 +58,8 @@ export default {
     }
 
     & .content {
-        white-space: nowrap;
+        max-width: 230px;
+        word-wrap: break-word;
 
         &>* {
             &:first-child {

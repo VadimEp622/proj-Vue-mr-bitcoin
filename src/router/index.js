@@ -1,10 +1,12 @@
 import { createRouter, createWebHashHistory, createWebHistory } from 'vue-router'
-import HomeView from '@/views/HomeView.vue'
-import ProfileView from '@/views/ProfileView.vue'
-import TradingIndex from '@/views/TradingIndex.vue'
-import LoginView from '@/views/LoginView.vue'
+import Home from '@/views/Home.vue'
+import Profile from '@/views/Profile.vue'
+import Trading from '@/views/Trading.vue'
+// import Login from '@/views/Login.vue'
 import ContactIndex from '@/views/ContactIndex.vue'
 import ContactDetails from '@/views/ContactDetails.vue'
+import ContactCreate from '@/views/ContactCreate.vue'
+import ContactEdit from '@/views/ContactEdit.vue'
 import store from '../store'
 
 const router = createRouter({
@@ -14,12 +16,13 @@ const router = createRouter({
     {
       path: '/',
       name: 'home',
-      component: HomeView
+      component: Home
     },
     {
       path: '/login',
       name: 'login',
-      component: LoginView,
+      // component: Login,
+      component: ()=> import('@/views/Login.vue'),
       beforeEnter: (to, from, next) => {
         if (store.state.user.user) next({ name: 'home' })
         else next()
@@ -36,7 +39,7 @@ const router = createRouter({
     {
       path: '/profile',
       name: 'profile',
-      component: ProfileView,
+      component: Profile,
     },
     {
       path: '/contact',
@@ -44,19 +47,24 @@ const router = createRouter({
       component: ContactIndex
     },
     {
+      path: '/contact/create',
+      name: 'contact-create',
+      component: ContactCreate
+    },
+    {
       path: '/contact/:id',
       name: 'contact-details',
       component: ContactDetails,
     },
-    // {
-    //   path: '/contact/edit/:id',
-    //   name: 'contact-edit',
-    //   component: ContactEdit,
-    // },
+    {
+      path: '/contact/:id/edit',
+      name: 'contact-edit',
+      component: ContactEdit,
+    },
     {
       path: '/trading',
       name: 'trading',
-      component: TradingIndex
+      component: Trading
     },
   ]
 })

@@ -1,9 +1,3 @@
-<!-- TODO: make CRUDL -->
-
-<!-- TODO: check how to have multiple v-ifs on 1 cmp -->
-
-
-
 <template>
     <section class="profile-home full details-layout">
         <span>Hi from profile!</span>
@@ -25,7 +19,7 @@ export default {
 </script>
 
 
-<style lang="scss">
+<style lang="scss" scoped>
 .profile-home {
     padding-block: 20px;
 }
