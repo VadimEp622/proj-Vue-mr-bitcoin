@@ -23,7 +23,7 @@
         <section class="btn-container flex justify-center">
             <button class="btn-edit" @click="onEdit(contactId)">Edit</button>
         </section>
-        <pre>{{ JSON.stringify(contact, null, 2) }}</pre>
+        <!-- <pre>{{ JSON.stringify(contact, null, 2) }}</pre> -->
     </section>
     <section v-else class="flex justify-center align-center">
         <span>loading...</span>

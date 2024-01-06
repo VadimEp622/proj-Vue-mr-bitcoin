@@ -49,7 +49,6 @@
 </template>
 
 
-<!-- TODO: make form submit update the database (aka local-storage) with the new contact -->
 <!-- TODO: make validation schema for email only (phone number are currently inconsistent in format) -->
 
 
@@ -72,8 +71,7 @@ const initialValues = props.initialValues
 const emit = defineEmits(['onSubmit'])
 
 function onSubmit(params) {
-    console.log('Hi from onSave - params', params)
-    // emit('onSave', params)
+    emit('onSubmit', params)
 }
 </script>
 

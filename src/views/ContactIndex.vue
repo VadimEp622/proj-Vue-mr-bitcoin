@@ -1,12 +1,12 @@
 <template>
     <section class="contact-index full details-layout">
-        <section>
+        <!-- <section>
             <p>Hi from Contact Index</p>
             <p>Here will soon be: add-contact (button) & filter</p>
             <section>
                 <button class="btn-create" @click="onCreate">Create</button>
             </section>
-        </section>
+        </section> -->
         <section v-if="loggedinUser" class="contact-list-container">
             <ContactList v-if="contacts" @remove="removeContact" :contacts="contacts" />
         </section>

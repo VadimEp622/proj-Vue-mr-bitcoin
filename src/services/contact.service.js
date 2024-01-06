@@ -6,7 +6,8 @@ import { utilService } from "./util.service"
 export const contactService = {
     query,
     getContactById,
-    removeContact
+    removeContact,
+    updateContact
 }
 
 
@@ -27,6 +28,10 @@ function getContactById(contactId) {
 
 function removeContact(contactId) {
     return storageService.remove(CONTACT_KEY, contactId)
+}
+
+function updateContact(contact) {
+    return storageService.put(CONTACT_KEY, contact)
 }
 
 function getEmptyContact() {
