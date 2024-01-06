@@ -27,7 +27,6 @@ export default {
             state.isLoadingContact = isLoadingContact
         },
         updateContact(state, { contact }) {
-            console.log('Hi from contact store - trying to update store contact', contact)
             const idx = state.contacts.findIndex(contactItem => contactItem._id === contact._id)
             state.contacts.splice(idx, 1, contact)
         },

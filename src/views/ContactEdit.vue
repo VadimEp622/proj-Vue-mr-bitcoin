@@ -69,7 +69,7 @@ export default {
             this.redirectTo(`/contact/${contactId}`)
         },
         onSave(contact) {
-            console.log('Hi from onSave - contact', contact)
+            // console.log('Hi from onSave - contact', contact)
             this.isFormSubmitted = true
             this.updateContact(contact)
         },
