@@ -29,7 +29,13 @@ function removeContact(contactId) {
     return storageService.remove(CONTACT_KEY, contactId)
 }
 
-
+function getEmptyContact() {
+    return {
+        name: '',
+        email: '',
+        phone: ''
+    }
+}
 
 
 // *************************************************************************************

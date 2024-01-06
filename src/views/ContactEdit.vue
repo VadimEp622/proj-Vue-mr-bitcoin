@@ -1,29 +1,9 @@
 <template>
-    <section v-if="isContactLoaded" class="contact-edit full main-layout grid align-content-start">
-        <section class="return-btn-container flex">
+    <section v-if="initialValues" class="contact-edit full main-layout grid align-content-start">
+        <section class="return-btn-container flex justify-center">
             <button class="return-btn" @click="onReturn(contactId)">Return</button>
         </section>
-        <section class="picture-container flex justify-center">
-            <section class="picture">
-                <IconHandler :name="ICON_DEFAULT_USER" />
-                <!-- <img :src="contactPicture" alt="contact"> -->
-            </section>
-        </section>
-        <section class="details text-align-center">
-            <!-- <section class="name clr-gold-0">
-                <p>{{ contactName }}</p>
-            </section>
-            <section class="email">
-                <p>{{ contactEmail }}</p>
-            </section>
-            <section class="phone">
-                <p>{{ contactPhone }}</p>
-            </section> -->
-        </section>
-        <section class="btn-container flex justify-center">
-            <button class="btn-save" @click="onSave(contactId)">Save</button>
-        </section>
-        <!-- <pre>{{ JSON.stringify(contact, null, 2) }}</pre> -->
+        <FormContact :initial-values="initialValues" />
     </section>
     <section v-else class="flex justify-center align-center">
         <span>loading...</span>
@@ -32,13 +12,14 @@
 
 
 <script>
-import IconHandler from '@/cmps/app-reusable/IconHandler.vue'
-import { ICON_DEFAULT_USER } from '@/services/icon-handler.service'
 import { mapGetters } from 'vuex'
+import FormContact from '../cmps/app-reusable/forms/FormContact.vue'
 
 export default {
     data() {
-        return {}
+        return {
+            initialValues: null
+        }
     },
     created() {
         this.loadContact(this.contactId)
@@ -57,6 +38,13 @@ export default {
         ICON_DEFAULT_USER() { return ICON_DEFAULT_USER },
         isContactLoaded() { return !this.isLoadingContact && this.contact },
     },
+    watch: {
+        isContactLoaded(isContactLoaded) {
+            if (isContactLoaded && Object.keys(this.contact).length > 0) {
+                this.initialValues = this.contact
+            }
+        }
+    },
     methods: {
         loadContact(contactId) {
             this.$store.dispatch({ type: 'loadContact', contactId })
@@ -71,9 +59,13 @@ export default {
             console.log('Hi from onSave - contactId', contactId)
         },
     },
-    components: { IconHandler }
+    components: { FormContact }
 }
 </script>
 
 
-<style lang="scss"></style>
+<style lang="scss">
+.return-btn-container {
+    margin-block-start: 20px;
+}
+</style>

@@ -31,6 +31,9 @@
 </template>
 
 
+<!-- TODO: style contact-details with similar structure to contact-edit -->
+
+
 <script>
 import IconHandler from '@/cmps/app-reusable/IconHandler.vue'
 import { ICON_DEFAULT_USER } from '@/services/icon-handler.service'
