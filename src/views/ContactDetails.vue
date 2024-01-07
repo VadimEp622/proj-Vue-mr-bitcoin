@@ -33,7 +33,6 @@
 </template>
 
 
-<!-- TODO: style contact-details with similar structure to contact-edit -->
 <!-- TODO: add case for no user found (empty store object) -->
 
 
