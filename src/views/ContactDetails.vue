@@ -10,7 +10,7 @@
                     <img :src="contactPicture" alt="contact">
                 </section>
             </section>
-            <section class="details text-align-center">
+            <section class="details clr-gray-2 text-align-center">
                 <section class="name clr-gold-0">
                     <p>{{ contactName }}</p>
                 </section>

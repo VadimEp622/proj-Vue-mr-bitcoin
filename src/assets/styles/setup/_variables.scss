@@ -6,14 +6,21 @@ $map-clr: (
         "black": black
     ),
     "main-gold": (
-        "gold-0": #baaa51
+        "gold-0": #baaa51,
+        "gold-1": #dbc865b8
     ),
     "main-blue": (
-        "blue-0": #001c30
+        "blue-0": #001c30,
+        "blue-1": #1b2838,
+        "blue-2": #171a21,
+        "blue-3": #64ccc5,
+        "blue-4": #176b87,
+        "blue-5": #42b6dde5
     ),
     "main-gray": (
         "gray-0": #dcdcdc,
-        "gray-1": #858f7e
+        "gray-1": #858f7e,
+        "gray-2": #8f98a0
     )
 );
 
@@ -46,6 +53,7 @@ $map-font-weight: (
 // ************** Spacing Map **************
 $map-spacing: (
     "0": 0,
+    "5": 5px,
     "10": 10px,
     "15": 15px
 );
@@ -67,21 +75,25 @@ $map-padding-inline-start: (
 );
 
 $map-padding-inline-end: (
-    "0": map-get($map-spacing, "0")
+    "0": map-get($map-spacing, "0"),
+    "10": map-get($map-spacing, "10")
 );
 
 // ************** Padding Block Map **************
 $map-padding-block: (
     "0": map-get($map-spacing, "0"),
+    "10": map-get($map-spacing, "10"),
     "15": map-get($map-spacing, "15")
 );
 
 $map-padding-block-start: (
-    "0": map-get($map-spacing, "0")
+    "0": map-get($map-spacing, "0"),
+    "15": map-get($map-spacing, "15")
 );
 
 $map-padding-block-end: (
-    "0": map-get($map-spacing, "0")
+    "0": map-get($map-spacing, "0"),
+    "5": map-get($map-spacing, "5")
 );
 
 // ************** Margin Map **************

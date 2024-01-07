@@ -1,7 +1,7 @@
 <template>
-    <footer class="full bg-clr-blue-0" :class="layoutClass">
+    <footer class="full bg-clr-black clr-gray-2" :class="layoutClass">
         <section class="app-footer">
-            <h2>Hello From Footer</h2>
+            <h2 class="fw400">© Mr. Bitcoin. No Rights Reserved</h2>
         </section>
     </footer>
 </template>
@@ -22,11 +22,10 @@ export default {
 
 <style lang="scss" scoped>
 footer {
-    color: rgb(220, 220, 220);
-
     & h2 {
-        margin-block: 0.3em;
+        // margin-block: 0.3em;
         text-align: center;
+        font-size: rem(16px);
     }
 }
 </style>

@@ -31,7 +31,7 @@ export default defineComponent({
     props: {
         color: {
             type: String,
-            default: '#000'
+            default: '#8f98a0'
         },
         height: {
             type: Number,

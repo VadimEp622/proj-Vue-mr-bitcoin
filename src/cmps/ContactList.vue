@@ -1,7 +1,7 @@
 <template>
     <section class="contact-list">
         <TransitionGroup name="list" tag="ul">
-            <li class="contact-preview-container" v-for="contact in contacts" :key="contact._id">
+            <li class="contact-preview-container bg-clr-gold-1" v-for="contact in contacts" :key="contact._id">
                 <ContactPreview :contact="contact" />
                 <section class="buttons">
                     <button @click="onDetails(contact._id)"><span>Details</span></button>
@@ -48,7 +48,7 @@ export default {
             justify-content: space-between;
             gap: 10px;
             padding: 10px;
-            background-color: #64CCC5;
+            // background-color: #64CCC5;
             border-radius: 8px;
             transition: box-shadow 0.2s ease-in-out;
 
@@ -107,7 +107,8 @@ export default {
             }
 
             &:hover {
-                box-shadow: 0px 0px 17px 4px rgba(0, 0, 0, 0.5);
+                // box-shadow: 0px 0px 17px 4px rgba(0, 0, 0, 0.5);
+                box-shadow: 0px 0px 6px 2px rgba(255, 255, 255, 0.5);
 
                 & .avatar {
                     transform: scale(1.15);
