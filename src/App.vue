@@ -62,7 +62,10 @@ export default {
 <!-- ================================================= -->
 
 
-<!-- TODO: add loader spinner using "vue-loading-overlay" package -->
+<!-- TODO: 
+  consider adding to contact store - isRemovingContact/isContactRemoved, etc...,
+  for protection against multiple fast contact removes
+-->
 <!-- TODO: fix responsive styling for contact-list in mobile -->
 <!-- TODO: make create/edit contact -->
 <!-- TODO: add styling to back/return button in stay-details -->
