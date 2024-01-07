@@ -5,11 +5,12 @@ import { showErrorMsg, showSuccessMsg } from '../../services/event-bus.service'
 export default {
     state() {
         return {
-            contacts: null,
+            contacts: [],
             contact: null,
             isLoadingContacts: false,
             isLoadingContact: false,
-            isUpdatingContacts: false
+            isUpdatingContacts: false,
+            hasLoadedContacts: false
         }
     },
     mutations: {
@@ -23,26 +24,31 @@ export default {
             const idx = state.contacts.findIndex(contact => contact._id === contactId)
             state.contacts.splice(idx, 1)
         },
-        setIsLoadingContact(state, { isLoadingContact }) {
-            state.isLoadingContact = isLoadingContact
-        },
-        setIsLoadingContacts(state, { isLoadingContacts }) {
-            state.isLoadingContact = isLoadingContacts
-        },
         updateContact(state, { contact }) {
             const idx = state.contacts.findIndex(contactItem => contactItem._id === contact._id)
             state.contacts.splice(idx, 1, contact)
         },
+        setIsLoadingContacts(state, { isLoadingContacts }) {
+            state.isLoadingContact = isLoadingContacts
+        },
+        setIsLoadingContact(state, { isLoadingContact }) {
+            state.isLoadingContact = isLoadingContact
+        },
         setIsUpdatingContact(state, { isUpdatingContacts }) {
             state.isUpdatingContacts = isUpdatingContacts
+        },
+        setHasLoadedContacts(state, { hasLoadedContacts }) {
+            state.hasLoadedContacts = hasLoadedContacts
         }
     },
     actions: {
         async loadContacts({ commit }) {
             try {
+                commit({ type: 'setHasLoadedContacts', hasLoadedContacts: false })
                 commit({ type: 'setIsLoadingContacts', isLoadingContacts: true })
                 const contacts = await contactService.query()
                 commit({ type: 'setContacts', contacts })
+                commit({ type: 'setHasLoadedContacts', hasLoadedContacts: true })
             } catch (err) {
                 console.log('Failed loading contacts', err)
                 showErrorMsg('Failed loading contacts')
@@ -100,6 +106,9 @@ export default {
         },
         isUpdatingContacts(state) {
             return state.isUpdatingContacts
+        },
+        isContactsLoaded(state) {
+            return !state.isLoadingContacts && state.hasLoadedContacts
         }
     },
 }

@@ -40,10 +40,9 @@ export default {
     computed: {
         ...mapGetters([
             'contacts',
-            'isLoadingContacts'
+            'isContactsLoaded'
         ]),
-        loggedinUser() { return this.$store.getters.user },
-        isContactsLoaded() { return !this.isLoadingContacts && this.contacts },
+        loggedinUser() { return this.$store.getters.user }
     },
     methods: {
         getContacts() {
