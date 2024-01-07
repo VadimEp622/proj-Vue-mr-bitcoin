@@ -6,11 +6,12 @@ export default {
     state() {
         return {
             contacts: [],
-            contact: null,
+            contact: {},
             isLoadingContacts: false,
             isLoadingContact: false,
             isUpdatingContacts: false,
-            hasLoadedContacts: false
+            hasLoadedContacts: false,
+            hasLoadedContact: false
         }
     },
     mutations: {
@@ -39,6 +40,9 @@ export default {
         },
         setHasLoadedContacts(state, { hasLoadedContacts }) {
             state.hasLoadedContacts = hasLoadedContacts
+        },
+        setHasLoadedContact(state, { hasLoadedContact }) {
+            state.hasLoadedContact = hasLoadedContact
         }
     },
     actions: {
@@ -58,9 +62,11 @@ export default {
         },
         async loadContact({ commit }, { contactId }) {
             try {
+                commit({ type: 'setHasLoadedContact', hasLoadedContact: false })
                 commit({ type: 'setIsLoadingContact', isLoadingContact: true })
                 const contact = await contactService.getContactById(contactId)
                 commit({ type: 'setContact', contact })
+                commit({ type: 'setHasLoadedContact', hasLoadedContact: true })
             } catch (err) {
                 console.log('could not fetch contact', err)
             } finally {
@@ -106,6 +112,9 @@ export default {
         },
         isContactsLoaded(state) {
             return !state.isLoadingContacts && state.hasLoadedContacts
+        },
+        isContactLoaded(state) {
+            return !state.isLoadingContact && state.hasLoadedContact && Object.keys(state.contact).length !== 0
         }
     },
 }

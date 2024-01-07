@@ -32,6 +32,7 @@
 
 
 <!-- TODO: style contact-details with similar structure to contact-edit -->
+<!-- TODO: add case for no user found (empty store object) -->
 
 
 <script>
@@ -47,15 +48,14 @@ export default {
     computed: {
         ...mapGetters([
             'contact',
-            'isLoadingContact'
+            'isContactLoaded'
         ]),
         contactId() { return this.$route.params.id },
         contactName() { return this.contact.name },
         contactPicture() { return this.contact.picture.large },
         contactPhone() { return this.contact.phone },
         contactEmail() { return this.contact.email },
-        ICON_DEFAULT_USER() { return ICON_DEFAULT_USER },
-        isContactLoaded() { return !this.isLoadingContact && this.contact },
+        ICON_DEFAULT_USER() { return ICON_DEFAULT_USER }
     },
     methods: {
         loadContact(contactId) {
