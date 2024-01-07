@@ -10,7 +10,7 @@
             </section>
             <section class="details">
                 <section class="name-container flex gap-10">
-                    <label for="name">Name: </label>
+                    <label for="name" class="clr-gray-2">Name: </label>
                     <section class="full flex">
                         <Field class="width-100-percent" name="name" type="text" placeholder="Enter name"
                             autocomplete="off" />
@@ -20,7 +20,7 @@
                     </section>
                 </section>
                 <section class="email-container flex gap-10">
-                    <label for="email">Email: </label>
+                    <label for="email" class="clr-gray-2">Email: </label>
                     <section class="full flex">
                         <Field class="width-100-percent" name="email" type="text" placeholder="Enter email"
                             autocomplete="off" />
@@ -30,7 +30,7 @@
                     </section>
                 </section>
                 <section class="phone-container flex gap-10">
-                    <label for="phone">Phone: </label>
+                    <label for="phone" class="clr-gray-2">Phone: </label>
                     <section class="full flex">
                         <Field class="width-100-percent" name="phone" type="text" placeholder="Enter phone"
                             autocomplete="off" />

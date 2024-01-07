@@ -22,11 +22,6 @@
 
 <!-- TODO: add CRUD -->
 
-<!-- TODO: 
-    improve Loader component's condition of rendering,
-    using the contact store's isContactsLoaded 
--->
-
 
 <script>
 import { mapGetters } from 'vuex'

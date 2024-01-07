@@ -1,5 +1,5 @@
 <template>
-    <header class="full bg-clr-blue-0" :class="layoutClass">
+    <header class="full bg-clr-blue-2" :class="layoutClass">
         <HeaderDesktop :loggedinUser="loggedinUser" @logout="logout" />
         <HeaderMobile :loggedinUser="loggedinUser" @setMainMenu="setMainMenu" />
     </header>

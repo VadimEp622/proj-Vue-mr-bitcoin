@@ -67,8 +67,8 @@ export default {
   for protection against multiple fast contact removes
 -->
 <!-- TODO: fix responsive styling for contact-list in mobile -->
-<!-- TODO: make create/edit contact -->
-<!-- TODO: add styling to back/return button in stay-details -->
+<!-- TODO: make create contact -->
+<!-- TODO: add styling to back/return buttons in stay-details -->
 <!-- TODO: shrink desktop header's nav items, to fit more -->
 <!-- TODO: ✔ refactor contact object so that name key will only store name string, instead of name object -->
 <!-- TODO: ✔ add media-query for layouts for mobile/tablet/desktop -->
@@ -130,6 +130,15 @@ II. figure out how to add default-user-icon to always be there, before the actua
   display: grid;
   grid-template-rows: auto 1fr auto;
   height: 100vh;
+
+  &::before {
+    content: '';
+    height: 100%;
+    background: url('@/assets/imgs/bg-pic/colored_body_top.png') center top no-repeat #1b2838;
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+  }
 
   &:not(.header-footer-hidden) main {
     height: fit-content;

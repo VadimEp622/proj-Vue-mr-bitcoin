@@ -1,11 +1,13 @@
 <template>
-    <section v-if="initialValues" class="contact-edit full main-layout grid align-content-start">
-        <section class="return-btn-container flex justify-center">
-            <button class="return-btn" @click="onReturn(contactId)">Return</button>
-        </section>
-        <FormContact :initial-values="initialValues" @onSubmit="onSave" />
-        <section v-if="isFormSubmitted" class="submit-modal flex justify-center align-center">
-            <span>Submitting...</span>
+    <section v-if="initialValues" class="contact-edit-container full main-layout">
+        <section class="contact-edit">
+            <section class="return-btn-container flex justify-start">
+                <button class="return-btn" @click="onReturn(contactId)">Return</button>
+            </section>
+            <FormContact :initial-values="initialValues" @onSubmit="onSave" />
+            <section v-if="isFormSubmitted" class="submit-modal flex justify-center align-center">
+                <span>Submitting...</span>
+            </section>
         </section>
     </section>
     <section v-else class="loader">
@@ -77,14 +79,23 @@ export default {
 </script>
 
 
-<style lang="scss">
-.return-btn-container {
-    margin-block-start: 20px;
+<style lang="scss" scoped>
+.contact-edit-container {
+    justify-items: center;
+
+    & .contact-edit {
+        width: fit-content;
+    }
+
+    & .return-btn-container {
+        margin-block-start: 20px;
+    }
+    
+    & .submit-modal {
+        margin-block-start: 20px;
+    }
 }
 
-.submit-modal {
-    margin-block-start: 20px;
-}
 
 .loader {
     margin-block-start: 20px;
