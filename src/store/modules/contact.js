@@ -26,6 +26,9 @@ export default {
         setIsLoadingContact(state, { isLoadingContact }) {
             state.isLoadingContact = isLoadingContact
         },
+        setIsLoadingContacts(state, { isLoadingContacts }) {
+            state.isLoadingContact = isLoadingContacts
+        },
         updateContact(state, { contact }) {
             const idx = state.contacts.findIndex(contactItem => contactItem._id === contact._id)
             state.contacts.splice(idx, 1, contact)
@@ -37,11 +40,14 @@ export default {
     actions: {
         async loadContacts({ commit }) {
             try {
+                commit({ type: 'setIsLoadingContacts', isLoadingContacts: true })
                 const contacts = await contactService.query()
                 commit({ type: 'setContacts', contacts })
             } catch (err) {
                 console.log('Failed loading contacts', err)
                 showErrorMsg('Failed loading contacts')
+            } finally {
+                commit({ type: 'setIsLoadingContacts', isLoadingContacts: false })
             }
         },
         async loadContact({ commit }, { contactId }) {

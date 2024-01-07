@@ -8,8 +8,11 @@
             <span>Submitting...</span>
         </section>
     </section>
-    <section v-else class="flex justify-center align-center">
+    <!-- <section v-else class="flex justify-center align-center">
         <span>Loading...</span>
+    </section> -->
+    <section v-else class="loader">
+        <Loader />
     </section>
 </template>
 
@@ -17,6 +20,7 @@
 <script>
 import { mapGetters } from 'vuex'
 import FormContact from '@/cmps/app-reusable/forms/FormContact.vue'
+import Loader from '@/cmps/app-reusable/loader.vue'
 
 export default {
     data() {
@@ -35,7 +39,6 @@ export default {
             'isUpdatingContacts'
         ]),
         contactId() { return this.$route.params.id; },
-        contact() { return this.$store.getters.contact; },
         contactName() { return this.contact.name },
         contactPicture() { return this.contact.picture.large },
         contactPhone() { return this.contact.phone },
@@ -74,7 +77,7 @@ export default {
             this.updateContact(contact)
         },
     },
-    components: { FormContact }
+    components: { FormContact, Loader }
 }
 </script>
 
@@ -84,7 +87,11 @@ export default {
     margin-block-start: 20px;
 }
 
-.submit-modal{
+.submit-modal {
+    margin-block-start: 20px;
+}
+
+.loader {
     margin-block-start: 20px;
 }
 </style>

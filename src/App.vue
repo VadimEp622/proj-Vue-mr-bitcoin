@@ -128,6 +128,10 @@ II. figure out how to add default-user-icon to always be there, before the actua
   grid-template-rows: auto 1fr auto;
   height: 100vh;
 
+  &:not(.header-footer-hidden) main {
+    height: fit-content;
+  }
+
   &.header-footer-hidden {
     grid-template-rows: 1fr;
 

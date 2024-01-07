@@ -25,8 +25,8 @@
         </section>
         <!-- <pre>{{ JSON.stringify(contact, null, 2) }}</pre> -->
     </section>
-    <section v-else class="flex justify-center align-center">
-        <span>loading...</span>
+    <section v-else>
+        <Loader />
     </section>
 </template>
 
@@ -38,6 +38,7 @@
 import IconHandler from '@/cmps/app-reusable/IconHandler.vue'
 import { ICON_DEFAULT_USER } from '@/services/icon-handler.service'
 import { mapGetters } from 'vuex'
+import Loader from '@/cmps/app-reusable/loader.vue'
 
 export default {
     created() {
@@ -49,7 +50,6 @@ export default {
             'isLoadingContact'
         ]),
         contactId() { return this.$route.params.id },
-        contact() { return this.$store.getters.contact },
         contactName() { return this.contact.name },
         contactPicture() { return this.contact.picture.large },
         contactPhone() { return this.contact.phone },
@@ -71,7 +71,7 @@ export default {
             this.redirectTo(`/contact/${contactId}/edit`)
         }
     },
-    components: { IconHandler }
+    components: { IconHandler, Loader }
 }
 </script>
 
