@@ -98,9 +98,6 @@ export default {
         contact(state) {
             return state.contact
         },
-        isLoadingContacts(state) {
-            return state.isLoadingContacts
-        },
         isLoadingContact(state) {
             return state.isLoadingContact
         },
