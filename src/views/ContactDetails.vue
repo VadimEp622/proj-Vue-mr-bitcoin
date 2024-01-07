@@ -25,19 +25,21 @@
         </section>
         <!-- <pre>{{ JSON.stringify(contact, null, 2) }}</pre> -->
     </section>
-    <section v-else class="flex justify-center align-center">
-        <span>loading...</span>
+    <section v-else>
+        <Loader />
     </section>
 </template>
 
 
 <!-- TODO: style contact-details with similar structure to contact-edit -->
+<!-- TODO: add case for no user found (empty store object) -->
 
 
 <script>
 import IconHandler from '@/cmps/app-reusable/IconHandler.vue'
 import { ICON_DEFAULT_USER } from '@/services/icon-handler.service'
 import { mapGetters } from 'vuex'
+import Loader from '@/cmps/app-reusable/loader.vue'
 
 export default {
     created() {
@@ -46,16 +48,14 @@ export default {
     computed: {
         ...mapGetters([
             'contact',
-            'isLoadingContact'
+            'isContactLoaded'
         ]),
         contactId() { return this.$route.params.id },
-        contact() { return this.$store.getters.contact },
         contactName() { return this.contact.name },
         contactPicture() { return this.contact.picture.large },
         contactPhone() { return this.contact.phone },
         contactEmail() { return this.contact.email },
-        ICON_DEFAULT_USER() { return ICON_DEFAULT_USER },
-        isContactLoaded() { return !this.isLoadingContact && this.contact },
+        ICON_DEFAULT_USER() { return ICON_DEFAULT_USER }
     },
     methods: {
         loadContact(contactId) {
@@ -71,7 +71,7 @@ export default {
             this.redirectTo(`/contact/${contactId}/edit`)
         }
     },
-    components: { IconHandler }
+    components: { IconHandler, Loader }
 }
 </script>
 

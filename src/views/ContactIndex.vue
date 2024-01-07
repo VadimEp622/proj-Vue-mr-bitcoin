@@ -8,30 +8,40 @@
             </section>
         </section> -->
         <section v-if="loggedinUser" class="contact-list-container">
-            <ContactList v-if="contacts" @remove="removeContact" :contacts="contacts" />
+            <ContactList v-if="isContactsLoaded" @remove="removeContact" :contacts="contacts" />
+            <Loader v-else />
         </section>
     </section>
 </template>
 
-<!-- TODO: 
-    see how to add multiple v-ifs in one element 
-    |
-    V
-    cannot add multiple v-ifs conditions on one element, must make a computed showList() func, which will perform the && operation
+
+<!-- Note: 
+    cannot add multiple v-ifs conditions on one element,
+    must make a computed showList() func, which will perform the && operation
  -->
 
 <!-- TODO: add CRUD -->
 
+<!-- TODO: 
+    improve Loader component's condition of rendering,
+    using the contact store's isContactsLoaded 
+-->
+
 
 <script>
+import { mapGetters } from 'vuex'
 import ContactList from '@/cmps/ContactList.vue'
+import Loader from '@/cmps/app-reusable/loader.vue'
 
 export default {
     created() {
         this.getContacts()
     },
     computed: {
-        contacts() { return this.$store.getters.contacts },
+        ...mapGetters([
+            'contacts',
+            'isContactsLoaded'
+        ]),
         loggedinUser() { return this.$store.getters.user }
     },
     methods: {
@@ -49,7 +59,8 @@ export default {
         },
     },
     components: {
-        ContactList
+        ContactList,
+        Loader
     }
 }
 </script>

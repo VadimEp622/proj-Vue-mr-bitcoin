@@ -8,8 +8,8 @@
             <span>Submitting...</span>
         </section>
     </section>
-    <section v-else class="flex justify-center align-center">
-        <span>Loading...</span>
+    <section v-else class="loader">
+        <Loader />
     </section>
 </template>
 
@@ -17,6 +17,7 @@
 <script>
 import { mapGetters } from 'vuex'
 import FormContact from '@/cmps/app-reusable/forms/FormContact.vue'
+import Loader from '@/cmps/app-reusable/loader.vue'
 
 export default {
     data() {
@@ -31,21 +32,19 @@ export default {
     computed: {
         ...mapGetters([
             'contact',
-            'isLoadingContact',
+            'isContactLoaded',
             'isUpdatingContacts'
         ]),
         contactId() { return this.$route.params.id; },
-        contact() { return this.$store.getters.contact; },
         contactName() { return this.contact.name },
         contactPicture() { return this.contact.picture.large },
         contactPhone() { return this.contact.phone },
         contactEmail() { return this.contact.email },
-        ICON_DEFAULT_USER() { return ICON_DEFAULT_USER },
-        isContactLoaded() { return !this.isLoadingContact && this.contact },
+        ICON_DEFAULT_USER() { return ICON_DEFAULT_USER }
     },
     watch: {
         isContactLoaded(isContactLoaded) {
-            if (isContactLoaded && Object.keys(this.contact).length > 0) {
+            if (isContactLoaded && Object.keys(this.contact).length !== 0) {
                 this.initialValues = this.contact
             }
         },
@@ -69,12 +68,11 @@ export default {
             this.redirectTo(`/contact/${contactId}`)
         },
         onSave(contact) {
-            // console.log('Hi from onSave - contact', contact)
             this.isFormSubmitted = true
             this.updateContact(contact)
         },
     },
-    components: { FormContact }
+    components: { FormContact, Loader }
 }
 </script>
 
@@ -84,7 +82,11 @@ export default {
     margin-block-start: 20px;
 }
 
-.submit-modal{
+.submit-modal {
+    margin-block-start: 20px;
+}
+
+.loader {
     margin-block-start: 20px;
 }
 </style>

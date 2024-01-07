@@ -5,11 +5,13 @@ import { showErrorMsg, showSuccessMsg } from '../../services/event-bus.service'
 export default {
     state() {
         return {
-            contacts: null,
-            contact: null,
+            contacts: [],
+            contact: {},
             isLoadingContacts: false,
             isLoadingContact: false,
-            isUpdatingContacts: false
+            isUpdatingContacts: false,
+            hasLoadedContacts: false,
+            hasLoadedContact: false
         }
     },
     mutations: {
@@ -23,32 +25,48 @@ export default {
             const idx = state.contacts.findIndex(contact => contact._id === contactId)
             state.contacts.splice(idx, 1)
         },
-        setIsLoadingContact(state, { isLoadingContact }) {
-            state.isLoadingContact = isLoadingContact
-        },
         updateContact(state, { contact }) {
             const idx = state.contacts.findIndex(contactItem => contactItem._id === contact._id)
             state.contacts.splice(idx, 1, contact)
         },
+        setIsLoadingContacts(state, { isLoadingContacts }) {
+            state.isLoadingContact = isLoadingContacts
+        },
+        setIsLoadingContact(state, { isLoadingContact }) {
+            state.isLoadingContact = isLoadingContact
+        },
         setIsUpdatingContact(state, { isUpdatingContacts }) {
             state.isUpdatingContacts = isUpdatingContacts
+        },
+        setHasLoadedContacts(state, { hasLoadedContacts }) {
+            state.hasLoadedContacts = hasLoadedContacts
+        },
+        setHasLoadedContact(state, { hasLoadedContact }) {
+            state.hasLoadedContact = hasLoadedContact
         }
     },
     actions: {
         async loadContacts({ commit }) {
             try {
+                commit({ type: 'setHasLoadedContacts', hasLoadedContacts: false })
+                commit({ type: 'setIsLoadingContacts', isLoadingContacts: true })
                 const contacts = await contactService.query()
                 commit({ type: 'setContacts', contacts })
+                commit({ type: 'setHasLoadedContacts', hasLoadedContacts: true })
             } catch (err) {
                 console.log('Failed loading contacts', err)
                 showErrorMsg('Failed loading contacts')
+            } finally {
+                commit({ type: 'setIsLoadingContacts', isLoadingContacts: false })
             }
         },
         async loadContact({ commit }, { contactId }) {
             try {
+                commit({ type: 'setHasLoadedContact', hasLoadedContact: false })
                 commit({ type: 'setIsLoadingContact', isLoadingContact: true })
                 const contact = await contactService.getContactById(contactId)
                 commit({ type: 'setContact', contact })
+                commit({ type: 'setHasLoadedContact', hasLoadedContact: true })
             } catch (err) {
                 console.log('could not fetch contact', err)
             } finally {
@@ -86,14 +104,14 @@ export default {
         contact(state) {
             return state.contact
         },
-        isLoadingContacts(state) {
-            return state.isLoadingContacts
-        },
-        isLoadingContact(state) {
-            return state.isLoadingContact
-        },
         isUpdatingContacts(state) {
             return state.isUpdatingContacts
+        },
+        isContactsLoaded(state) {
+            return !state.isLoadingContacts && state.hasLoadedContacts
+        },
+        isContactLoaded(state) {
+            return !state.isLoadingContact && state.hasLoadedContact && Object.keys(state.contact).length !== 0
         }
     },
 }
