@@ -18,7 +18,7 @@
 
 <script>
 import { bitcoinService } from '@/services/bitcoin.service'
-import LineChart from '@/cmps/TradingLineChart.vue'
+import LineChart from '@/cmps/TradingChart.vue'
 
 export default {
     data() {
@@ -51,7 +51,7 @@ export default {
             const label = this.marketPriceHistory.description
             const styling = {
                 backgroundColor: '#64CCC5',
-                radius: 4,
+                radius: 3,
             }
             const data = this.marketPriceHistory.values.map(value => {
                 return {
@@ -59,12 +59,12 @@ export default {
                     y: value.y,
                 }
             })
-            console.log('data', data)
+            // console.log('data', data)
             return [{ label, data, ...styling }]
         }
     },
     components: {
-        LineChart,
+        LineChart
     }
 }
 </script>
@@ -93,14 +93,14 @@ export default {
             font-weight: 600;
         }
 
-        & .chart-container {
-            padding-block: 20px;
-            // width: 95vw;
-            width: 100%;
+        //  & .chart-container {
+        //   padding-block: 20px;
+        //    // width: 95vw;
+        //   width: 100%;
 
-            max-width: 1400px;
-            margin-inline: auto;
-        }
+        //    max-width: 1400px;
+        //    margin-inline: auto;
+        //  }
     }
 }
 </style>
