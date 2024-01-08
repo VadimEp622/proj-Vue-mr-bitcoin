@@ -62,16 +62,21 @@ export default {
 <!-- ================================================= -->
 
 
-<!-- TODO: 
-  consider adding to contact store - isRemovingContact/isContactRemoved, etc...,
+<!-- TODO (Contacts):
+I.  consider adding to contact store - isRemovingContact/isContactRemoved, etc...,
   for protection against multiple fast contact removes
+
+II. fix responsive styling for contact-list in mobile 
+
+III. make create contact 
+
+IV. add styling to back/return buttons in contact-details/contact-edit
 -->
-<!-- TODO: fix responsive styling for contact-list in mobile -->
-<!-- TODO: make create contact -->
-<!-- TODO: add styling to back/return buttons in stay-details -->
+
 <!-- TODO: shrink desktop header's nav items, to fit more -->
-<!-- TODO: ✔ refactor contact object so that name key will only store name string, instead of name object -->
-<!-- TODO: ✔ add media-query for layouts for mobile/tablet/desktop -->
+
+<!-- DONE: ✔ refactor contact object so that name key will only store name string, instead of name object -->
+<!-- DONE: ✔ add media-query for layouts for mobile/tablet/desktop -->
 
 
 <!-- ================================================= -->
@@ -104,11 +109,6 @@ II. redirect to login-page:
 III. log-in page, will not have header/footer, but a cool introduction ✔
 
 IV. homepage will be fancy, with a "welcome <user.name>" greeting, with user transactions history (and maybe more)
--->
-
-<!-- TODO (Trading Index):
-1. change trading page graph to lines
-2. make graph responsive (possible to enlarge/shrink without needing to refresh page)
 -->
 
 <!-- TODO (styling layouts):
