@@ -21,6 +21,7 @@ export default {
 
 <style lang="scss" scoped>
 .profile-home {
+    color: #cccccc;
     padding-block: 20px;
 }
 </style>

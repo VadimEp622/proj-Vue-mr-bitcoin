@@ -2,7 +2,7 @@
     <section class="trading-home full details-layout">
         <p v-if="exchangeRate" class="exchange-rate">Exchange Rate: <span>{{ exchangeRate }}</span></p>
         <section v-if="marketPriceHistory" class="market-price-history">
-            <h4>Market Price History:</h4>
+            <h4 class="fw500">Market Price History:</h4>
             <section class="chart-container">
                 <LineChart :datasets="makeDataset" />
             </section>
@@ -18,7 +18,7 @@
 
 <script>
 import { bitcoinService } from '@/services/bitcoin.service'
-import LineChart from '@/cmps/TradingLineChart.vue'
+import LineChart from '@/cmps/TradingChart.vue'
 
 export default {
     data() {
@@ -51,7 +51,7 @@ export default {
             const label = this.marketPriceHistory.description
             const styling = {
                 backgroundColor: '#64CCC5',
-                radius: 4,
+                radius: 3,
             }
             const data = this.marketPriceHistory.values.map(value => {
                 return {
@@ -59,12 +59,12 @@ export default {
                     y: value.y,
                 }
             })
-            console.log('data', data)
+            // console.log('data', data)
             return [{ label, data, ...styling }]
         }
     },
     components: {
-        LineChart,
+        LineChart
     }
 }
 </script>
@@ -72,6 +72,8 @@ export default {
 
 <style lang="scss">
 .trading-home {
+    color: rgb(220, 220, 220);
+
     & .exchange-rate {
         text-align: center;
         margin-block-start: 1.33em;
@@ -94,12 +96,13 @@ export default {
         }
 
         & .chart-container {
-            padding-block: 20px;
-            // width: 95vw;
-            width: 100%;
-
-            max-width: 1400px;
+            position: relative;
+            height: 100%;
+            max-height: 600px;
+            width: 90vw;
             margin-inline: auto;
+            display: flex;
+            justify-content: center;
         }
     }
 }
