@@ -17,6 +17,8 @@ export default {
 
 <style lang="scss" scoped>
 .home-page {
+  color: #cccccc;
+
   & .greeting {
     padding-block: 20px;
     white-space: nowrap;

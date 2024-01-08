@@ -2,7 +2,7 @@
     <section class="trading-home full details-layout">
         <p v-if="exchangeRate" class="exchange-rate">Exchange Rate: <span>{{ exchangeRate }}</span></p>
         <section v-if="marketPriceHistory" class="market-price-history">
-            <h4>Market Price History:</h4>
+            <h4 class="fw500">Market Price History:</h4>
             <section class="chart-container">
                 <LineChart :datasets="makeDataset" />
             </section>
@@ -72,6 +72,8 @@ export default {
 
 <style lang="scss">
 .trading-home {
+    color: rgb(220, 220, 220);
+
     & .exchange-rate {
         text-align: center;
         margin-block-start: 1.33em;
@@ -93,14 +95,15 @@ export default {
             font-weight: 600;
         }
 
-        //  & .chart-container {
-        //   padding-block: 20px;
-        //    // width: 95vw;
-        //   width: 100%;
-
-        //    max-width: 1400px;
-        //    margin-inline: auto;
-        //  }
+        & .chart-container {
+            position: relative;
+            height: 100%;
+            max-height: 600px;
+            width: 90vw;
+            margin-inline: auto;
+            display: flex;
+            justify-content: center;
+        }
     }
 }
 </style>
