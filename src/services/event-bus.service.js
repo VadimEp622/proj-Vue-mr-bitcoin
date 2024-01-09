@@ -21,6 +21,11 @@ export const eventBus = createEventEmitter()
 export function showSuccessMsg(txt) {
     eventBus.emit('userMsg', { txt, type: 'success' })
 }
+
 export function showErrorMsg(txt) {
     eventBus.emit('userMsg', { txt, type: 'fail' })
+}
+
+export function closeAppResponsiveMainMenu() {
+    eventBus.emit('closeAppResponsiveMainMenu', false)
 }

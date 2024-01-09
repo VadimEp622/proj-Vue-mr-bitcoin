@@ -16,12 +16,19 @@ import AppHeader from '@/cmps/AppHeader.vue'
 import AppFooter from '@/cmps/AppFooter.vue'
 import UserMsg from '@/cmps/AppUserMsg.vue'
 import ResponsiveMainMenu from '@/cmps/AppResponsiveMainMenu.vue'
+import { eventBus } from '@/services/event-bus.service.js'
 
 export default {
   data() {
     return {
       isMainMenuActive: false
     }
+  },
+  created() {
+    this.unListen = eventBus.on('closeAppResponsiveMainMenu', this.setMainMenu)
+  },
+  unmounted() {
+    this.unListen()
   },
   computed: {
     currentRoute() {
@@ -44,11 +51,11 @@ export default {
       this.isMainMenuActive = booleanState
     }
   },
-  watch: {
-    '$route'(to, from) {
-      this.isMainMenuActive = false
-    }
-  },
+  // watch: {
+  //   '$route'(to, from) {
+  //     this.isMainMenuActive = false
+  //   }
+  // },
   components: {
     AppHeader,
     AppFooter,
