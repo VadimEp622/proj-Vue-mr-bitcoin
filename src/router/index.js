@@ -8,7 +8,7 @@ import ContactDetails from '@/views/ContactDetails.vue'
 import ContactCreate from '@/views/ContactCreate.vue'
 import ContactEdit from '@/views/ContactEdit.vue'
 import store from '../store'
-import { closeAppResponsiveMainMenu } from '../services/event-bus.service'
+import { closeMainMenu } from '../services/event-bus.service'
 
 const router = createRouter({
   // history: createWebHistory(import.meta.env.BASE_URL),

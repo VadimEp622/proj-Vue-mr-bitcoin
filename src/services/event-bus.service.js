@@ -27,5 +27,5 @@ export function showErrorMsg(txt) {
 }
 
 export function closeMainMenu() {
-    eventBus.emit('closeMainMenu', false)
+    eventBus.emit('closeMainMenu')
 }

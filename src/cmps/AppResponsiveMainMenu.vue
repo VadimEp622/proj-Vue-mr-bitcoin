@@ -91,7 +91,7 @@ export default {
 <style lang="scss">
 .responsive-main-menu-container {
     visibility: hidden;
-    position: absolute;
+    position: fixed;
     inset: 0;
     overflow: hidden;
     transition: visibility .2s ease-in-out;

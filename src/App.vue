@@ -25,7 +25,7 @@ export default {
     }
   },
   created() {
-    this.unListen = eventBus.on('closeMainMenu', this.setMainMenu)
+    this.unListen = eventBus.on('closeMainMenu', () => this.setMainMenu(false))
   },
   unmounted() {
     this.unListen()
@@ -51,11 +51,6 @@ export default {
       this.isMainMenuActive = booleanState
     }
   },
-  // watch: {
-  //   '$route'(to, from) {
-  //     this.isMainMenuActive = false
-  //   }
-  // },
   components: {
     AppHeader,
     AppFooter,
@@ -81,8 +76,8 @@ IV. add styling to back/return buttons in contact-details/contact-edit
 -->
 
 <!-- TODO: shrink desktop header's nav items, to fit more -->
-<!-- TODO: investigate the working of event-bus, to use for updating isMainMenuActive, from router.js (in a before each, perhaps?) -->
 
+<!-- DONE: ✔ investigate the working of event-bus, to use for updating isMainMenuActive, from router.js (in a before each, perhaps?) -->
 <!-- DONE: ✔ refactor contact object so that name key will only store name string, instead of name object -->
 <!-- DONE: ✔ add media-query for layouts for mobile/tablet/desktop -->
 
