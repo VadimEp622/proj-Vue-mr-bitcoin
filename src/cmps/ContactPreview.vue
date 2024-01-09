@@ -39,6 +39,7 @@ export default {
 
 <style lang="scss" scoped>
 .contact-preview {
+    min-width: 0;
     display: flex;
     gap: 10px;
 
@@ -58,6 +59,7 @@ export default {
     }
 
     & .content {
+        min-width: 0;
         max-width: 230px;
         word-wrap: break-word;
 

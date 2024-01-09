@@ -44,6 +44,7 @@ export default {
         gap: 14px;
 
         & li.contact-preview-container {
+            min-width: 0;
             display: flex;
             justify-content: space-between;
             gap: 10px;

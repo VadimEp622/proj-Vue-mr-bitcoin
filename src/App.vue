@@ -68,7 +68,7 @@ export default {
 I.  consider adding to contact store - isRemovingContact/isContactRemoved, etc...,
   for protection against multiple fast contact removes
 
-II. fix responsive styling for contact-list in mobile 
+II. ✔ fix responsive styling for contact-list in mobile 
 
 III. make create contact 
 
