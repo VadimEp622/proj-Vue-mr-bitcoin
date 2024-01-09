@@ -26,6 +26,6 @@ export function showErrorMsg(txt) {
     eventBus.emit('userMsg', { txt, type: 'fail' })
 }
 
-export function closeAppResponsiveMainMenu() {
-    eventBus.emit('closeAppResponsiveMainMenu', false)
+export function closeMainMenu() {
+    eventBus.emit('closeMainMenu', false)
 }

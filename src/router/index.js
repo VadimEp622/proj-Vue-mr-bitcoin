@@ -76,7 +76,7 @@ router.beforeEach((to, from, next) => {
 })
 
 router.afterEach((to, from) => {
-  closeAppResponsiveMainMenu()
+  closeMainMenu()
 })
 
 export default router

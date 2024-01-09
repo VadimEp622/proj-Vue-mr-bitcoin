@@ -25,7 +25,7 @@ export default {
     }
   },
   created() {
-    this.unListen = eventBus.on('closeAppResponsiveMainMenu', this.setMainMenu)
+    this.unListen = eventBus.on('closeMainMenu', this.setMainMenu)
   },
   unmounted() {
     this.unListen()
