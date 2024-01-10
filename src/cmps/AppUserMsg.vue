@@ -30,7 +30,7 @@ export default {
         },
     },
     created() {
-        this.unListen = eventBus.on('user-msg', this.showMsg)
+        this.unListen = eventBus.on('userMsg', this.showMsg)
     },
     unmounted() {
         this.unListen()
@@ -39,7 +39,6 @@ export default {
 </script>
 
 <style lang="scss">
-/* we will explain what these classes do next! */
 .user-msg {
     transform-origin: top;
 }

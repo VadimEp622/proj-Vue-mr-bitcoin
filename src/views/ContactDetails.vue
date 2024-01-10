@@ -6,8 +6,8 @@
             </section>
             <section class="picture-container flex justify-center">
                 <section class="picture">
-                    <!-- <IconHandler :name="ICON_DEFAULT_USER" /> -->
-                    <img :src="contactPicture" alt="contact">
+                    <img v-if="contactPicture" :src="contactPicture" alt="contact">
+                    <IconHandler v-else :name="ICON_DEFAULT_USER" />
                 </section>
             </section>
             <section class="details clr-gray-2 text-align-center">
@@ -37,9 +37,9 @@
 
 
 <script>
+import { mapGetters, mapActions } from 'vuex'
 import IconHandler from '@/cmps/app-reusable/IconHandler.vue'
 import { ICON_DEFAULT_USER } from '@/services/icon-handler.service'
-import { mapGetters } from 'vuex'
 import Loader from '@/cmps/app-reusable/loader.vue'
 
 export default {
@@ -53,15 +53,15 @@ export default {
         ]),
         contactId() { return this.$route.params.id },
         contactName() { return this.contact.name },
-        contactPicture() { return this.contact.picture.large },
+        contactPicture() { return this.contact.picture?.large },
         contactPhone() { return this.contact.phone },
         contactEmail() { return this.contact.email },
         ICON_DEFAULT_USER() { return ICON_DEFAULT_USER }
     },
     methods: {
-        loadContact(contactId) {
-            this.$store.dispatch({ type: 'loadContact', contactId })
-        },
+        ...mapActions([
+            'loadContact'
+        ]),
         redirectTo(pathName) {
             this.$router.push(pathName)
         },

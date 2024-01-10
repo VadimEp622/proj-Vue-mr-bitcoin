@@ -5,7 +5,7 @@
 
 <script>
 import { defineAsyncComponent, markRaw } from 'vue'
-import { ICON_DEFAULT_USER, ICON_HAMBURGER } from '../../services/icon-handler.service'
+import { ICON_DEFAULT_USER, ICON_HAMBURGER } from '@/services/icon-handler.service'
 
 
 export default {

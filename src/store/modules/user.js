@@ -14,7 +14,7 @@ export default {
         }
     },
     actions: {
-        async login({ commit }, { name }) {
+        async login({ commit }, name) {
             try {
                 const user = await authService.login(name)
                 commit({ type: 'setUser', user })

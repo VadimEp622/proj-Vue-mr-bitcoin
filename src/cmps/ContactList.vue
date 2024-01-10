@@ -1,6 +1,6 @@
 <template>
     <section class="contact-list">
-        <TransitionGroup name="list" tag="ul">
+        <TransitionGroup v-if="contacts.length !== 0" name="list" tag="ul">
             <li class="contact-preview-container bg-clr-gold-1" v-for="contact in contacts" :key="contact._id">
                 <ContactPreview :contact="contact" />
                 <section class="buttons">
@@ -9,6 +9,9 @@
                 </section>
             </li>
         </TransitionGroup>
+        <section v-else class="text-align-center clr-gray-0">
+            <span>No contacts (Refresh to fetch new)</span>
+        </section>
     </section>
 </template>
 
@@ -44,6 +47,7 @@ export default {
         gap: 14px;
 
         & li.contact-preview-container {
+            min-width: 0;
             display: flex;
             justify-content: space-between;
             gap: 10px;

@@ -4,8 +4,8 @@
         <section class="form-contact">
             <section class="picture-container flex justify-center">
                 <section class="picture">
-                    <!-- <IconHandler :name="ICON_DEFAULT_USER" /> -->
-                    <img :src="initialValues.picture.large" alt="contact">
+                    <img v-if="initialValues?.picture" :src="initialValues.picture.large" alt="contact">
+                    <IconHandler v-else :name="ICON_DEFAULT_USER" />
                 </section>
             </section>
             <section class="details">

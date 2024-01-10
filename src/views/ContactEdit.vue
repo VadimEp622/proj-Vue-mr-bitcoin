@@ -16,8 +16,11 @@
 </template>
 
 
+<!-- TODO: see if there's a better way to do: this.redirectTo(`/contact/${contactId}`), maybe with something like push-history() -->
+
+
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 import FormContact from '@/cmps/app-reusable/forms/FormContact.vue'
 import Loader from '@/cmps/app-reusable/loader.vue'
 
@@ -37,12 +40,7 @@ export default {
             'isContactLoaded',
             'isUpdatingContacts'
         ]),
-        contactId() { return this.$route.params.id; },
-        contactName() { return this.contact.name },
-        contactPicture() { return this.contact.picture.large },
-        contactPhone() { return this.contact.phone },
-        contactEmail() { return this.contact.email },
-        ICON_DEFAULT_USER() { return ICON_DEFAULT_USER }
+        contactId() { return this.$route.params.id }
     },
     watch: {
         isContactLoaded(isContactLoaded) {
@@ -57,12 +55,10 @@ export default {
         }
     },
     methods: {
-        loadContact(contactId) {
-            this.$store.dispatch({ type: 'loadContact', contactId })
-        },
-        updateContact(contact) {
-            this.$store.dispatch({ type: 'updateContact', contact })
-        },
+        ...mapActions([
+            'loadContact',
+            'updateContact'
+        ]),
         redirectTo(pathName) {
             this.$router.push(pathName)
         },
@@ -90,7 +86,7 @@ export default {
     & .return-btn-container {
         margin-block-start: 20px;
     }
-    
+
     & .submit-modal {
         margin-block-start: 20px;
     }

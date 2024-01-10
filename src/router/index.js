@@ -8,6 +8,7 @@ import ContactDetails from '@/views/ContactDetails.vue'
 import ContactCreate from '@/views/ContactCreate.vue'
 import ContactEdit from '@/views/ContactEdit.vue'
 import store from '../store'
+import { closeMainMenu } from '../services/event-bus.service'
 
 const router = createRouter({
   // history: createWebHistory(import.meta.env.BASE_URL),
@@ -22,7 +23,7 @@ const router = createRouter({
       path: '/login',
       name: 'login',
       // component: Login,
-      component: ()=> import('@/views/Login.vue'),
+      component: () => import('@/views/Login.vue'),
       beforeEnter: (to, from, next) => {
         if (store.state.user.user) next({ name: 'home' })
         else next()
@@ -72,6 +73,10 @@ const router = createRouter({
 router.beforeEach((to, from, next) => {
   if (to.name !== 'login' && !store.state.user.user) next({ name: 'login' })
   else next()
+})
+
+router.afterEach((to, from) => {
+  closeMainMenu()
 })
 
 export default router

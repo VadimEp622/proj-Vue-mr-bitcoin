@@ -2,7 +2,7 @@
     <section class="login-page full">
         <section class="greeting flex column justify-center height-100-percent">
             <h2 class="text-align-center clr-white">Welcome to Mr. Bitcoin!</h2>
-            <FormLogin :initial-values="initialValues" @onSubmit="onLogin" />
+            <FormLogin :initial-values="initialValues" @onSubmit="onSubmit" />
         </section>
     </section>
 </template>
@@ -17,6 +17,7 @@
 
 <script>
 import FormLogin from '@/cmps/app-reusable/forms/FormLogin.vue'
+import { mapActions, mapGetters } from 'vuex'
 
 export default {
     data() {
@@ -27,18 +28,23 @@ export default {
         }
     },
     computed: {
-        loggedinUser() { return this.$store.getters.user }
+        ...mapGetters([
+            'user'
+        ])
     },
     methods: {
-        onLogin(params) {
-            this.$store.dispatch({ type: 'login', name: params.name })
+        ...mapActions([
+            'login'
+        ]),
+        onSubmit(params) {
+            this.login(params.name)
         },
         redirectTo(pathName) {
             this.$router.push(pathName)
         }
     },
     watch: {
-        loggedinUser(user) {
+        user(user) {
             if (user && Object.keys(user).length > 0)
                 this.redirectTo('/')
         }

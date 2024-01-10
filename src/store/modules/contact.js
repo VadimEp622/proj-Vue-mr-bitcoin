@@ -29,6 +29,9 @@ export default {
             const idx = state.contacts.findIndex(contactItem => contactItem._id === contact._id)
             state.contacts.splice(idx, 1, contact)
         },
+        addContact(state, { contact }) {
+            state.contacts.push(contact)
+        },
         setIsLoadingContacts(state, { isLoadingContacts }) {
             state.isLoadingContact = isLoadingContacts
         },
@@ -60,7 +63,7 @@ export default {
                 commit({ type: 'setIsLoadingContacts', isLoadingContacts: false })
             }
         },
-        async loadContact({ commit }, { contactId }) {
+        async loadContact({ commit }, contactId) {
             try {
                 commit({ type: 'setHasLoadedContact', hasLoadedContact: false })
                 commit({ type: 'setIsLoadingContact', isLoadingContact: true })
@@ -73,7 +76,7 @@ export default {
                 commit({ type: 'setIsLoadingContact', isLoadingContact: false })
             }
         },
-        async removeContact({ commit }, { contactId }) {
+        async removeContact({ commit }, contactId) {
             try {
                 await contactService.removeContact(contactId)
                 commit({ type: 'removeContact', contactId })
@@ -83,7 +86,7 @@ export default {
                 showErrorMsg('Failed removing contact')
             }
         },
-        async updateContact({ commit }, { contact }) {
+        async updateContact({ commit }, contact) {
             try {
                 commit({ type: 'setIsUpdatingContact', isUpdatingContacts: true })
                 const updatedContact = await contactService.updateContact(contact)
@@ -92,6 +95,19 @@ export default {
             } catch (err) {
                 console.log('Failed updating contact', err)
                 showErrorMsg('Failed updating contact')
+            } finally {
+                commit({ type: 'setIsUpdatingContact', isUpdatingContacts: false })
+            }
+        },
+        async createContact({ commit }, contact) {
+            try {
+                commit({ type: 'setIsUpdatingContact', isUpdatingContacts: true })
+                const createdContact = await contactService.createContact(contact)
+                commit({ type: 'addContact', contact: createdContact })
+                showSuccessMsg('Contact created')
+            } catch (err) {
+                console.log('Failed creating contact', err)
+                showErrorMsg('Failed creating contact')
             } finally {
                 commit({ type: 'setIsUpdatingContact', isUpdatingContacts: false })
             }

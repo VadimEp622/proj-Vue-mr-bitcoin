@@ -2,23 +2,17 @@
     <section class="contact-preview">
         <section class="avatar-container">
             <section class="avatar">
-                <!-- <IconHandler :name="ICON_DEFAULT_USER" /> -->
-                <img :src="contact.picture.medium" alt="contact">
+                <img v-if="contact?.picture" :src="contact.picture.medium" alt="contact">
+                <IconHandler v-else :name="ICON_DEFAULT_USER" />
             </section>
         </section>
         <section class="content">
-            <p> {{ contact.name }}</p>
+            <p class="capitalize"> {{ contact.name }}</p>
             <p> {{ contact.email }}</p>
             <p> {{ contact.phone }}</p>
         </section>
     </section>
 </template>
-
-
-<!-- TODO: 
-figure out how to shrink contact-preview's .content even more, when screen width shrinks, instead of overflow/horizontal-scroll appearing
-maybe media-query for contact-list ul's styling of: grid-template-columns: repeat(auto-fit, minmax(auto, 400px)); to be replace with something else?
--->
 
 
 <script>
@@ -39,6 +33,7 @@ export default {
 
 <style lang="scss" scoped>
 .contact-preview {
+    min-width: 0;
     display: flex;
     gap: 10px;
 
@@ -58,6 +53,7 @@ export default {
     }
 
     & .content {
+        min-width: 0;
         max-width: 230px;
         word-wrap: break-word;
 

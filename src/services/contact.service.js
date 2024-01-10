@@ -7,7 +7,9 @@ export const contactService = {
     query,
     getContactById,
     removeContact,
-    updateContact
+    updateContact,
+    createContact,
+    getEmptyContact,
 }
 
 
@@ -32,6 +34,10 @@ function removeContact(contactId) {
 
 function updateContact(contact) {
     return storageService.put(CONTACT_KEY, contact)
+}
+
+function createContact(contact) {
+    return storageService.post(CONTACT_KEY, contact)
 }
 
 function getEmptyContact() {
