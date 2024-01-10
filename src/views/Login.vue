@@ -17,7 +17,7 @@
 
 <script>
 import FormLogin from '@/cmps/app-reusable/forms/FormLogin.vue'
-import { mapActions } from 'vuex'
+import { mapActions, mapGetters } from 'vuex'
 
 export default {
     data() {

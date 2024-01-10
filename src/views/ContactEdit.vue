@@ -16,6 +16,9 @@
 </template>
 
 
+<!-- TODO: see if there's a better way to do: this.redirectTo(`/contact/${contactId}`), maybe with something like push-history() -->
+
+
 <script>
 import { mapGetters, mapActions } from 'vuex'
 import FormContact from '@/cmps/app-reusable/forms/FormContact.vue'
@@ -37,12 +40,7 @@ export default {
             'isContactLoaded',
             'isUpdatingContacts'
         ]),
-        contactId() { return this.$route.params.id; },
-        contactName() { return this.contact.name },
-        contactPicture() { return this.contact.picture.large },
-        contactPhone() { return this.contact.phone },
-        contactEmail() { return this.contact.email },
-        ICON_DEFAULT_USER() { return ICON_DEFAULT_USER }
+        contactId() { return this.$route.params.id }
     },
     watch: {
         isContactLoaded(isContactLoaded) {

@@ -6,8 +6,8 @@
             </section>
             <section class="picture-container flex justify-center">
                 <section class="picture">
-                    <!-- <IconHandler :name="ICON_DEFAULT_USER" /> -->
-                    <img :src="contactPicture" alt="contact">
+                    <img v-if="contactPicture" :src="contactPicture" alt="contact">
+                    <IconHandler v-else :name="ICON_DEFAULT_USER" />
                 </section>
             </section>
             <section class="details clr-gray-2 text-align-center">
@@ -53,7 +53,7 @@ export default {
         ]),
         contactId() { return this.$route.params.id },
         contactName() { return this.contact.name },
-        contactPicture() { return this.contact.picture.large },
+        contactPicture() { return this.contact.picture?.large },
         contactPhone() { return this.contact.phone },
         contactEmail() { return this.contact.email },
         ICON_DEFAULT_USER() { return ICON_DEFAULT_USER }

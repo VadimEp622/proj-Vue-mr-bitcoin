@@ -1,12 +1,9 @@
 <template>
     <section class="contact-index full details-layout">
-        <!-- <section>
-            <p>Hi from Contact Index</p>
-            <p>Here will soon be: add-contact (button) & filter</p>
-            <section>
-                <button class="btn-create" @click="onCreate">Create</button>
-            </section>
-        </section> -->
+        <section class="create-filter-container flex justify-center">
+            <button class="btn-create" @click="onCreate">New contact</button>
+            <!-- Here will soon be filter -->
+        </section>
         <section v-if="loggedinUser" class="contact-list-container">
             <ContactList v-if="isContactsLoaded" @remove="removeContact" :contacts="contacts" />
             <Loader v-else />
@@ -62,6 +59,10 @@ export default {
 <style lang="scss" scoped>
 .contact-index {
     align-content: start;
+
+    & .create-filter-container {
+        margin-block: 20px;
+    }
 
     & .contact-list-container {
         margin-block: 20px;
