@@ -4,7 +4,7 @@
             <button class="btn-create" @click="onCreate">New contact</button>
             <!-- Here will soon be filter -->
         </section>
-        <section v-if="loggedinUser" class="contact-list-container">
+        <section v-if="user" class="contact-list-container">
             <ContactList v-if="isContactsLoaded" @remove="removeContact" :contacts="contacts" />
             <Loader v-else />
         </section>
@@ -32,9 +32,10 @@ export default {
     computed: {
         ...mapGetters([
             'contacts',
-            'isContactsLoaded'
+            'isContactsLoaded',
+            'user'
         ]),
-        loggedinUser() { return this.$store.getters.user }
+        // loggedinUser() { return this.$store.getters.user }
     },
     methods: {
         ...mapActions([

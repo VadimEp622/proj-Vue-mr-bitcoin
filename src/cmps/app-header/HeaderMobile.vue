@@ -15,7 +15,7 @@ import { ICON_HAMBURGER } from '../../services/icon-handler.service'
 import IconHandler from '../app-reusable/IconHandler.vue'
 
 export default {
-    props: { loggedinUser: Object, required: true },
+    props: { user: Object, required: true },
     computed: {
         ICON_HAMBURGER() { return ICON_HAMBURGER }
     },

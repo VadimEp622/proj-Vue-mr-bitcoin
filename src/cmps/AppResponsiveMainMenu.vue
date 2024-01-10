@@ -4,13 +4,13 @@
         <section class="main-menu-container">
             <section class="main-menu">
 
-                <section v-if="loggedinUser" class="logged-in-user-preview">
+                <section v-if="user" class="logged-in-user-preview">
                     <section class="icon-and-name flex align-center">
                         <section class="user-icon">
                             <IconHandler :name="ICON_DEFAULT_USER" />
                         </section>
                         <section class="user-name">
-                            <p class="capitalize">{{ loggedinUser.name }}</p>
+                            <p class="capitalize">{{ user.name }}</p>
                         </section>
                     </section>
                     <section class="balance">
@@ -59,17 +59,19 @@
 import { ICON_DEFAULT_USER } from "@/services/icon-handler.service.js"
 import IconHandler from "@/cmps/app-reusable/IconHandler.vue"
 import { RouterLink } from "vue-router"
-import { mapActions } from "vuex"
+import { mapActions, mapGetters } from "vuex"
 
 export default {
     props: { isMainMenuActive: Boolean, required: true },
     computed: {
+        ...mapGetters([
+            'user'
+        ]),
         mainMenuClass() {
             return {
                 'main-menu-active': this.isMainMenuActive
             }
         },
-        loggedinUser() { return this.$store.getters.user },
         ICON_DEFAULT_USER() { return ICON_DEFAULT_USER }
     },
     methods: {

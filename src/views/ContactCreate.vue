@@ -2,7 +2,7 @@
     <section v-if="initialValues" class="contact-create-container full main-layout">
         <section class="contact-create">
             <section class="return-btn-container flex justify-start">
-                <button class="return-btn" @click="onReturn(contactId)">Return</button>
+                <button class="return-btn" @click="onReturn">Return</button>
             </section>
             <FormContact :initial-values="initialValues" @onSubmit="onSave" />
             <section v-if="isFormSubmitted" class="submit-modal flex justify-center align-center">

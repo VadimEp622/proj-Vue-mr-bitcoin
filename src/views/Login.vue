@@ -28,7 +28,9 @@ export default {
         }
     },
     computed: {
-        loggedinUser() { return this.$store.getters.user }
+        ...mapGetters([
+            'user'
+        ])
     },
     methods: {
         ...mapActions([
@@ -42,7 +44,7 @@ export default {
         }
     },
     watch: {
-        loggedinUser(user) {
+        user(user) {
             if (user && Object.keys(user).length > 0)
                 this.redirectTo('/')
         }

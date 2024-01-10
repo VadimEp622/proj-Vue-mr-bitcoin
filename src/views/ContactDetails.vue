@@ -37,9 +37,9 @@
 
 
 <script>
+import { mapGetters, mapActions } from 'vuex'
 import IconHandler from '@/cmps/app-reusable/IconHandler.vue'
 import { ICON_DEFAULT_USER } from '@/services/icon-handler.service'
-import { mapGetters, mapActions } from 'vuex'
 import Loader from '@/cmps/app-reusable/loader.vue'
 
 export default {

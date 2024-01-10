@@ -1,16 +1,20 @@
 <template>
   <section class="home-page full main-layout">
-    <p v-if="loggedinUser" class="greeting text-align-center">Welcome to Home Page, <span>{{ loggedinUser.name }}</span>
+    <p v-if="user" class="greeting text-align-center">Welcome to Home Page, <span>{{ user.name }}</span>
     </p>
   </section>
 </template>
 
 
 <script>
+import { mapGetters } from 'vuex'
+
 export default {
   computed: {
-    loggedinUser() { return this.$store.getters.user }
-  }
+    ...mapGetters([
+      'user'
+    ])
+  },
 }
 </script>
 

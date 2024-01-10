@@ -3,8 +3,8 @@
         <section class="logo fs34 fw800 clr-gold-0 flex height-100-percent">
             <RouterLink to="/" class="flex align-center pd-bl-10 pd-in-ed-10"><span>Mr. Bitcoin</span></RouterLink>
         </section>
-        <section v-if="loggedinUser" class="greeting flex align-center gap-10">
-            <p>Greetings, <span class="clr-gold-0 fw600">{{ loggedinUser.name }}</span></p>
+        <section v-if="user" class="greeting flex align-center gap-10">
+            <p>Greetings, <span class="clr-gold-0 fw600">{{ user.name }}</span></p>
             <button @click="onLogout">Logout</button>
         </section>
         <nav class="fw600 clr-gray-0 height-100-percent">
@@ -39,7 +39,7 @@
 <script>
 
 export default {
-    props: { loggedinUser: Object, required: true },
+    props: { user: Object, required: true },
     methods: {
         onLogout() {
             this.$emit('logout')
