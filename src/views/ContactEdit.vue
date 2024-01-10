@@ -5,7 +5,7 @@
                 <button class="return-btn" @click="onReturn(contactId)">Return</button>
             </section>
             <FormContact :initial-values="initialValues" @onSubmit="onSave" />
-            <section v-if="isFormSubmitted" class="submit-modal flex justify-center align-center">
+            <section v-if="isFormSubmitted" class="submit-modal flex justify-center align-center clr-gray-0">
                 <span>Submitting...</span>
             </section>
         </section>

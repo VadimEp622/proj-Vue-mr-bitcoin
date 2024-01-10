@@ -11,32 +11,32 @@
             <section class="details">
                 <section class="name-container flex gap-10">
                     <label for="name" class="clr-gray-2">Name: </label>
-                    <section class="full flex">
+                    <section class="full">
                         <Field class="width-100-percent" name="name" type="text" placeholder="Enter name"
                             autocomplete="off" />
-                        <section class="error-container pos-rel white-space-nowrap mg-in-st-5">
-                            <ErrorMessage class="error clr-gray-0 pos-abs" name="name" />
-                        </section>
+                        <Transition>
+                            <ErrorMessage class="error clr-gray-0 dis-block clr-red-0" name="name" />
+                        </Transition>
                     </section>
                 </section>
                 <section class="email-container flex gap-10">
                     <label for="email" class="clr-gray-2">Email: </label>
-                    <section class="full flex">
+                    <section class="full">
                         <Field class="width-100-percent" name="email" type="text" placeholder="Enter email"
                             autocomplete="off" />
-                        <section class="error-container pos-rel white-space-nowrap mg-in-st-5">
-                            <ErrorMessage class="error clr-gray-0 pos-abs" name="email" />
-                        </section>
+                        <Transition>
+                            <ErrorMessage class="error clr-gray-0 dis-block clr-red-0" name="email" />
+                        </Transition>
                     </section>
                 </section>
                 <section class="phone-container flex gap-10">
                     <label for="phone" class="clr-gray-2">Phone: </label>
-                    <section class="full flex">
+                    <section class="full">
                         <Field class="width-100-percent" name="phone" type="text" placeholder="Enter phone"
                             autocomplete="off" />
-                        <section class="error-container pos-rel white-space-nowrap mg-in-st-5">
-                            <ErrorMessage class="error clr-gray-0 pos-abs" name="phone" />
-                        </section>
+                        <Transition>
+                            <ErrorMessage class="error clr-gray-0 dis-block clr-red-0" name="phone" />
+                        </Transition>
                     </section>
                 </section>
             </section>
@@ -47,9 +47,6 @@
         </section>
     </Form>
 </template>
-
-
-<!-- TODO (urgent): make form validation errors appear below Field (either must reserve space, or animate/transition to smoothly relocate other fields) -->
 
 
 <script setup>
@@ -84,7 +81,8 @@ function onSubmit(params) {
 <style lang="scss">
 .form-contact-container {
     & .form-contact {
-        min-width: 300px;
+        width: 300px;
+        max-width: 300px;
 
         & .picture-container {
             margin-block: 20px 40px;
@@ -105,11 +103,33 @@ function onSubmit(params) {
             & label {
                 width: 50px;
             }
+
+            & .error-container {
+                transform-origin: top;
+
+                & .error {
+                    word-break: break-all;
+                }
+            }
         }
 
         & .btn-container {
             margin-block-start: 20px;
         }
+
+    }
+
+    & .v-enter-active,
+    & .v-leave-active {
+        transition:
+            scale 0.3s ease-in-out,
+            opacity 0.3s ease-in-out;
+    }
+
+    & .v-enter-from,
+    & .v-leave-to {
+        scale: 1 0;
+        opacity: 0;
     }
 }
 </style>
