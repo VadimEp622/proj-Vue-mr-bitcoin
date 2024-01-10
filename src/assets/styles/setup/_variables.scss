@@ -107,7 +107,8 @@ $map-margin-inline: (
 );
 
 $map-margin-inline-start: (
-    "0": map-get($map-spacing, "0")
+    "0": map-get($map-spacing, "0"),
+    "5": map-get($map-spacing, "5")
 );
 
 $map-margin-inline-end: (

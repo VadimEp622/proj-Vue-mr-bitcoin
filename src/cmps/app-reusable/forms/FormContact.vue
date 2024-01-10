@@ -14,8 +14,8 @@
                     <section class="full flex">
                         <Field class="width-100-percent" name="name" type="text" placeholder="Enter name"
                             autocomplete="off" />
-                        <section class="error-container">
-                            <ErrorMessage class="error clr-gray-0" name="name" />
+                        <section class="error-container pos-rel white-space-nowrap mg-in-st-5">
+                            <ErrorMessage class="error clr-gray-0 pos-abs" name="name" />
                         </section>
                     </section>
                 </section>
@@ -24,8 +24,8 @@
                     <section class="full flex">
                         <Field class="width-100-percent" name="email" type="text" placeholder="Enter email"
                             autocomplete="off" />
-                        <section class="error-container">
-                            <ErrorMessage class="error clr-gray-0" name="email" />
+                        <section class="error-container pos-rel white-space-nowrap mg-in-st-5">
+                            <ErrorMessage class="error clr-gray-0 pos-abs" name="email" />
                         </section>
                     </section>
                 </section>
@@ -34,8 +34,8 @@
                     <section class="full flex">
                         <Field class="width-100-percent" name="phone" type="text" placeholder="Enter phone"
                             autocomplete="off" />
-                        <section class="error-container">
-                            <ErrorMessage class="error clr-gray-0" name="phone" />
+                        <section class="error-container pos-rel white-space-nowrap mg-in-st-5">
+                            <ErrorMessage class="error clr-gray-0 pos-abs" name="phone" />
                         </section>
                     </section>
                 </section>
@@ -49,7 +49,7 @@
 </template>
 
 
-<!-- TODO: make validation schema for email only (phone number are currently inconsistent in format) -->
+<!-- TODO (urgent): make form validation errors appear below Field (either must reserve space, or animate/transition to smoothly relocate other fields) -->
 
 
 <script setup>
@@ -59,10 +59,15 @@ import { Form, Field, ErrorMessage } from 'vee-validate'
 import * as yup from 'yup'
 
 const schema = yup.object({
-    name: yup.string().required().min(1).max(20).matches(
+    name: yup.string().required('required').max(20).matches(
         /^([A-Za-z\u00C0-\u00D6\u00D8-\u00f6\u00f8-\u00ff\s]*)$/gi,
-        'Name can only contain Latin letters.'
-    )
+        'name can only contain Latin letters.'
+    ),
+    email: yup.string().required('required').min(3).max(30).matches(
+        /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/gi,
+        'enter valid email'
+    ),
+    phone: yup.string().required('required').min(1).max(20, 'phone number must be at most 20 characters')
 })
 const props = defineProps({
     initialValues: Object
