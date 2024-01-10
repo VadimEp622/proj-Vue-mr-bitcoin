@@ -17,7 +17,7 @@
 
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 import FormContact from '@/cmps/app-reusable/forms/FormContact.vue'
 import Loader from '@/cmps/app-reusable/loader.vue'
 
@@ -57,12 +57,10 @@ export default {
         }
     },
     methods: {
-        loadContact(contactId) {
-            this.$store.dispatch({ type: 'loadContact', contactId })
-        },
-        updateContact(contact) {
-            this.$store.dispatch({ type: 'updateContact', contact })
-        },
+        ...mapActions([
+            'loadContact',
+            'updateContact'
+        ]),
         redirectTo(pathName) {
             this.$router.push(pathName)
         },
@@ -90,7 +88,7 @@ export default {
     & .return-btn-container {
         margin-block-start: 20px;
     }
-    
+
     & .submit-modal {
         margin-block-start: 20px;
     }

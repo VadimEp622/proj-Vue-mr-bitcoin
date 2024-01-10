@@ -39,7 +39,7 @@
 <script>
 import IconHandler from '@/cmps/app-reusable/IconHandler.vue'
 import { ICON_DEFAULT_USER } from '@/services/icon-handler.service'
-import { mapGetters } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 import Loader from '@/cmps/app-reusable/loader.vue'
 
 export default {
@@ -59,9 +59,9 @@ export default {
         ICON_DEFAULT_USER() { return ICON_DEFAULT_USER }
     },
     methods: {
-        loadContact(contactId) {
-            this.$store.dispatch({ type: 'loadContact', contactId })
-        },
+        ...mapActions([
+            'loadContact'
+        ]),
         redirectTo(pathName) {
             this.$router.push(pathName)
         },

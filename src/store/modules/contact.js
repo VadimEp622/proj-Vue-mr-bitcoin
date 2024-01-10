@@ -60,7 +60,7 @@ export default {
                 commit({ type: 'setIsLoadingContacts', isLoadingContacts: false })
             }
         },
-        async loadContact({ commit }, { contactId }) {
+        async loadContact({ commit }, contactId) {
             try {
                 commit({ type: 'setHasLoadedContact', hasLoadedContact: false })
                 commit({ type: 'setIsLoadingContact', isLoadingContact: true })
@@ -73,7 +73,7 @@ export default {
                 commit({ type: 'setIsLoadingContact', isLoadingContact: false })
             }
         },
-        async removeContact({ commit }, { contactId }) {
+        async removeContact({ commit }, contactId) {
             try {
                 await contactService.removeContact(contactId)
                 commit({ type: 'removeContact', contactId })
@@ -83,7 +83,7 @@ export default {
                 showErrorMsg('Failed removing contact')
             }
         },
-        async updateContact({ commit }, { contact }) {
+        async updateContact({ commit }, contact) {
             try {
                 commit({ type: 'setIsUpdatingContact', isUpdatingContacts: true })
                 const updatedContact = await contactService.updateContact(contact)

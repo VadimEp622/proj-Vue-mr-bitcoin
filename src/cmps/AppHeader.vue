@@ -9,6 +9,7 @@
 <script>
 import HeaderDesktop from './app-header/HeaderDesktop.vue'
 import HeaderMobile from './app-header/HeaderMobile.vue'
+import { mapActions } from 'vuex'
 
 export default {
     props: { layoutClass: Object, required: true },
@@ -21,9 +22,9 @@ export default {
         loggedinUser() { return this.$store.getters.user },
     },
     methods: {
-        logout() {
-            this.$store.dispatch({ type: 'logout' })
-        },
+        ...mapActions([
+            'logout'
+        ]),
         redirectTo(pathName) {
             this.$router.push(pathName)
         },

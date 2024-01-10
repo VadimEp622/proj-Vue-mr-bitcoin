@@ -24,13 +24,13 @@
 
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 import ContactList from '@/cmps/ContactList.vue'
 import Loader from '@/cmps/app-reusable/loader.vue'
 
 export default {
     created() {
-        this.getContacts()
+        this.loadContacts()
     },
     computed: {
         ...mapGetters([
@@ -40,12 +40,10 @@ export default {
         loggedinUser() { return this.$store.getters.user }
     },
     methods: {
-        getContacts() {
-            this.$store.dispatch({ type: 'loadContacts' })
-        },
-        removeContact(contactId) {
-            this.$store.dispatch({ type: 'removeContact', contactId })
-        },
+        ...mapActions([
+            'loadContacts',
+            'removeContact'
+        ]),
         onCreate() {
             this.redirectTo('/contact/create')
         },

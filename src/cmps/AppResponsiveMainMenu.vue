@@ -59,6 +59,7 @@
 import { ICON_DEFAULT_USER } from "@/services/icon-handler.service.js"
 import IconHandler from "@/cmps/app-reusable/IconHandler.vue"
 import { RouterLink } from "vue-router"
+import { mapActions } from "vuex"
 
 export default {
     props: { isMainMenuActive: Boolean, required: true },
@@ -72,8 +73,11 @@ export default {
         ICON_DEFAULT_USER() { return ICON_DEFAULT_USER }
     },
     methods: {
+        ...mapActions([
+            'logout'
+        ]),
         onLogout() {
-            this.$store.dispatch({ type: 'logout' })
+            this.logout()
             this.onSetMainMenu(false)
         },
         onSetMainMenu(booleanState) {
