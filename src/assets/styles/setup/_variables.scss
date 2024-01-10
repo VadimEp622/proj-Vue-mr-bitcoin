@@ -21,6 +21,9 @@ $map-clr: (
         "gray-0": #dcdcdc,
         "gray-1": #858f7e,
         "gray-2": #8f98a0
+    ),
+    "main-red": (
+        "red-0": #f98460
     )
 );
 
@@ -107,7 +110,8 @@ $map-margin-inline: (
 );
 
 $map-margin-inline-start: (
-    "0": map-get($map-spacing, "0")
+    "0": map-get($map-spacing, "0"),
+    "5": map-get($map-spacing, "5")
 );
 
 $map-margin-inline-end: (

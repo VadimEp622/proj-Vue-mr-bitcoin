@@ -32,8 +32,8 @@ export default {
 <style lang="scss" scoped>
 .app-header-mobile {
     & .hamburger-icon {
-        width: 20px;
-        height: 20px;
+        // width: 20px;
+        // height: 20px;
         padding-inline: 10px;
 
         &:hover {

@@ -69,8 +69,6 @@ I.  consider adding to contact store - isRemovingContact/isContactRemoved, etc..
   for protection against multiple fast contact removes
 
 II. add styling to back/return buttons in contact-details/contact-edit
-
-III. add form protection for email, and number(?) (number - must contact EITHER aA-zZ OR 0-9, at least 1 char - for the time being)
 -->
 
 <!-- TODO: shrink desktop header's nav items, EVEN MORE, to fit more routes -->
@@ -79,8 +77,9 @@ III. add form protection for email, and number(?) (number - must contact EITHER 
 <!-- DONE: ✔ refactor contact object so that name key will only store name string, instead of name object -->
 <!-- DONE: ✔ add media-query for layouts for mobile/tablet/desktop -->
 <!-- DONE (Contacts):
-I. ✔ fix responsive styling for contact-list in mobile 
-II. ✔ make create contact 
+  I. ✔ fix responsive styling for contact-list in mobile 
+  II. ✔ make create contact 
+  III. ✔ add form protection for email, and number(?) (number - must contact EITHER aA-zZ OR 0-9, at least 1 char - for the time being)
  -->
 
 
