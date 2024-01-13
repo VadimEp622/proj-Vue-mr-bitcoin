@@ -133,11 +133,13 @@ II. figure out how to add default-user-icon to always be there, before the actua
 .app {
   display: grid;
   grid-template-rows: auto 1fr auto;
-  height: 100vh;
+  // height: 100vh;
+  height: 100dvh;
 
   &::before {
     content: '';
     height: 100%;
+    width: 100%;
     background: url('@/assets/imgs/bg-pic/colored_body_top.png') center top no-repeat #1b2838;
     position: fixed;
     inset: 0;

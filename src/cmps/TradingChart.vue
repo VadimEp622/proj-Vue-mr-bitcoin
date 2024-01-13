@@ -13,10 +13,11 @@ import {
     LinearScale,
     TimeScale,
     LineElement,
+    Filler
 } from 'chart.js'
 import 'chartjs-adapter-date-fns' // Import the date adapter you want to use, such as 'chartjs-adapter-date-fns'
 
-ChartJS.register(LinearScale, PointElement, Tooltip, Legend, TimeScale, LineElement)
+ChartJS.register(LinearScale, PointElement, Tooltip, Legend, TimeScale, LineElement, Filler)
 
 export default {
     props: ['datasets'],
