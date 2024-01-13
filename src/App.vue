@@ -137,6 +137,7 @@ II. figure out how to add default-user-icon to always be there, before the actua
   // height: 100vh;
   height: 100dvh;
   min-width: max-content;
+  
 
   &::before {
     content: '';
