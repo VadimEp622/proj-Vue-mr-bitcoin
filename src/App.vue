@@ -72,6 +72,7 @@ II. add styling to back/return buttons in contact-details/contact-edit
 -->
 
 <!-- TODO: shrink desktop header's nav items, EVEN MORE, to fit more routes -->
+<!-- TODO: fix mobile site overflow -->
 
 <!-- DONE: ✔ investigate the working of event-bus, to use for updating isMainMenuActive, from router.js (in a before each, perhaps?) -->
 <!-- DONE: ✔ refactor contact object so that name key will only store name string, instead of name object -->
@@ -135,6 +136,7 @@ II. figure out how to add default-user-icon to always be there, before the actua
   grid-template-rows: auto 1fr auto;
   // height: 100vh;
   height: 100dvh;
+  min-width: max-content;
 
   &::before {
     content: '';
