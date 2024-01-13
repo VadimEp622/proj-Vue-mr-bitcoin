@@ -25,7 +25,7 @@ export default {
 
   & .greeting {
     padding-block: 20px;
-    white-space: nowrap;
+    // white-space: nowrap;
 
     span {
       text-transform: capitalize;
