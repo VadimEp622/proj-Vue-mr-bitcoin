@@ -98,27 +98,17 @@ export default {
 .responsive-main-menu-container {
     visibility: hidden;
     position: fixed;
-    // width: 100%;
-    // height: 100%;
     width: 100vw;
     height: 100vh;
     overflow: hidden;
     transition: visibility .2s ease-in-out;
-    // inset: 0;
-
 
     & .responsive-page-content-overlay {
-        // position: fixed;
-        // position: absolute;
         width: 100%;
         height: 100%;
         opacity: 0;
         background-color: black;
         transition: opacity .2s ease-in-out;
-
-        // inset: 0;
-        // z-index: 25;
-        // pointer-events: none;
     }
 
     & .main-menu-container {
@@ -126,7 +116,6 @@ export default {
         position: absolute;
         right: -280px;
         top: 0;
-        // bottom: 0;
         height: 100%;
         width: 280px;
         background: linear-gradient(225deg, #122f44 0%, #021522 33%);

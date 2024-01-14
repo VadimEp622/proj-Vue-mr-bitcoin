@@ -1,7 +1,7 @@
 <template>
   <section class="app-wrapper">
     <div class="drawer-bg"></div>
-    
+
     <section class="main-container" :class="[appClass, layoutClass]">
       <AppHeader :layoutClass="layoutClass" @setMainMenu="setMainMenu" />
       <main class="full" :class="layoutClass">
@@ -9,7 +9,7 @@
       </main>
       <AppFooter :layoutClass="layoutClass" />
     </section>
-    
+
     <ResponsiveMainMenu :isMainMenuActive="isMainMenuActive" @setMainMenu="setMainMenu" />
     <UserMsg />
   </section>
@@ -77,13 +77,14 @@ II. add styling to back/return buttons in contact-details/contact-edit
 -->
 
 <!-- TODO: shrink desktop header's nav items, EVEN MORE, to fit more routes -->
-<!-- TODO: fix mobile site overflow -->
 <!-- TODO: 
   when footer/header are disabled (display:none),
   additionally send boolean isFooterRendered/isHeaderRendered as prop to footer/header each respectively,
   as safeguard to prevent them from making redundant server calls (tentatively Local-storage)
 -->
 
+
+<!-- TODO: ✔  fix mobile site overflow -->
 <!-- DONE: ✔ investigate the working of event-bus, to use for updating isMainMenuActive, from router.js (in a before each, perhaps?) -->
 <!-- DONE: ✔ refactor contact object so that name key will only store name string, instead of name object -->
 <!-- DONE: ✔ add media-query for layouts for mobile/tablet/desktop -->
@@ -145,11 +146,8 @@ II. figure out how to add default-user-icon to always be there, before the actua
 
 .drawer-bg {
   position: fixed;
-  // top: 0;
   height: 100vh;
   width: 100vw;
-  // height: 100%;
-  // width: 100%;
   background: url('@/assets/imgs/bg-pic/colored_body_top.png') center top no-repeat #1b2838;
   z-index: -1;
 }
@@ -177,9 +175,7 @@ II. figure out how to add default-user-icon to always be there, before the actua
   }
 
   & main {
-    // align-content: start;
     min-width: 0;
-    // overflow: hidden;
   }
 }
 </style>
