@@ -69,30 +69,14 @@ export default {
 <!-- ================================================= -->
 
 
-<!-- TODO (Contacts):
-I.  consider adding to contact store - isRemovingContact/isContactRemoved, etc...,
-  for protection against multiple fast contact removes
+<!-- TODO: make user profile -->
+<!-- TODO (mini): in addition to default contact icon, add logged-in user icon, for differentiation -->
+<!-- TODO: implement transfer of funds -->
+<!-- TODO: Add handling for invalid contact Id in contact details/edit -->
+<!-- TODO: consider making contact phone numbers have unified format, and consider contact names language for filtering  -->
+<!-- TODO: Add contacts filtering -->
+<!-- TODO: add more contacts, consider either pagination of endless scrolling -->
 
-II. add styling to back/return buttons in contact-details/contact-edit
--->
-
-<!-- TODO: shrink desktop header's nav items, EVEN MORE, to fit more routes -->
-<!-- TODO: 
-  when footer/header are disabled (display:none),
-  additionally send boolean isFooterRendered/isHeaderRendered as prop to footer/header each respectively,
-  as safeguard to prevent them from making redundant server calls (tentatively Local-storage)
--->
-
-
-<!-- TODO: ✔  fix mobile site overflow -->
-<!-- DONE: ✔ investigate the working of event-bus, to use for updating isMainMenuActive, from router.js (in a before each, perhaps?) -->
-<!-- DONE: ✔ refactor contact object so that name key will only store name string, instead of name object -->
-<!-- DONE: ✔ add media-query for layouts for mobile/tablet/desktop -->
-<!-- DONE (Contacts):
-  I. ✔ fix responsive styling for contact-list in mobile 
-  II. ✔ make create contact 
-  III. ✔ add form protection for email, and number(?) (number - must contact EITHER aA-zZ OR 0-9, at least 1 char - for the time being)
- -->
 
 
 <!-- ================================================= -->
@@ -122,9 +106,7 @@ II. redirect to login-page:
         b) ✔ checks session storage for logged-in-user, and set in store state for user
         c) find a more secure way to save user in session storage, use the secure information to fetch complete user data, and store THAT in user store
 
-III. ✔ log-in page, will not have header/footer, but a cool introduction
-
-IV. homepage will be fancy, with a "welcome <user.name>" greeting, with user transactions history (and maybe more)
+III. homepage will be fancy, with a "welcome <user.name>" greeting, with user transactions history (and maybe more)
 -->
 
 <!-- TODO (styling layouts):
@@ -139,6 +121,22 @@ I. figure out how to address the issue in LoginView,
 
 II. figure out how to add default-user-icon to always be there, before the actual picture of the user loads
 -->
+
+<!-- TODO (Contacts):
+I. consider adding to contact store - isRemovingContact/isContactRemoved, etc...,
+  for protection against multiple fast contact removes
+
+II. add styling to back/return buttons in contact-details/contact-edit
+-->
+
+<!-- TODO (Header/Footer): 
+I. shrink desktop header's nav items, EVEN MORE, to fit more routes
+
+II. when footer/header are disabled (display:none),
+  additionally send boolean isFooterRendered/isHeaderRendered as prop to footer/header each respectively,
+  as safeguard to prevent them from making redundant server calls (tentatively Local-storage)
+ -->
+
 
 
 <style lang="scss" scoped>
