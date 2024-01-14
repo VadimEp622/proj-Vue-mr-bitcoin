@@ -122,7 +122,7 @@ II. redirect to login-page:
         b) ✔ checks session storage for logged-in-user, and set in store state for user
         c) find a more secure way to save user in session storage, use the secure information to fetch complete user data, and store THAT in user store
 
-III. log-in page, will not have header/footer, but a cool introduction ✔
+III. ✔ log-in page, will not have header/footer, but a cool introduction
 
 IV. homepage will be fancy, with a "welcome <user.name>" greeting, with user transactions history (and maybe more)
 -->

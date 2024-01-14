@@ -38,7 +38,7 @@ export default {
 
 <!-- TODO: 
     investigate horizontal scroll of shame on removal of a contact, below screen width 393px
-    suspects are either the contact-list TransitionGroup, AppUserMsg, or AppResponsiveMainMenu
+    suspect is the contact-list TransitionGroup
  -->
 
 
@@ -53,6 +53,8 @@ export default {
         grid-template-columns: repeat(auto-fit, minmax(auto, 400px));
         justify-content: center;
         gap: 14px;
+        position: relative;
+        overflow: hidden;
 
         & li.contact-preview-container {
             min-width: 0;
@@ -60,7 +62,6 @@ export default {
             justify-content: space-between;
             gap: 10px;
             padding: 10px;
-            // background-color: #64CCC5;
             border-radius: 8px;
             transition: box-shadow 0.2s ease-in-out;
 
