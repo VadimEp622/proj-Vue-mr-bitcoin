@@ -1,7 +1,7 @@
 <template>
   <section class="app-wrapper">
     <div class="drawer-bg"></div>
-
+    
     <section class="main-container" :class="[appClass, layoutClass]">
       <AppHeader :layoutClass="layoutClass" @setMainMenu="setMainMenu" />
       <main class="full" :class="layoutClass">
@@ -9,7 +9,7 @@
       </main>
       <AppFooter :layoutClass="layoutClass" />
     </section>
-
+    
     <ResponsiveMainMenu :isMainMenuActive="isMainMenuActive" @setMainMenu="setMainMenu" />
     <UserMsg />
   </section>
@@ -144,12 +144,13 @@ II. figure out how to add default-user-icon to always be there, before the actua
 .app-wrapper {}
 
 .drawer-bg {
-  height: 100%;
-  height: 100lvh;
-  width: 100%;
-  background: url('@/assets/imgs/bg-pic/colored_body_top.png') center top no-repeat #1b2838;
   position: fixed;
-  top: 0;
+  // top: 0;
+  height: 100vh;
+  width: 100vw;
+  // height: 100%;
+  // width: 100%;
+  background: url('@/assets/imgs/bg-pic/colored_body_top.png') center top no-repeat #1b2838;
   z-index: -1;
 }
 

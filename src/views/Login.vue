@@ -61,10 +61,12 @@ export default {
 
     &::before {
         content: '';
-        position: absolute;
-        height: 100%;
-        height: 100lvh;
-        width: 100%;
+        // position: absolute;
+        // height: 100%;
+        // width: 100%;
+        position: fixed;
+        height: 100vh;
+        width: 100vw;
         background-image: url('@/assets/imgs/bg-pic/bg-bitcoin.jpg');
         background-size: cover;
         background-position-x: right;
@@ -73,7 +75,6 @@ export default {
         // top: 0;
         // left: 0;
         z-index: -1;
-        
     }
 }
 </style>
