@@ -36,11 +36,6 @@ export default {
 
 <!-- TODO: improve styling for contact, below 300px screen width -->
 
-<!-- TODO: 
-    investigate horizontal scroll of shame on removal of a contact, below screen width 393px
-    suspect is the contact-list TransitionGroup
- -->
-
 
 <style lang="scss">
 .contact-list {
