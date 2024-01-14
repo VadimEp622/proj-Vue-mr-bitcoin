@@ -56,19 +56,21 @@ export default {
 
 <style lang="scss" scoped>
 .login-page {
-    height: 100%;
+    // height: 100%;
+    overflow: hidden;
 
     &::before {
         content: '';
+        position: absolute;
+        height: 100%;
+        width: 100%;
         background-image: url('@/assets/imgs/bg-pic/bg-bitcoin.jpg');
         background-size: cover;
         background-position-x: right;
         background-position-y: center;
-        min-height: 100vh;
-        width: 100%;
-        position: absolute;
-        top: 0;
-        left: 0;
+        // min-height: 100lvh;
+        // top: 0;
+        // left: 0;
         z-index: -1;
     }
 }
