@@ -69,6 +69,7 @@ export default {
 <!-- ================================================= -->
 
 
+<!-- TODO: consider adding globally accessible methods for DON'T-REPEAT-YOURSELF structure (if possible) -->
 <!-- TODO: make user profile -->
 <!-- TODO (mini): in addition to default contact icon, add logged-in user icon, for differentiation -->
 <!-- TODO: implement transfer of funds -->
@@ -107,6 +108,8 @@ II. redirect to login-page:
         c) find a more secure way to save user in session storage, use the secure information to fetch complete user data, and store THAT in user store
 
 III. homepage will be fancy, with a "welcome <user.name>" greeting, with user transactions history (and maybe more)
+
+IV. add testing
 -->
 
 <!-- TODO (styling layouts):
