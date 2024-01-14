@@ -63,6 +63,7 @@ export default {
         content: '';
         position: absolute;
         height: 100%;
+        height: 100lvh;
         width: 100%;
         background-image: url('@/assets/imgs/bg-pic/bg-bitcoin.jpg');
         background-size: cover;
