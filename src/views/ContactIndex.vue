@@ -59,13 +59,14 @@ export default {
 
 <style lang="scss" scoped>
 .contact-index {
-    align-content: start;
+    // align-content: start;
 
     & .create-filter-container {
         margin-block: 20px;
     }
 
     & .contact-list-container {
+        overflow: hidden;
         margin-block: 20px;
     }
 }

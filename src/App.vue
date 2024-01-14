@@ -1,13 +1,18 @@
 <template>
-  <section class="app" :class="[appClass, layoutClass]">
-    <AppHeader :layoutClass="layoutClass" @setMainMenu="setMainMenu" />
-    <main class="full" :class="layoutClass">
-      <RouterView />
-    </main>
-    <AppFooter :layoutClass="layoutClass" />
+  <section class="app-wrapper">
+    <div class="drawer-bg"></div>
+
+    <section class="main-container" :class="[appClass, layoutClass]">
+      <AppHeader :layoutClass="layoutClass" @setMainMenu="setMainMenu" />
+      <main class="full" :class="layoutClass">
+        <RouterView />
+      </main>
+      <AppFooter :layoutClass="layoutClass" />
+    </section>
+
+    <ResponsiveMainMenu :isMainMenuActive="isMainMenuActive" @setMainMenu="setMainMenu" />
+    <UserMsg />
   </section>
-  <ResponsiveMainMenu :isMainMenuActive="isMainMenuActive" @setMainMenu="setMainMenu" />
-  <UserMsg />
 </template>
 
 
@@ -73,6 +78,11 @@ II. add styling to back/return buttons in contact-details/contact-edit
 
 <!-- TODO: shrink desktop header's nav items, EVEN MORE, to fit more routes -->
 <!-- TODO: fix mobile site overflow -->
+<!-- TODO: 
+  when footer/header are disabled (display:none),
+  additionally send boolean isFooterRendered/isHeaderRendered as prop to footer/header each respectively,
+  as safeguard to prevent them from making redundant server calls (tentatively Local-storage)
+-->
 
 <!-- DONE: ✔ investigate the working of event-bus, to use for updating isMainMenuActive, from router.js (in a before each, perhaps?) -->
 <!-- DONE: ✔ refactor contact object so that name key will only store name string, instead of name object -->
@@ -131,26 +141,29 @@ II. figure out how to add default-user-icon to always be there, before the actua
 
 
 <style lang="scss" scoped>
-.app {
-  display: grid;
-  grid-template-rows: auto 1fr auto;
-  // height: 100vh;
-  height: 100dvh;
-  min-width: max-content;
-  
+.app-wrapper {}
 
-  &::before {
-    content: '';
-    height: 100%;
-    width: 100%;
-    background: url('@/assets/imgs/bg-pic/colored_body_top.png') center top no-repeat #1b2838;
-    position: fixed;
-    inset: 0;
-    z-index: -1;
-  }
+.drawer-bg {
+  height: 100%;
+  width: 100%;
+  background: url('@/assets/imgs/bg-pic/colored_body_top.png') center top no-repeat #1b2838;
+  position: fixed;
+  top: 0;
+  z-index: -1;
+}
+
+.main-container {
+  position: absolute;
+  min-height: 100%;
+  min-width: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  grid-template-rows: auto 1fr auto;
 
   &:not(.header-footer-hidden) main {
     height: fit-content;
+    align-content: start;
   }
 
   &.header-footer-hidden {
@@ -159,6 +172,12 @@ II. figure out how to add default-user-icon to always be there, before the actua
     &>*:is(header, footer) {
       display: none;
     }
+  }
+
+  & main {
+    // align-content: start;
+    min-width: 0;
+    // overflow: hidden;
   }
 }
 </style>

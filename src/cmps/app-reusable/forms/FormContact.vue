@@ -2,7 +2,7 @@
     <Form class="form-contact-container flex justify-center" @submit="onSubmit" :validation-schema="schema"
         :initial-values="initialValues">
         <section class="form-contact">
-            <section class="picture-container flex justify-center">
+            <section class="picture-container">
                 <section class="picture">
                     <img v-if="initialValues?.picture" :src="initialValues.picture.large" alt="contact">
                     <IconHandler v-else :name="ICON_DEFAULT_USER" />
@@ -82,12 +82,13 @@ function onSubmit(params) {
 .form-contact-container {
     & .form-contact {
         width: 300px;
-        max-width: 300px;
+        min-width: 0;
 
         & .picture-container {
             margin-block: 20px 40px;
 
             & .picture {
+                margin-inline: auto;
                 border-radius: 50%;
                 overflow: hidden;
                 width: 128px;
