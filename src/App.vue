@@ -145,6 +145,7 @@ II. figure out how to add default-user-icon to always be there, before the actua
 
 .drawer-bg {
   height: 100%;
+  height: 100lvh;
   width: 100%;
   background: url('@/assets/imgs/bg-pic/colored_body_top.png') center top no-repeat #1b2838;
   position: fixed;
