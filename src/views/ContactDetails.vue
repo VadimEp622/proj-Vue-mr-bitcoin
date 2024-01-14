@@ -4,7 +4,7 @@
             <section class="return-btn-container flex">
                 <button class="return-btn" @click="onReturn">Return</button>
             </section>
-            <section class="picture-container flex justify-center">
+            <section class="picture-container">
                 <section class="picture">
                     <img v-if="contactPicture" :src="contactPicture" alt="contact">
                     <IconHandler v-else :name="ICON_DEFAULT_USER" />
@@ -82,8 +82,8 @@ export default {
     justify-items: center;
 
     & .contact-details {
-        width: fit-content;
-        min-width: 300px;
+        min-width: 0;
+        max-width: 100%;
 
         & .return-btn-container {
             margin-block-start: 20px;
@@ -93,10 +93,12 @@ export default {
             margin-block: 20px 40px;
 
             & .picture {
+                margin-inline: auto;
                 width: 128px;
                 height: 128px;
                 border-radius: 50%;
                 overflow: hidden;
+                max-width: none;
             }
         }
 
@@ -109,6 +111,12 @@ export default {
             & .name {
                 font-size: rem(30px);
                 font-weight: 600;
+            }
+
+            & p {
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
             }
         }
 

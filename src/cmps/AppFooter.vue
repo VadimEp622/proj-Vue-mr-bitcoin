@@ -22,8 +22,10 @@ export default {
 
 <style lang="scss" scoped>
 footer {
+    min-width: 240px;
+
     & h2 {
-        // margin-block: 0.3em;
+        margin-block: 10px;
         text-align: center;
         font-size: rem(16px);
     }

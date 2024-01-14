@@ -98,17 +98,22 @@ export default {
 .responsive-main-menu-container {
     visibility: hidden;
     position: fixed;
-    inset: 0;
+    width: 100%;
+    height: 100%;
     overflow: hidden;
     transition: visibility .2s ease-in-out;
+    // inset: 0;
 
 
     & .responsive-page-content-overlay {
-        opacity: 0;
         position: fixed;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
         background-color: black;
-        inset: 0;
         transition: opacity .2s ease-in-out;
+
+        // inset: 0;
         // z-index: 25;
         // pointer-events: none;
     }
@@ -117,8 +122,9 @@ export default {
         color: #9b9b9b;
         position: absolute;
         right: -280px;
-        top: 0;
-        bottom: 0;
+        // top: 0;
+        // bottom: 0;
+        height: 100%;
         width: 280px;
         background: linear-gradient(225deg, #122f44 0%, #021522 33%);
         transition: right .2s ease-in-out;

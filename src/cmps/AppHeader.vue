@@ -43,5 +43,7 @@ export default {
 
 
 <style lang="scss" scoped>
-// header {}
+header {
+    min-width: 240px;
+}
 </style>

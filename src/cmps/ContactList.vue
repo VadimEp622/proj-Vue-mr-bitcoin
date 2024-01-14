@@ -34,6 +34,14 @@ export default {
 </script>
 
 
+<!-- TODO: improve styling for contact, below 300px screen width -->
+
+<!-- TODO: 
+    investigate horizontal scroll of shame on removal of a contact, below screen width 393px
+    suspects are either the contact-list TransitionGroup, AppUserMsg, or AppResponsiveMainMenu
+ -->
+
+
 <style lang="scss">
 .contact-list {
     & .title {

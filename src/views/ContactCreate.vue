@@ -68,7 +68,8 @@ export default {
     justify-items: center;
 
     & .contact-create {
-        width: fit-content;
+        min-width: 0;
+        max-width: 100%;
     }
 
     & .return-btn-container {
