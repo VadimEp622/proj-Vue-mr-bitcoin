@@ -56,14 +56,10 @@ export default {
 
 <style lang="scss" scoped>
 .login-page {
-    // height: 100%;
     overflow: hidden;
 
     &::before {
         content: '';
-        // position: absolute;
-        // height: 100%;
-        // width: 100%;
         position: fixed;
         height: 100vh;
         width: 100vw;
@@ -71,9 +67,6 @@ export default {
         background-size: cover;
         background-position-x: right;
         background-position-y: center;
-        // min-height: 100lvh;
-        // top: 0;
-        // left: 0;
         z-index: -1;
     }
 }
