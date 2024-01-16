@@ -41,6 +41,7 @@ import { mapGetters, mapActions } from 'vuex'
 import IconHandler from '@/cmps/app-reusable/IconHandler.vue'
 import { ICON_DEFAULT_USER } from '@/services/icon-handler.service'
 import Loader from '@/cmps/app-reusable/loader.vue'
+import Mixin from '@/mixin'
 
 export default {
     created() {
@@ -62,9 +63,6 @@ export default {
         ...mapActions([
             'loadContact'
         ]),
-        redirectTo(pathName) {
-            this.$router.push(pathName)
-        },
         onReturn() {
             this.redirectTo('/contact')
         },
@@ -72,6 +70,7 @@ export default {
             this.redirectTo(`/contact/${contactId}/edit`)
         }
     },
+    mixins: [Mixin],
     components: { IconHandler, Loader }
 }
 </script>

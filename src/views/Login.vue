@@ -18,6 +18,7 @@
 <script>
 import FormLogin from '@/cmps/app-reusable/forms/FormLogin.vue'
 import { mapActions, mapGetters } from 'vuex'
+import Mixin from '@/mixin'
 
 export default {
     data() {
@@ -39,9 +40,6 @@ export default {
         onSubmit(params) {
             this.login(params.name)
         },
-        redirectTo(pathName) {
-            this.$router.push(pathName)
-        }
     },
     watch: {
         user(user) {
@@ -49,6 +47,7 @@ export default {
                 this.redirectTo('/')
         }
     },
+    mixins: [Mixin],
     components: { FormLogin }
 }
 </script>

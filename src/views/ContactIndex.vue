@@ -24,6 +24,7 @@
 import { mapGetters, mapActions } from 'vuex'
 import ContactList from '@/cmps/ContactList.vue'
 import Loader from '@/cmps/app-reusable/loader.vue'
+import Mixin from '@/mixin'
 
 export default {
     created() {
@@ -35,7 +36,6 @@ export default {
             'isContactsLoaded',
             'user'
         ]),
-        // loggedinUser() { return this.$store.getters.user }
     },
     methods: {
         ...mapActions([
@@ -45,10 +45,8 @@ export default {
         onCreate() {
             this.redirectTo('/contact/create')
         },
-        redirectTo(pathName) {
-            this.$router.push(pathName)
-        },
     },
+    mixins: [Mixin],
     components: {
         ContactList,
         Loader

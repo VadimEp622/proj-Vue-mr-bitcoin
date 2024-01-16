@@ -21,6 +21,7 @@ import FormContact from '@/cmps/app-reusable/forms/FormContact.vue'
 import Loader from '@/cmps/app-reusable/loader.vue'
 import { contactService } from '@/services/contact.service.js'
 import { mapGetters, mapActions } from 'vuex'
+import Mixin from '@/mixin'
 
 export default {
     data() {
@@ -40,9 +41,6 @@ export default {
         ...mapActions([
             'createContact'
         ]),
-        redirectTo(pathName) {
-            this.$router.push(pathName)
-        },
         onReturn() {
             this.redirectTo(`/contact`)
         },
@@ -54,10 +52,11 @@ export default {
     watch: {
         isUpdatingContacts(isUpdatingContacts) {
             if (this.isFormSubmitted && !isUpdatingContacts) {
-                this.onReturn(this.contactId)
+                this.onReturn()
             }
         }
     },
+    mixins: [Mixin],
     components: { FormContact, Loader }
 }
 </script>
