@@ -1,6 +1,5 @@
 <template>
     <section class="profile-home full details-layout">
-        <span class="text-align-center pd-bl-10">Hi from profile!</span>
         <section class="user-intro">
 
             <section class="picture-container">
@@ -9,6 +8,16 @@
                 </section>
             </section>
 
+            <section class="name text-align-center">
+                <span>{{ user.name }}</span>
+            </section>
+
+            <section class="balance flex gap-10 justify-center">
+                <p>Balance:</p>
+                <span>{{ user.balance }}</span>
+            </section>
+
+            <pre>{{ JSON.stringify(user, null, 2) }}</pre>
         </section>
     </section>
 </template>
@@ -18,11 +27,15 @@
 import { ICON_DEFAULT_USER } from '@/services/icon-handler.service'
 import Loader from '@/cmps/app-reusable/loader.vue'
 import IconHandler from '@/cmps/app-reusable/IconHandler.vue'
+import { mapGetters } from 'vuex'
 
 export default {
     created() {
     },
     computed: {
+        ...mapGetters([
+            'user'
+        ]),
         ICON_DEFAULT_USER() { return ICON_DEFAULT_USER }
     },
     methods: {
