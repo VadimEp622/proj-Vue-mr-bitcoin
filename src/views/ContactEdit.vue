@@ -23,6 +23,7 @@
 import { mapGetters, mapActions } from 'vuex'
 import FormContact from '@/cmps/app-reusable/forms/FormContact.vue'
 import Loader from '@/cmps/app-reusable/loader.vue'
+import Mixin from '@/mixin'
 
 export default {
     data() {
@@ -59,9 +60,6 @@ export default {
             'loadContact',
             'updateContact'
         ]),
-        redirectTo(pathName) {
-            this.$router.push(pathName)
-        },
         onReturn(contactId) {
             this.redirectTo(`/contact/${contactId}`)
         },
@@ -70,6 +68,7 @@ export default {
             this.updateContact(contact)
         },
     },
+    mixins: [Mixin],
     components: { FormContact, Loader }
 }
 </script>
