@@ -35,6 +35,10 @@ export default {
 .transaction-preview {
     margin-inline: 20px;
 
+    &>* {
+        min-width: 0;
+    }
+
     & p {
         overflow: hidden;
         text-overflow: ellipsis;
