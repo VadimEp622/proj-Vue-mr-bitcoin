@@ -57,7 +57,7 @@ function getLoggedinUser() {
 }
 
 function saveLocalUser(user) {
-    const userToStore = { _id: user._id, name: user.name, balance: user.balance, transaction: user.transaction }
+    const userToStore = { _id: user._id, name: user.name, balance: user.balance, transactions: user.transactions }
     sessionStorage.setItem(USER_KEY, JSON.stringify(userToStore))
     return user
 }
@@ -84,12 +84,12 @@ function _createDemoUser() {
     return user
 }
 
-function _createUser(name, balance, transaction) {
+function _createUser(name, balance, transactions) {
     return {
         _id: utilService.makeId(),
         name,
         balance,
-        transaction
+        transactions
     }
 }
 

@@ -43,8 +43,8 @@ export default {
                 if (loggedInUser.balance - amount < 0) throw new Error('not enough currency')
 
                 const transaction = userService.getNewTransaction(loggedInUser, contact, amount)
-                // TODO: in user object, change transaction singular to transactions plural, since it's an array of objects
-                loggedInUser.transaction.push(transaction)
+                loggedInUser.transactions.push(transaction)
+                loggedInUser.transactions.sort((a, b) => b.content.at - a.content.at)
                 loggedInUser.balance -= amount
 
                 await userService.updateUser(loggedInUser)
@@ -56,13 +56,14 @@ export default {
                 console.log('Could not perform transaction', err)
                 showErrorMsg('Transfer failed')
             }
-
-
         }
     },
     getters: {
         user(state) {
             return state.user
+        },
+        transactions(state) {
+            return state.user.transactions
         }
     },
 }

@@ -69,7 +69,6 @@ export default {
 <!-- ================================================= -->
 
 
-<!-- TODO: make user profile -->
 <!-- TODO (mini): in addition to default contact icon, add logged-in user icon, for differentiation -->
 <!-- TODO: implement transfer of funds -->
 <!-- TODO: Add handling for invalid contact Id in contact details/edit -->
@@ -77,6 +76,7 @@ export default {
 <!-- TODO: Add contacts filtering -->
 <!-- TODO: add more contacts, consider either pagination of endless scrolling -->
 
+<!-- TODO: ✔ make user profile -->
 <!-- TODO: ✔ consider adding globally accessible methods for DON'T-REPEAT-YOURSELF structure (if possible) -->
 
 
