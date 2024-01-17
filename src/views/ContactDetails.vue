@@ -23,6 +23,7 @@
             </section>
             <section class="btn-container flex justify-center">
                 <button class="btn-edit" @click="onEdit(contactId)">Edit</button>
+                <button class="btn-transfer" @click="onTransfer(contactId, 5)">Transfer 5 coins</button>
             </section>
             <!-- <pre>{{ JSON.stringify(contact, null, 2) }}</pre> -->
         </section>
@@ -61,13 +62,17 @@ export default {
     },
     methods: {
         ...mapActions([
-            'loadContact'
+            'loadContact',
+            'createTransaction'
         ]),
         onReturn() {
             this.redirectTo('/contact')
         },
         onEdit(contactId) {
             this.redirectTo(`/contact/${contactId}/edit`)
+        },
+        onTransfer(contactId, amount) {
+            this.createTransaction({ contactId, amount })
         }
     },
     mixins: [Mixin],
