@@ -46,9 +46,10 @@ export default {
 
 
 <!-- TODO:
-I. "get" user into this cmp
-II. include balance (USD or Bitcoin currency?)
-III. include recent activity/transactions
+I. include recent activity/transactions
+II. add option to refill balance
+III. add ability to see recent transactions with specific contact in contact-details
+IV. add ability to see last 3 items in transaction-list (make new cmp) in home-page
 -->
 
 

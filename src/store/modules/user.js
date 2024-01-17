@@ -43,6 +43,7 @@ export default {
                 if (loggedInUser.balance - amount < 0) throw new Error('not enough currency')
 
                 const transaction = userService.getNewTransaction(loggedInUser, contact, amount)
+                // TODO: in user object, change transaction singular to transactions plural, since it's an array of objects
                 loggedInUser.transaction.push(transaction)
                 loggedInUser.balance -= amount
 
