@@ -8,7 +8,10 @@ const USER_KEY = 'user'
 export const userService = {
     query,
     getUserByName,
+    getUserById,
+    updateUser,
     postNewUser,
+    getNewTransaction,
     getLoggedinUser,
     saveLocalUser,
     clearLocalUser
@@ -25,8 +28,28 @@ function getUserByName(name) {
         .then(users => users.find(user => user.name.toLocaleLowerCase() === name.toLocaleLowerCase()))
 }
 
+function getUserById(userId) {
+    return query()
+        .then(users => users.find(user => user._id === userId))
+}
+
+function updateUser(user) {
+    return storageService.put(USER_KEY, user)
+}
+
 function postNewUser(user) {
     return storageService.post(USER_KEY, user)
+}
+
+function getNewTransaction(loggedInUser, contact, amount) {
+    const transaction = {
+        senderId: loggedInUser._id,
+        senderName: loggedInUser.name,
+        receiverId: contact._id,
+        receiverName: contact.name,
+        amount
+    }
+    return _createTransaction(transaction)
 }
 
 function getLoggedinUser() {
@@ -67,6 +90,24 @@ function _createUser(name, balance, transaction) {
         name,
         balance,
         transaction
+    }
+}
+
+function _createTransaction({ senderId, senderName, receiverId, receiverName, amount }) {
+    return {
+        _id: utilService.makeId(),
+        content: {
+            sender: {
+                senderId,
+                senderName
+            },
+            receiver: {
+                receiverId,
+                receiverName
+            },
+            at: Date.now(),
+            amount
+        }
     }
 }
 

@@ -23,7 +23,7 @@
             </section>
             <section class="btn-container flex justify-center">
                 <button class="btn-edit" @click="onEdit(contactId)">Edit</button>
-                <button class="btn-transfer" @click="onTransfer(contactId, 5)">Transfer 5 coins</button>
+                <button class="btn-transfer" @click="onTransfer(userId, contactId, 5)">Transfer 5 coins</button>
             </section>
             <!-- <pre>{{ JSON.stringify(contact, null, 2) }}</pre> -->
         </section>
@@ -51,13 +51,15 @@ export default {
     computed: {
         ...mapGetters([
             'contact',
-            'isContactLoaded'
+            'isContactLoaded',
+            'user'
         ]),
         contactId() { return this.$route.params.id },
         contactName() { return this.contact.name },
         contactPicture() { return this.contact.picture?.large },
         contactPhone() { return this.contact.phone },
         contactEmail() { return this.contact.email },
+        userId() { return this.user._id },
         ICON_DEFAULT_USER() { return ICON_DEFAULT_USER }
     },
     methods: {
@@ -71,8 +73,8 @@ export default {
         onEdit(contactId) {
             this.redirectTo(`/contact/${contactId}/edit`)
         },
-        onTransfer(contactId, amount) {
-            this.createTransaction({ contactId, amount })
+        onTransfer(userId, contactId, amount) {
+            this.createTransaction({ userId, contactId, amount })
         }
     },
     mixins: [Mixin],

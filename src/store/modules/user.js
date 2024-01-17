@@ -1,4 +1,5 @@
 import { authService } from "../../services/auth.service"
+import { contactService } from "../../services/contact.service"
 import { showErrorMsg, showSuccessMsg } from "../../services/event-bus.service"
 import { userService } from "../../services/user.service"
 
@@ -34,22 +35,28 @@ export default {
             showSuccessMsg('Logging out')//add a normal msg (not green success/red error, but gray notification?)
             commit({ type: 'setUser', user: null })
         },
-        async createTransaction({ commit }, { contactId, amount }) {
-            console.log('User Store - transaction - contactId', contactId)
-            console.log('User Store - transaction - amount', amount)
+        async createTransaction({ commit }, { userId, contactId, amount }) {
+            try {
+                const contact = await contactService.getContactById(contactId)
+                const loggedInUser = await userService.getUserById(userId)
+                if (!loggedInUser?.balance) throw new Error('Faulty user object - no balance key')
+                if (loggedInUser.balance - amount < 0) throw new Error('not enough currency')
 
-            // TODO: async-ly get contact using contactId (verifying if it exists)
-            // ...
+                const transaction = userService.getNewTransaction(loggedInUser, contact, amount)
+                loggedInUser.transaction.push(transaction)
+                loggedInUser.balance -= amount
 
-            // TODO: async-ly get logged-in-user, to verify if transfer amount is possible with remaining coins
-            // ...
+                await userService.updateUser(loggedInUser)
+                userService.saveLocalUser(loggedInUser)
 
-            // TODO: async-ly update user object with a transferal, and removal of X amount of coins from total
-            // ...
+                commit({ type: 'setUser', user: loggedInUser })
+                showSuccessMsg('Transfer success')
+            } catch (err) {
+                console.log('Could not perform transaction', err)
+                showErrorMsg('Transfer failed')
+            }
 
-            // TODO: sync-ly update store user object transferal
-            // ...
-            
+
         }
     },
     getters: {
