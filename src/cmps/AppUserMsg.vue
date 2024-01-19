@@ -38,6 +38,9 @@ export default {
 }
 </script>
 
+<!-- TODO: improve user-msg styling -->
+<!-- TODO: make user-msg be a fixed distance from top of device viewport, and not of page -->
+
 <style lang="scss">
 .user-msg {
     transform-origin: top;
