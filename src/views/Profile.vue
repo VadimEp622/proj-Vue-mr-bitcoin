@@ -30,7 +30,7 @@ import { ICON_DEFAULT_USER } from '@/services/icon-handler.service'
 import Loader from '@/cmps/app-reusable/loader.vue'
 import IconHandler from '@/cmps/app-reusable/IconHandler.vue'
 import { mapGetters } from 'vuex'
-import TransactionList from '../cmps/TransactionList.vue'
+import TransactionList from '@/cmps/TransactionList.vue'
 
 export default {
     created() {

@@ -93,6 +93,11 @@ export default {
     }
 
     & .market-price-history {
+        // todo: 1. make media-query for margin-block-end, 2. margin-block-end be rem related
+        // *** make cap on number on words you break-wrap, all else will be hidden with overflow-hidden + text-overflow: ellipsis;
+        // *** find a way to make below margin-block-end dependant on height of h4.market-price-description
+        margin-block-end: 260px;
+
         & h4 {
             font-size: rem(22px);
             font-family: "Google Sans", Roboto, Arial, sans-serif;
