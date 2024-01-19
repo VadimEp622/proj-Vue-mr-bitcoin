@@ -8,7 +8,10 @@ const USER_KEY = 'user'
 export const userService = {
     query,
     getUserByName,
+    getUserById,
+    updateUser,
     postNewUser,
+    getNewTransaction,
     getLoggedinUser,
     saveLocalUser,
     clearLocalUser
@@ -25,8 +28,28 @@ function getUserByName(name) {
         .then(users => users.find(user => user.name.toLocaleLowerCase() === name.toLocaleLowerCase()))
 }
 
+function getUserById(userId) {
+    return query()
+        .then(users => users.find(user => user._id === userId))
+}
+
+function updateUser(user) {
+    return storageService.put(USER_KEY, user)
+}
+
 function postNewUser(user) {
     return storageService.post(USER_KEY, user)
+}
+
+function getNewTransaction(loggedInUser, contact, amount) {
+    const transaction = {
+        senderId: loggedInUser._id,
+        senderName: loggedInUser.name,
+        receiverId: contact._id,
+        receiverName: contact.name,
+        amount
+    }
+    return _createTransaction(transaction)
 }
 
 function getLoggedinUser() {
@@ -34,7 +57,7 @@ function getLoggedinUser() {
 }
 
 function saveLocalUser(user) {
-    const userToStore = { _id: user._id, name: user.name, balance: user.balance, transaction: user.transaction }
+    const userToStore = { _id: user._id, name: user.name, balance: user.balance, transactions: user.transactions }
     sessionStorage.setItem(USER_KEY, JSON.stringify(userToStore))
     return user
 }
@@ -61,12 +84,30 @@ function _createDemoUser() {
     return user
 }
 
-function _createUser(name, balance, transaction) {
+function _createUser(name, balance, transactions) {
     return {
         _id: utilService.makeId(),
         name,
         balance,
-        transaction
+        transactions
+    }
+}
+
+function _createTransaction({ senderId, senderName, receiverId, receiverName, amount }) {
+    return {
+        _id: utilService.makeId(),
+        content: {
+            sender: {
+                senderId,
+                senderName
+            },
+            receiver: {
+                receiverId,
+                receiverName
+            },
+            at: Date.now(),
+            amount
+        }
     }
 }
 

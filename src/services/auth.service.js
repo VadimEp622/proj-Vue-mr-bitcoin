@@ -35,6 +35,6 @@ function _createUser(name) {
     return {
         name,
         balance: 100,
-        transaction: []
+        transactions: []
     }
 }
