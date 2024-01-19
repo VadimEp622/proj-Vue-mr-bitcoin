@@ -3,7 +3,9 @@
         <section class="contact-details">
 
             <section class="return-btn-container flex space-between gap-10">
-                <button class="return-btn" @click="onReturn">Return</button>
+                <button class="return-btn clr-gray-2" @click="onReturn">
+                    <IconHandler :name="ICON_ARROW_LEFT" />
+                </button>
                 <button class="btn-edit" @click="onEdit(contactId)">Edit</button>
             </section>
 
@@ -27,7 +29,7 @@
             </section>
 
             <section class="transfer-coins clr-gray-1">
-                <h3 class="title text-align-start">Transfer coins:</h3>
+                <h3 class="title text-align-start fw400 clr-gray-2">Transfer coins</h3>
                 <section class="btn-container flex justify-center">
                     <button class="btn-transfer" @click="onTransfer(userId, contactId, 5)">5 coins</button>
                     <button class="btn-transfer" @click="onTransfer(userId, contactId, 10)">10 coins</button>
@@ -54,10 +56,10 @@
 <script>
 import { mapGetters, mapActions } from 'vuex'
 import IconHandler from '@/cmps/app-reusable/IconHandler.vue'
-import { ICON_DEFAULT_USER } from '@/services/icon-handler.service'
 import Loader from '@/cmps/app-reusable/loader.vue'
 import Mixin from '@/mixin'
-import TransactionList from '../cmps/TransactionList.vue'
+import TransactionList from '@/cmps/TransactionList.vue'
+import { ICON_ARROW_LEFT, ICON_DEFAULT_USER } from '../services/icon-handler.service'
 
 export default {
     created() {
@@ -77,6 +79,7 @@ export default {
         contactEmail() { return this.contact.email },
         userId() { return this.user._id },
         ICON_DEFAULT_USER() { return ICON_DEFAULT_USER },
+        ICON_ARROW_LEFT() { return ICON_ARROW_LEFT },
         contactTransactions() {
             return this.transactions.filter(transaction =>
                 transaction.content.sender.senderId === this.contactId
@@ -100,7 +103,7 @@ export default {
         }
     },
     mixins: [Mixin],
-    components: { IconHandler, Loader, TransactionList }
+    components: { IconHandler, Loader, TransactionList, IconHandler }
 }
 </script>
 
@@ -115,6 +118,20 @@ export default {
 
         & .return-btn-container {
             margin-block-start: 20px;
+
+            & .return-btn {
+                @include btn-reset();
+                transition: transform .2s ease-in-out;
+
+                & svg {
+                    width: 30px !important;
+                    height: 30px !important;
+                }
+
+                &:hover {
+                    transform: scale(1.25);
+                }
+            }
         }
 
         & .picture-container {
@@ -148,10 +165,6 @@ export default {
             }
         }
 
-        & .btn-container {
-            margin-block-start: 20px;
-        }
-
         & .transfer-coins {
             margin-block: 30px;
 
@@ -159,9 +172,14 @@ export default {
                 overflow: hidden;
                 text-overflow: ellipsis;
                 white-space: nowrap;
-                margin-block-end: 4px;
+                padding-block-end: 4px;
                 font-size: rem(16px);
                 font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                border-bottom: 1px solid gray;
+            }
+
+            & .btn-container {
+                margin-block-start: 20px;
             }
         }
     }

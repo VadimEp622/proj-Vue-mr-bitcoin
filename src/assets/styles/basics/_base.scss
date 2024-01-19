@@ -42,3 +42,9 @@ img {
     object-fit: cover;
     display: block;
 }
+
+button {
+    &:hover {
+        cursor: pointer;
+    }
+}
