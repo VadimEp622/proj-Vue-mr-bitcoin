@@ -51,7 +51,7 @@ export default {
 
 <!-- TODO:
 I. add option to refill balance
-II. add ability to see recent transactions with specific contact in contact-details
+II. ✔ add ability to see recent transactions with specific contact in contact-details
 III. add ability to see last 3 items in transaction-list (make new cmp) in home-page
 -->
 

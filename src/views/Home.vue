@@ -1,7 +1,6 @@
 <template>
   <section class="home-page full main-layout">
-    <p v-if="user" class="greeting text-align-center">Welcome to Home Page, <span>{{ user.name }}</span>
-    </p>
+    <p v-if="user" class="greeting text-align-center">Welcome to Home Page, <span>{{ user.name }}</span></p>
   </section>
 </template>
 
