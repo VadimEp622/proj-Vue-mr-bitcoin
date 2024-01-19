@@ -1,5 +1,5 @@
 <template>
-    <section class="transaction-list">
+    <section class="transaction-list clr-gray-2">
         <h3 class="title text-align-start fw400">Transactions</h3>
         <TransitionGroup v-if="transactions.length !== 0" name="list" tag="ul">
             <li class="transaction-preview-container" v-for="transaction in transactions" :key="transaction._id">
