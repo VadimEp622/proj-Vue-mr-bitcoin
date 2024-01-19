@@ -6,11 +6,11 @@
 
                 <section v-if="user" class="logged-in-user-preview">
                     <section class="icon-and-name flex align-center">
-                        <section class="user-icon">
+                        <section class="user-icon clr-gold-0">
                             <IconHandler :name="ICON_DEFAULT_USER" />
                         </section>
                         <section class="user-name">
-                            <p class="capitalize">{{ user.name }}</p>
+                            <p class="capitalize clr-gold-0 fw600">{{ user.name }}</p>
                         </section>
                     </section>
                     <section class="balance">
@@ -133,6 +133,10 @@ export default {
                     & .user-icon {
                         width: 61px;
                         height: 61px;
+                    }
+
+                    & .user-name{
+                        font-size: rem(20px);
                     }
                 }
             }
