@@ -8,7 +8,7 @@ This project is a demo web application made in Vue, and is meant to function sim
 
 <h2>Details</h2>
 
-* *Mr.Bitcoin* was build as a **SPA** using  **Vue.js** (Vue3/vite)
+* *Mr. Bitcoin* was build as a **SPA** using  **Vue.js** (Vue3/vite)
 * Tools used: **SASS** | **Vuex**
 * Additional: **Responsive**
 
