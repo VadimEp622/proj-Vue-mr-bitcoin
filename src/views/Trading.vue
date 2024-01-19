@@ -92,16 +92,7 @@ export default {
         }
     }
 
-    // TODO: research responsive chart.js/canvas - why does canvas stop being responsive when I note h4 element?
-
     & .market-price-history {
-        // todo: 1. make media-query for margin-block-end, 2. margin-block-end be rem related
-        // *** make cap on number on words you break-wrap, all else will be hidden with overflow-hidden + text-overflow: ellipsis;
-        // *** find a way to make below margin-block-end dependant on height of h4.market-price-description
-        // margin-block-end: 260px;
-        // align-self: center;
-        // position: relative;
-
         & h4 {
             font-size: rem(22px);
             font-family: "Google Sans", Roboto, Arial, sans-serif;
@@ -117,13 +108,12 @@ export default {
 
         & .chart-container {
             position: relative;
-            height: 100%;
+            min-height: 150px;
+            height: 60vw;
             max-height: 600px;
             width: 90vw;
+            max-width: 1000px;
             margin-inline: auto;
-            display: flex;
-            justify-content: center;
-            // align-items: flex-end;
         }
     }
 }
