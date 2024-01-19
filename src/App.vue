@@ -70,11 +70,13 @@ export default {
 
 
 <!-- TODO: implement lazy loading of routes, and see how it goes -->
+<!-- TODO: add more contacts, consider either pagination of endless scrolling -->
+<!-- TODO: new creation of contact, should place the contact as the first in the contact-list array, ONLY for first listing after creation (then regular sorting by name alphabet)  -->
+<!-- TODO: edit of contact name, should update contact names in user-transactions -->
 <!-- TODO: consider how to implement receiving of funds, how to request, and who will transfer them to the user -->
 <!-- TODO: Add handling for invalid contact Id in contact details/edit -->
 <!-- TODO: consider making contact phone numbers have unified format, and consider contact names language for filtering  -->
-<!-- TODO: Add contacts filtering -->
-<!-- TODO: add more contacts, consider either pagination of endless scrolling -->
+<!-- TODO: Add contacts filtering/sorting -->
 
 <!-- TODO: ✔  implement transfer of funds -->
 <!-- TODO (mini): ✔ in addition to default contact icon, add logged-in user icon, for differentiation -->
