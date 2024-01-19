@@ -1,15 +1,18 @@
 <template>
     <section v-if="isContactLoaded" class="contact-details-container full main-layout">
         <section class="contact-details">
+
             <section class="return-btn-container flex">
                 <button class="return-btn" @click="onReturn">Return</button>
             </section>
+
             <section class="picture-container">
                 <section class="picture">
                     <img v-if="contactPicture" :src="contactPicture" alt="contact">
                     <IconHandler v-else :name="ICON_DEFAULT_USER" />
                 </section>
             </section>
+
             <section class="details clr-gray-2 text-align-center">
                 <section class="name clr-gold-0">
                     <p>{{ contactName }}</p>
@@ -21,10 +24,14 @@
                     <p>{{ contactPhone }}</p>
                 </section>
             </section>
+            
             <section class="btn-container flex justify-center">
                 <button class="btn-edit" @click="onEdit(contactId)">Edit</button>
                 <button class="btn-transfer" @click="onTransfer(userId, contactId, 5)">Transfer 5 coins</button>
             </section>
+
+            <TransactionList :transactions="contactTransactions" />
+
             <!-- <pre>{{ JSON.stringify(contact, null, 2) }}</pre> -->
         </section>
     </section>
@@ -43,6 +50,7 @@ import IconHandler from '@/cmps/app-reusable/IconHandler.vue'
 import { ICON_DEFAULT_USER } from '@/services/icon-handler.service'
 import Loader from '@/cmps/app-reusable/loader.vue'
 import Mixin from '@/mixin'
+import TransactionList from '../cmps/TransactionList.vue'
 
 export default {
     created() {
@@ -52,7 +60,8 @@ export default {
         ...mapGetters([
             'contact',
             'isContactLoaded',
-            'user'
+            'user',
+            'transactions'
         ]),
         contactId() { return this.$route.params.id },
         contactName() { return this.contact.name },
@@ -60,7 +69,13 @@ export default {
         contactPhone() { return this.contact.phone },
         contactEmail() { return this.contact.email },
         userId() { return this.user._id },
-        ICON_DEFAULT_USER() { return ICON_DEFAULT_USER }
+        ICON_DEFAULT_USER() { return ICON_DEFAULT_USER },
+        contactTransactions() {
+            return this.transactions.filter(transaction =>
+                transaction.content.sender.senderId === this.contactId
+                || transaction.content.receiver.receiverId === this.contactId
+            )
+        }
     },
     methods: {
         ...mapActions([
@@ -78,7 +93,7 @@ export default {
         }
     },
     mixins: [Mixin],
-    components: { IconHandler, Loader }
+    components: { IconHandler, Loader, TransactionList }
 }
 </script>
 

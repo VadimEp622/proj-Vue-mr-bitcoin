@@ -4,10 +4,6 @@ import { showErrorMsg, showSuccessMsg } from "../../services/event-bus.service"
 import { userService } from "../../services/user.service"
 
 
-// Transfer of currency:
-//  I. removing x amount from user
-//  II. adding x amount to contact (contact object is not changed in any way, only user activity)
-
 export default {
     state() {
         return {
