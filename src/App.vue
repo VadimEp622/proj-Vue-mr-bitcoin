@@ -110,6 +110,8 @@ II. redirect to login-page:
 III. homepage will be fancy, with a "welcome <user.name>" greeting, with user transactions history (and maybe more)
 
 IV. add testing
+
+V. remove footer when responsive-main-menu is slidable, and put footer contents at bottom of responsive-main-menu
 -->
 
 <!-- TODO (styling layouts):
