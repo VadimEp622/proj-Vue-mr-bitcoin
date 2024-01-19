@@ -3,6 +3,9 @@ import { storageService } from "./async-storage.service"
 import { utilService } from "./util.service"
 
 
+const CONTACT_KEY = 'contact'
+
+
 export const contactService = {
     query,
     getContactById,
@@ -13,9 +16,7 @@ export const contactService = {
 }
 
 
-const CONTACT_KEY = 'contact'
-
-
+// ************************* Backend API Calls *************************
 function query(filterBy = {}) {
     return _getContacts(CONTACT_KEY)
         .then(contacts => {
@@ -39,6 +40,7 @@ function updateContact(contact) {
 function createContact(contact) {
     return storageService.post(CONTACT_KEY, contact)
 }
+// *********************************************************************
 
 function getEmptyContact() {
     return {
@@ -49,9 +51,10 @@ function getEmptyContact() {
 }
 
 
-// *************************************************************************************
-// ********************************* Private Functions *********************************
-// *************************************************************************************
+
+// ===============================================================
+// ====================== Private Functions ======================
+// ===============================================================
 async function _getContacts(entityType) {
     const LocalStorageContacts = utilService.loadFromStorage(entityType)
     if (!LocalStorageContacts || LocalStorageContacts.length < 1) {

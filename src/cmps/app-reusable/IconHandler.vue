@@ -6,6 +6,7 @@
 <script>
 import { defineAsyncComponent, markRaw } from 'vue'
 import { ICON_DEFAULT_USER, ICON_HAMBURGER } from '@/services/icon-handler.service'
+import { ICON_ARROW_LEFT } from '../../services/icon-handler.service';
 
 
 export default {
@@ -33,9 +34,11 @@ export default {
                 case ICON_DEFAULT_USER:
                     component = defineAsyncComponent(() => import(/* @vite-ignore */ `../../assets/imgs/icon/user/user-nav-profile.svg`))
                     break
-
                 case ICON_HAMBURGER:
                     component = defineAsyncComponent(() => import(/* @vite-ignore */ `../../assets/imgs/icon/config/icon-hamburger.svg`))
+                    break
+                case ICON_ARROW_LEFT:
+                    component = defineAsyncComponent(() => import(/* @vite-ignore */ `../../assets/imgs/icon/arrow/arrow-left.svg`))
                     break
 
                 default:

@@ -2,7 +2,9 @@
     <section v-if="initialValues" class="contact-edit-container full main-layout">
         <section class="contact-edit">
             <section class="return-btn-container flex justify-start">
-                <button class="return-btn" @click="onReturn(contactId)">Return</button>
+                <button class="return-btn clr-gray-2" @click="onReturn(contactId)">
+                    <IconHandler :name="ICON_ARROW_LEFT" />
+                </button>
             </section>
             <FormContact :initial-values="initialValues" @onSubmit="onSave" />
             <section v-if="isFormSubmitted" class="submit-modal flex justify-center align-center clr-gray-0">
@@ -24,6 +26,8 @@ import { mapGetters, mapActions } from 'vuex'
 import FormContact from '@/cmps/app-reusable/forms/FormContact.vue'
 import Loader from '@/cmps/app-reusable/loader.vue'
 import Mixin from '@/mixin'
+import { ICON_ARROW_LEFT } from '../services/icon-handler.service'
+import IconHandler from '../cmps/app-reusable/IconHandler.vue'
 
 export default {
     data() {
@@ -41,7 +45,8 @@ export default {
             'isContactLoaded',
             'isUpdatingContacts'
         ]),
-        contactId() { return this.$route.params.id }
+        contactId() { return this.$route.params.id },
+        ICON_ARROW_LEFT() { return ICON_ARROW_LEFT }
     },
     watch: {
         isContactLoaded(isContactLoaded) {
@@ -69,7 +74,7 @@ export default {
         },
     },
     mixins: [Mixin],
-    components: { FormContact, Loader }
+    components: { FormContact, Loader, IconHandler }
 }
 </script>
 
@@ -85,6 +90,20 @@ export default {
 
     & .return-btn-container {
         margin-block-start: 20px;
+
+        & .return-btn {
+            @include btn-reset();
+            transition: transform .2s ease-in-out;
+
+            & svg {
+                width: 30px !important;
+                height: 30px !important;
+            }
+
+            &:hover {
+                transform: scale(1.25);
+            }
+        }
     }
 
     & .submit-modal {

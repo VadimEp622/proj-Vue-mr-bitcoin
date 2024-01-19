@@ -108,12 +108,12 @@ export default {
 
         & .chart-container {
             position: relative;
-            height: 100%;
+            min-height: 150px;
+            height: 60vw;
             max-height: 600px;
             width: 90vw;
+            max-width: 1000px;
             margin-inline: auto;
-            display: flex;
-            justify-content: center;
         }
     }
 }

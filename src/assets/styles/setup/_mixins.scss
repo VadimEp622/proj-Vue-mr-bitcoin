@@ -63,3 +63,12 @@
         }
     }
 }
+
+/* ======================================================== */
+
+@mixin btn-reset() {
+    background-color: inherit;
+    border: none;
+    padding: 0;
+    margin: 0;
+}

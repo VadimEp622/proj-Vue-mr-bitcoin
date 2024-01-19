@@ -17,7 +17,7 @@ export const userService = {
     clearLocalUser
 }
 
-
+// ************************* Backend API Calls *************************
 function query() {
     return storageService.query(USER_KEY)
         .then(users => users.length < 1 ? _createDemoUsers() : users)
@@ -40,6 +40,7 @@ function updateUser(user) {
 function postNewUser(user) {
     return storageService.post(USER_KEY, user)
 }
+// *********************************************************************
 
 function getNewTransaction(loggedInUser, contact, amount) {
     const transaction = {
@@ -68,7 +69,9 @@ function clearLocalUser() {
 
 
 
-// ====================== private functions ======================
+// ===============================================================
+// ====================== Private Functions ======================
+// ===============================================================
 function _createDemoUsers() {
     const users = [
         _createUser("Puki Ben David", 100, [])
@@ -77,14 +80,7 @@ function _createDemoUsers() {
     return users
 }
 
-
-function _createDemoUser() {
-    const user = _createUser("Puki Ben David", 100, [])
-    utilService.saveToStorage(USER_KEY, user)
-    return user
-}
-
-function _createUser(name, balance, transactions) {
+function _createUser(name, balance = 100, transactions = []) {
     return {
         _id: utilService.makeId(),
         name,

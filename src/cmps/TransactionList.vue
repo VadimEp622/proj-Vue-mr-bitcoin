@@ -35,19 +35,16 @@ export default {
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
-        margin-block-end: 4px;
+        padding-block-end: 4px;
         font-size: rem(16px);
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        border-bottom: 1px solid gray;
     }
 
     & ul {
         display: grid;
         position: relative;
         overflow: hidden;
-
-        &>*:first-child {
-            border-top: 1px solid gray;
-        }
 
         & .transaction-preview-container {
             border-bottom: 1px solid gray;
@@ -57,7 +54,6 @@ export default {
     }
 
     & .no-transactions {
-        border-top: 1px solid gray;
         padding-block: 10px;
         overflow: hidden;
         text-overflow: ellipsis;
