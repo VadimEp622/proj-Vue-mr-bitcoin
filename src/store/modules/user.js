@@ -36,7 +36,7 @@ export default {
                 const contact = await contactService.getContactById(contactId)
                 const loggedInUser = await userService.getUserById(userId)
                 if (!loggedInUser?.balance) throw new Error('Faulty user object - no balance key')
-                if (loggedInUser.balance - amount < 0) throw new Error('not enough currency')
+                if (loggedInUser.balance - amount < 0) throw new Error('Not enough currency')
 
                 const transaction = userService.getNewTransaction(loggedInUser, contact, amount)
                 loggedInUser.transactions.push(transaction)
@@ -50,7 +50,8 @@ export default {
                 showSuccessMsg('Transfer success')
             } catch (err) {
                 console.log('Could not perform transaction', err)
-                showErrorMsg('Transfer failed')
+                if (err?.message) showErrorMsg(`Transfer failed - ${err.message}`)
+                else showErrorMsg('Transfer failed')
             }
         }
     },

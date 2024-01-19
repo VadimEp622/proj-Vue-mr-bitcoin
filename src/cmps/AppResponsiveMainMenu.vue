@@ -14,7 +14,7 @@
                         </section>
                     </section>
                     <section class="balance">
-                        <p>Balance: 50$</p>
+                        <p>Balance: {{ user.balance }}</p>
                     </section>
                 </section>
 
