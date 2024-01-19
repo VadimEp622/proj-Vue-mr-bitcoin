@@ -35,7 +35,7 @@ export default {
             try {
                 const contact = await contactService.getContactById(contactId)
                 const loggedInUser = await userService.getUserById(userId)
-                if (!loggedInUser?.balance) throw new Error('Faulty user object - no balance key')
+                if (loggedInUser?.balance === undefined) throw new Error('Faulty user object - no balance key')
                 if (loggedInUser.balance - amount < 0) throw new Error('Not enough currency')
 
                 const transaction = userService.getNewTransaction(loggedInUser, contact, amount)

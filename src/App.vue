@@ -69,13 +69,15 @@ export default {
 <!-- ================================================= -->
 
 
-<!-- TODO (mini): in addition to default contact icon, add logged-in user icon, for differentiation -->
-<!-- TODO: implement transfer of funds -->
+<!-- TODO: implement lazy loading of routes, and see how it goes -->
+<!-- TODO: consider how to implement receiving of funds, how to request, and who will transfer them to the user -->
 <!-- TODO: Add handling for invalid contact Id in contact details/edit -->
 <!-- TODO: consider making contact phone numbers have unified format, and consider contact names language for filtering  -->
 <!-- TODO: Add contacts filtering -->
 <!-- TODO: add more contacts, consider either pagination of endless scrolling -->
 
+<!-- TODO: ✔  implement transfer of funds -->
+<!-- TODO (mini): ✔ in addition to default contact icon, add logged-in user icon, for differentiation -->
 <!-- TODO: ✔ make user profile -->
 <!-- TODO: ✔ consider adding globally accessible methods for DON'T-REPEAT-YOURSELF structure (if possible) -->
 
@@ -110,6 +112,8 @@ II. redirect to login-page:
 III. homepage will be fancy, with a "welcome <user.name>" greeting, with user transactions history (and maybe more)
 
 IV. add testing
+
+V. remove footer when responsive-main-menu is slidable, and put footer contents at bottom of responsive-main-menu
 -->
 
 <!-- TODO (styling layouts):

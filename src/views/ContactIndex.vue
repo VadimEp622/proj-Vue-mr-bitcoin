@@ -17,8 +17,6 @@
     must make a computed showList() func, which will perform the && operation
  -->
 
-<!-- TODO: add CRUD -->
-
 
 <script>
 import { mapGetters, mapActions } from 'vuex'
