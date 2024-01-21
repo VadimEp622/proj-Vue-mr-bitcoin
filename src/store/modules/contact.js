@@ -7,6 +7,7 @@ export default {
         return {
             contacts: [],
             contact: {},
+            totalContactPageCount: 1,
             isLoadingContacts: false,
             isLoadingContact: false,
             isUpdatingContacts: false,
@@ -46,14 +47,20 @@ export default {
         },
         setHasLoadedContact(state, { hasLoadedContact }) {
             state.hasLoadedContact = hasLoadedContact
+        },
+        setTotalContactPageCount(state, { totalContactPageCount }) {
+            state.totalContactPageCount = totalContactPageCount
         }
     },
     actions: {
-        async loadContacts({ commit }) {
+        async loadContacts({ commit }, filterBy) {
             try {
+                // console.log('store-contacts-loadContacts-> filterBy', filterBy)
                 commit({ type: 'setHasLoadedContacts', hasLoadedContacts: false })
                 commit({ type: 'setIsLoadingContacts', isLoadingContacts: true })
-                const contacts = await contactService.query()
+                const totalContactPageCount = await contactService.getContactTotalPageCount()
+                commit({ type: 'setTotalContactPageCount', totalContactPageCount })
+                const contacts = await contactService.query(filterBy)
                 commit({ type: 'setContacts', contacts })
                 commit({ type: 'setHasLoadedContacts', hasLoadedContacts: true })
             } catch (err) {
@@ -128,6 +135,9 @@ export default {
         },
         isContactLoaded(state) {
             return !state.isLoadingContact && state.hasLoadedContact && Object.keys(state.contact).length !== 0
+        },
+        totalContactPageCount(state) {
+            return state.totalContactPageCount
         }
     },
 }

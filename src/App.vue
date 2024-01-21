@@ -165,7 +165,7 @@ II. when footer/header are disabled (display:none),
 
 .main-container {
   position: absolute;
-  min-height: 100lvh;
+  min-height: 100svh;
   min-width: 0;
   top: 0;
   left: 0;
