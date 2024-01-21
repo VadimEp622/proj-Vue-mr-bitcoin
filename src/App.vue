@@ -5,7 +5,8 @@
     <section class="main-container" :class="[appClass, layoutClass]">
       <AppHeader :layoutClass="layoutClass" @setMainMenu="setMainMenu" />
       <main class="full" :class="layoutClass">
-        <RouterView />
+        <Loader v-if="isLoadingRoute" />
+        <RouterView v-else />
       </main>
       <AppFooter :layoutClass="layoutClass" />
     </section>
@@ -22,6 +23,8 @@ import AppFooter from '@/cmps/AppFooter.vue'
 import UserMsg from '@/cmps/AppUserMsg.vue'
 import ResponsiveMainMenu from '@/cmps/AppResponsiveMainMenu.vue'
 import { eventBus } from '@/services/event-bus.service.js'
+import Loader from '@/cmps/app-reusable/Loader.vue'
+import { mapGetters } from 'vuex'
 
 export default {
   data() {
@@ -36,6 +39,9 @@ export default {
     this.unListen()
   },
   computed: {
+    ...mapGetters([
+      'isLoadingRoute'
+    ]),
     currentRoute() {
       return this.$route.name
     },
@@ -60,6 +66,7 @@ export default {
     AppHeader,
     AppFooter,
     UserMsg,
+    Loader,
     ResponsiveMainMenu
   }
 }
@@ -69,19 +76,14 @@ export default {
 <!-- ================================================= -->
 
 
-<!-- TODO: implement lazy loading of routes, and see how it goes -->
-<!-- TODO: add more contacts, consider either pagination of endless scrolling -->
-<!-- TODO: new creation of contact, should place the contact as the first in the contact-list array, ONLY for first listing after creation (then regular sorting by name alphabet)  -->
-<!-- TODO: edit of contact name, should update contact names in user-transactions -->
+<!-- TODO: In contact-list do pagination, fetch 200 contacts and paginate by 20 each (infinite scrolling option will have issues here, maybe do infinite scrolling for transaction-list instead) -->
 <!-- TODO: consider how to implement receiving of funds, how to request, and who will transfer them to the user -->
-<!-- TODO: Add handling for invalid contact Id in contact details/edit -->
-<!-- TODO: consider making contact phone numbers have unified format, and consider contact names language for filtering  -->
 <!-- TODO: Add contacts filtering/sorting -->
 
-<!-- TODO: ✔  implement transfer of funds -->
-<!-- TODO (mini): ✔ in addition to default contact icon, add logged-in user icon, for differentiation -->
-<!-- TODO: ✔ make user profile -->
-<!-- TODO: ✔ consider adding globally accessible methods for DON'T-REPEAT-YOURSELF structure (if possible) -->
+<!-- TODO: new creation of contact, should place the contact as the first in the contact-list array, ONLY for first listing after creation (then regular sorting by name alphabet)  -->
+<!-- TODO: edit of contact name, should update contact names in user-transactions -->
+<!-- TODO: Add handling for invalid contact Id in contact details/edit -->
+<!-- TODO: consider making contact phone numbers have unified format, and consider contact names language for filtering  -->
 
 
 <!-- ================================================= -->

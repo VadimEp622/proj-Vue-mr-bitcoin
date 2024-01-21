@@ -43,9 +43,7 @@
             <!-- <pre>{{ JSON.stringify(contact, null, 2) }}</pre> -->
         </section>
     </section>
-    <section v-else class="loader">
-        <Loader />
-    </section>
+    <Loader v-else />
 </template>
 
 
@@ -183,9 +181,5 @@ export default {
             }
         }
     }
-}
-
-.loader {
-    margin-block-start: 20px;
 }
 </style>

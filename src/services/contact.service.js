@@ -79,7 +79,7 @@ function _fetchContacts() {
 }
 
 function _getUrlRandomContacts() {
-    return `https://randomuser.me/api/?results=10&inc=name,picture,email,phone`
+    return `https://randomuser.me/api/?results=30&nat=us&inc=name,picture,email,phone`
 }
 
 function _sort(arr) {

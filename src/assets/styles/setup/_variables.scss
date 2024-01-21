@@ -62,7 +62,8 @@ $map-spacing: (
     "0": 0,
     "5": 5px,
     "10": 10px,
-    "15": 15px
+    "15": 15px,
+    "20": 20px
 );
 
 // ************** Padding Map **************
@@ -128,7 +129,8 @@ $map-margin-block: (
 );
 
 $map-margin-block-start: (
-    "0": map-get($map-spacing, "0")
+    "0": map-get($map-spacing, "0"),
+    "20": map-get($map-spacing, "20")
 );
 
 $map-margin-block-end: (

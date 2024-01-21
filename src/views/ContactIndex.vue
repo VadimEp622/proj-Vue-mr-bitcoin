@@ -6,7 +6,6 @@
         </section>
         <section v-if="user" class="contact-list-container">
             <ContactList v-if="isContactsLoaded" @remove="removeContact" :contacts="contacts" />
-            <Loader v-else />
         </section>
     </section>
 </template>
@@ -20,9 +19,9 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex'
-import ContactList from '@/cmps/ContactList.vue'
 import Loader from '@/cmps/app-reusable/loader.vue'
 import Mixin from '@/mixin'
+import { defineAsyncComponent } from 'vue'
 
 export default {
     created() {
@@ -46,8 +45,10 @@ export default {
     },
     mixins: [Mixin],
     components: {
-        ContactList,
-        Loader
+        ContactList: defineAsyncComponent({
+            loader: () => import('@/cmps/ContactList.vue'),
+            loadingComponent: Loader
+        }),
     }
 }
 </script>
