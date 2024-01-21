@@ -34,30 +34,37 @@ const router = createRouter({
       component: () => import('@/views/Profile.vue')
     },
     {
-      path: '/contact',
-      name: 'contact-index',
-      component: () => import('@/views/ContactIndex.vue')
-    },
-    {
-      path: '/contact/create',
-      name: 'contact-create',
-      component: () => import('@/views/ContactCreate.vue')
-    },
-    {
-      path: '/contact/:id',
-      name: 'contact-details',
-      component: () => import('@/views/ContactDetails.vue')
-    },
-    {
-      path: '/contact/:id/edit',
-      name: 'contact-edit',
-      component: () => import('@/views/ContactEdit.vue')
-    },
-    {
       path: '/trading',
       name: 'trading',
       component: () => import('@/views/Trading.vue')
     },
+    {
+      path: '/contact',
+      name: 'Contact',
+      redirect: '/contact/index',
+      children: [
+        {
+          path: 'index',
+          name: 'ContactIndex',
+          component: () => import('@/views/ContactIndex.vue')
+        },
+        {
+          path: 'create',
+          name: 'ContactCreate',
+          component: () => import('@/views/ContactCreate.vue')
+        },
+        {
+          path: ':id/edit',
+          name: 'ContactEdit',
+          component: () => import('@/views/ContactEdit.vue')
+        },
+        {
+          path: ':id',
+          name: 'ContactDetails',
+          component: () => import('@/views/ContactDetails.vue')
+        },
+      ]
+    }
   ]
 })
 
