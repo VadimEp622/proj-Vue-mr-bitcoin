@@ -12,9 +12,7 @@
             </section>
         </section>
     </section>
-    <section v-else class="loader">
-        <Loader />
-    </section>
+    <Loader v-else />
 </template>
 
 
@@ -109,10 +107,5 @@ export default {
     & .submit-modal {
         margin-block-start: 20px;
     }
-}
-
-
-.loader {
-    margin-block-start: 20px;
 }
 </style>

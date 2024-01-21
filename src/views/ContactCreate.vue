@@ -12,9 +12,7 @@
             </section>
         </section>
     </section>
-    <section v-else class="loader">
-        <Loader />
-    </section>
+    <Loader v-else />
 </template>
 
 
@@ -25,7 +23,7 @@ import { contactService } from '@/services/contact.service.js'
 import { mapGetters, mapActions } from 'vuex'
 import Mixin from '@/mixin'
 import { ICON_ARROW_LEFT } from '../services/icon-handler.service'
-import IconHandler from '../cmps/app-reusable/IconHandler.vue'
+import IconHandler from '@/cmps/app-reusable/IconHandler.vue'
 
 export default {
     data() {
@@ -97,10 +95,5 @@ export default {
     & .submit-modal {
         margin-block-start: 20px;
     }
-}
-
-
-.loader {
-    margin-block-start: 20px;
 }
 </style>

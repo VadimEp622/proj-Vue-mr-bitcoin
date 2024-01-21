@@ -5,7 +5,8 @@
     <section class="main-container" :class="[appClass, layoutClass]">
       <AppHeader :layoutClass="layoutClass" @setMainMenu="setMainMenu" />
       <main class="full" :class="layoutClass">
-        <RouterView />
+        <Loader v-if="isLoadingRoute" />
+        <RouterView v-else />
       </main>
       <AppFooter :layoutClass="layoutClass" />
     </section>
@@ -22,6 +23,8 @@ import AppFooter from '@/cmps/AppFooter.vue'
 import UserMsg from '@/cmps/AppUserMsg.vue'
 import ResponsiveMainMenu from '@/cmps/AppResponsiveMainMenu.vue'
 import { eventBus } from '@/services/event-bus.service.js'
+import Loader from '@/cmps/app-reusable/Loader.vue'
+import { mapGetters } from 'vuex'
 
 export default {
   data() {
@@ -36,6 +39,9 @@ export default {
     this.unListen()
   },
   computed: {
+    ...mapGetters([
+      'isLoadingRoute'
+    ]),
     currentRoute() {
       return this.$route.name
     },
@@ -60,6 +66,7 @@ export default {
     AppHeader,
     AppFooter,
     UserMsg,
+    Loader,
     ResponsiveMainMenu
   }
 }

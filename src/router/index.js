@@ -69,12 +69,15 @@ const router = createRouter({
 })
 
 router.beforeEach((to, from, next) => {
+  closeMainMenu()
+  store.dispatch('updateIsLoadingRoute', true)
   if (to.name !== 'login' && !store.state.user.user) next({ name: 'login' })
   else next()
 })
 
 router.afterEach((to, from) => {
   closeMainMenu()
+  store.dispatch('updateIsLoadingRoute', false)
 })
 
 export default router

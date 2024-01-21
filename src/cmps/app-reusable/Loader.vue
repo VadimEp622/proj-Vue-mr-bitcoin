@@ -1,5 +1,5 @@
 <template>
-    <section class="loader full flex justify-center align-center">
+    <section class="loader full flex justify-center align-center mg-bl-st-20">
         <svg viewBox="0 0 120 30" xmlns="http://www.w3.org/2000/svg" :fill="color" :width="width" :height="height">
             <circle cx="15" cy="15" r="15">
                 <animate attributeName="r" from="15" to="15" begin="0s" dur="0.8s" values="15;9;15" calcMode="linear"
