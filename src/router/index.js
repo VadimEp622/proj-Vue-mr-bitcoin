@@ -1,12 +1,4 @@
 import { createRouter, createWebHashHistory, createWebHistory } from 'vue-router'
-import Home from '@/views/Home.vue'
-import Profile from '@/views/Profile.vue'
-import Trading from '@/views/Trading.vue'
-// import Login from '@/views/Login.vue'
-import ContactIndex from '@/views/ContactIndex.vue'
-import ContactDetails from '@/views/ContactDetails.vue'
-import ContactCreate from '@/views/ContactCreate.vue'
-import ContactEdit from '@/views/ContactEdit.vue'
 import store from '../store'
 import { closeMainMenu } from '../services/event-bus.service'
 
@@ -17,12 +9,11 @@ const router = createRouter({
     {
       path: '/',
       name: 'home',
-      component: Home
+      component: () => import('@/views/Home.vue')
     },
     {
       path: '/login',
       name: 'login',
-      // component: Login,
       component: () => import('@/views/Login.vue'),
       beforeEnter: (to, from, next) => {
         if (store.state.user.user) next({ name: 'home' })
@@ -40,32 +31,32 @@ const router = createRouter({
     {
       path: '/profile',
       name: 'profile',
-      component: Profile,
+      component: () => import('@/views/Profile.vue')
     },
     {
       path: '/contact',
       name: 'contact-index',
-      component: ContactIndex
+      component: () => import('@/views/ContactIndex.vue')
     },
     {
       path: '/contact/create',
       name: 'contact-create',
-      component: ContactCreate
+      component: () => import('@/views/ContactCreate.vue')
     },
     {
       path: '/contact/:id',
       name: 'contact-details',
-      component: ContactDetails,
+      component: () => import('@/views/ContactDetails.vue')
     },
     {
       path: '/contact/:id/edit',
       name: 'contact-edit',
-      component: ContactEdit,
+      component: () => import('@/views/ContactEdit.vue')
     },
     {
       path: '/trading',
       name: 'trading',
-      component: Trading
+      component: () => import('@/views/Trading.vue')
     },
   ]
 })
