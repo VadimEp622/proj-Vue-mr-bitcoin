@@ -165,7 +165,7 @@ II. when footer/header are disabled (display:none),
 
 .main-container {
   position: absolute;
-  min-height: 100%;
+  min-height: 100lvh;
   min-width: 0;
   top: 0;
   left: 0;
@@ -174,7 +174,7 @@ II. when footer/header are disabled (display:none),
 
   &:not(.header-footer-hidden) main {
     // height: fit-content;
-    align-content: flex-start;
+    align-content: start;
   }
 
   &.header-footer-hidden {
