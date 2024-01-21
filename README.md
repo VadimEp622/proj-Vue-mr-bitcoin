@@ -8,7 +8,7 @@ This project is a demo web application made in Vue, and is meant to function sim
 
 <h2>Details</h2>
 
-* *Mr.Bitcoin* was build as a **SPA** using  **Vue.js** (Vue3/vite)
+* *Mr. Bitcoin* was build as a **SPA** using  **Vue.js** (Vue3/vite)
 * Tools used: **SASS** | **Vuex**
 * Additional: **Responsive**
 
@@ -17,5 +17,6 @@ This project is a demo web application made in Vue, and is meant to function sim
 * Upon entering the website, you are automatically redirected to the login route, and prompted to input your name
 * Upon inputing your name, your user is automatically created, along with a list of contacts
 * You can perform CRUD operations on your contact list
+* You can transfer coins to contacts
 * Showcases updated Bitcoin to USD exchange rate
 * Showcases graphs related to recent market price history
