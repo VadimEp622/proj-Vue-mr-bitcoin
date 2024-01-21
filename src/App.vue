@@ -76,7 +76,7 @@ export default {
 <!-- ================================================= -->
 
 
-<!-- TODO: add more contacts, consider either pagination of endless scrolling -->
+<!-- TODO: In contact-list do pagination, fetch 200 contacts and paginate by 20 each (infinite scrolling option will have issues here, maybe do infinite scrolling for transaction-list instead) -->
 <!-- TODO: consider how to implement receiving of funds, how to request, and who will transfer them to the user -->
 <!-- TODO: Add contacts filtering/sorting -->
 
