@@ -173,8 +173,8 @@ II. when footer/header are disabled (display:none),
   grid-template-rows: auto 1fr auto;
 
   &:not(.header-footer-hidden) main {
-    height: fit-content;
-    align-content: start;
+    // height: fit-content;
+    align-content: flex-start;
   }
 
   &.header-footer-hidden {
