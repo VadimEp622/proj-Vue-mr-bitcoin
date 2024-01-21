@@ -6,8 +6,12 @@ import { utilService } from "./util.service"
 const CONTACT_KEY = 'contact'
 
 
+const contactsPerPage = 24
+
+
 export const contactService = {
     query,
+    getContactTotalPageCount,
     getContactById,
     removeContact,
     updateContact,
@@ -22,7 +26,19 @@ function query(filterBy = {}) {
         .then(contacts => {
             const filteredContacts = contacts
             return _sort(filteredContacts)
+        }).then(contacts => {
+            console.log('contact.service-query-> filterBy', filterBy)
+            if (filterBy.activePage) {
+                const offset = contactsPerPage * (filterBy.activePage - 1)
+                return contacts.slice(0 + offset, contactsPerPage + offset)
+            }
+            return contacts
         })
+}
+
+function getContactTotalPageCount() {
+    return query()
+        .then(contacts => Math.ceil(contacts.length / contactsPerPage))
 }
 
 function getContactById(contactId) {
@@ -79,7 +95,7 @@ function _fetchContacts() {
 }
 
 function _getUrlRandomContacts() {
-    return `https://randomuser.me/api/?results=30&nat=us&inc=name,picture,email,phone`
+    return `https://randomuser.me/api/?results=75&nat=us&inc=name,picture,email,phone`
 }
 
 function _sort(arr) {
