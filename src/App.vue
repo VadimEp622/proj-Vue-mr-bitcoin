@@ -80,6 +80,8 @@ export default {
 <!-- TODO: consider how to implement receiving of funds, how to request, and who will transfer them to the user -->
 <!-- TODO: Add contacts filtering/sorting -->
 
+
+<!-- TODO: contact-details/edit and profile routes in mobile, have footer on bottom not by true device height, but by lowest viewport height -->
 <!-- TODO: new creation of contact, should place the contact as the first in the contact-list array, ONLY for first listing after creation (then regular sorting by name alphabet)  -->
 <!-- TODO: edit of contact name, should update contact names in user-transactions -->
 <!-- TODO: Add handling for invalid contact Id in contact details/edit -->
@@ -87,7 +89,7 @@ export default {
 
 
 <!-- ================================================= -->
-<!-- =================== TODO LATER: =================== -->
+<!-- ================== TODO LATER: ================== -->
 <!-- ================================================= -->
 
 
@@ -171,8 +173,8 @@ II. when footer/header are disabled (display:none),
   grid-template-rows: auto 1fr auto;
 
   &:not(.header-footer-hidden) main {
-    height: fit-content;
-    align-content: start;
+    // height: fit-content;
+    align-content: flex-start;
   }
 
   &.header-footer-hidden {
