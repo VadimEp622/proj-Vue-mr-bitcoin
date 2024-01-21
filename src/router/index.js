@@ -1,12 +1,4 @@
 import { createRouter, createWebHashHistory, createWebHistory } from 'vue-router'
-import Home from '@/views/Home.vue'
-import Profile from '@/views/Profile.vue'
-import Trading from '@/views/Trading.vue'
-// import Login from '@/views/Login.vue'
-import ContactIndex from '@/views/ContactIndex.vue'
-import ContactDetails from '@/views/ContactDetails.vue'
-import ContactCreate from '@/views/ContactCreate.vue'
-import ContactEdit from '@/views/ContactEdit.vue'
 import store from '../store'
 import { closeMainMenu } from '../services/event-bus.service'
 
@@ -17,12 +9,11 @@ const router = createRouter({
     {
       path: '/',
       name: 'home',
-      component: Home
+      component: () => import('@/views/Home.vue')
     },
     {
       path: '/login',
       name: 'login',
-      // component: Login,
       component: () => import('@/views/Login.vue'),
       beforeEnter: (to, from, next) => {
         if (store.state.user.user) next({ name: 'home' })
@@ -40,33 +31,40 @@ const router = createRouter({
     {
       path: '/profile',
       name: 'profile',
-      component: Profile,
-    },
-    {
-      path: '/contact',
-      name: 'contact-index',
-      component: ContactIndex
-    },
-    {
-      path: '/contact/create',
-      name: 'contact-create',
-      component: ContactCreate
-    },
-    {
-      path: '/contact/:id',
-      name: 'contact-details',
-      component: ContactDetails,
-    },
-    {
-      path: '/contact/:id/edit',
-      name: 'contact-edit',
-      component: ContactEdit,
+      component: () => import('@/views/Profile.vue')
     },
     {
       path: '/trading',
       name: 'trading',
-      component: Trading
+      component: () => import('@/views/Trading.vue')
     },
+    {
+      path: '/contact',
+      name: 'Contact',
+      redirect: '/contact/index',
+      children: [
+        {
+          path: 'index',
+          name: 'ContactIndex',
+          component: () => import('@/views/ContactIndex.vue')
+        },
+        {
+          path: 'create',
+          name: 'ContactCreate',
+          component: () => import('@/views/ContactCreate.vue')
+        },
+        {
+          path: ':id/edit',
+          name: 'ContactEdit',
+          component: () => import('@/views/ContactEdit.vue')
+        },
+        {
+          path: ':id',
+          name: 'ContactDetails',
+          component: () => import('@/views/ContactDetails.vue')
+        },
+      ]
+    }
   ]
 })
 
