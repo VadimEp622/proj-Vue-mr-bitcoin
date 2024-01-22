@@ -22,6 +22,19 @@ export default {
 .home-page {
   color: #cccccc;
 
+  &::before {
+    content: '';
+    position: absolute;
+    height: 400px;
+    width: 400px;
+    background-image: url('@/assets/imgs/bg-pic/bg-bitcoin2.png');
+    background-size: cover;
+    z-index: -1;
+    justify-self: flex-end;
+    opacity: .4;
+    margin-inline-end: 10vw;
+  }
+
   & .greeting {
     padding-block: 20px;
     // white-space: nowrap;
