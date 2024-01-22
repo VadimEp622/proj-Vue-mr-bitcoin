@@ -1,6 +1,6 @@
 <template>
-    <section class="profile-home full details-layout">
-        <section class="user-intro">
+    <section class="profile-home full details-layout clr-gray-3 align-baseline">
+        <section class="user-intro mg-bl-20">
 
             <section class="picture-container">
                 <section class="picture clr-gold-0">
@@ -8,13 +8,13 @@
                 </section>
             </section>
 
-            <section class="name text-align-center clr-gold-0">
+            <section class="name mg-bl-st-10 text-align-center fw600 fs25 clr-gold-0">
                 <p>{{ user.name }}</p>
             </section>
 
-            <section class="balance flex gap-10 justify-center">
-                <p>Balance:</p>
-                <p>{{ user.balance }}</p>
+            <section class="balance flex gap-5 fs18 justify-center align-baseline">
+                <p class="capitalize">balance:</p>
+                <p class="fs25 fw600 clr-gold-0">{{ user.balance }}</p>
             </section>
 
             <TransactionList :transactions="transactions" />
@@ -33,8 +33,6 @@ import { mapGetters } from 'vuex'
 import TransactionList from '@/cmps/TransactionList.vue'
 
 export default {
-    created() {
-    },
     computed: {
         ...mapGetters([
             'user',
@@ -42,25 +40,16 @@ export default {
         ]),
         ICON_DEFAULT_USER() { return ICON_DEFAULT_USER }
     },
-    methods: {
-    },
     components: { IconHandler, Loader, TransactionList }
 }
 </script>
 
 
-<!-- TODO:
-I. add option to refill balance
-II. ✔ add ability to see recent transactions with specific contact in contact-details
-III. add ability to see last 3 items in transaction-list (make new cmp) in home-page
--->
+<!-- TODO: add option to refill balance -->
 
 
 <style lang="scss" scoped>
 .profile-home {
-    justify-items: center;
-    color: #cccccc;
-    padding-block: 20px;
     justify-items: center;
 
     & .user-intro {
@@ -76,18 +65,9 @@ III. add ability to see last 3 items in transaction-list (make new cmp) in home-
             max-width: none;
         }
 
-        & .name {
-            font-size: rem(30px);
-            font-weight: 600;
-        }
-
-        & .balance>*:first-child {
-            align-self: center;
-        }
-
-        & .balance>*:last-child {
-            font-size: rem(25px);
-            font-weight: 600;
+        & .name,
+        & .balance {
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
         }
 
         & p {

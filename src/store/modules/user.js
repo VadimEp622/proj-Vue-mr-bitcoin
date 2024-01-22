@@ -32,16 +32,27 @@ export default {
             commit({ type: 'setUser', user: null })
         },
         async createTransaction({ commit }, { userId, contactId, amount }) {
+            // TODO: rethink who sends user money, and who cannot send user money, and restructure transaction action if needed
             try {
-                const contact = await contactService.getContactById(contactId)
+                const contact = contactId
+                    ? await contactService.getContactById(contactId)
+                    : {
+                        _id: '000001',
+                        name: 'Mr. Bitcoin'
+                    }
+
+
                 const loggedInUser = await userService.getUserById(userId)
                 if (loggedInUser?.balance === undefined) throw new Error('Faulty user object - no balance key')
                 if (loggedInUser.balance - amount < 0) throw new Error('Not enough currency')
 
-                const transaction = userService.getNewTransaction(loggedInUser, contact, amount)
+                const transaction = contactId
+                    ? userService.getNewTransaction(loggedInUser, contact, amount)
+                    : userService.getNewTransaction(contact, loggedInUser, amount)
+
                 loggedInUser.transactions.push(transaction)
                 loggedInUser.transactions.sort((a, b) => b.content.at - a.content.at)
-                loggedInUser.balance -= amount
+                loggedInUser.balance -= contactId ? amount : -amount
 
                 await userService.updateUser(loggedInUser)
                 userService.saveLocalUser(loggedInUser)

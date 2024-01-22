@@ -1,12 +1,13 @@
 <template>
     <section class="transaction-preview flex space-between gap-10">
         <section class="flex align-center">
-            <p>{{ transactionReceiverName }}</p>
+            <p v-if="isUserSent">{{ transactionReceiverName }}</p>
+            <p v-else>{{ transactionSenderName }}</p>
         </section>
         <section class="flex gap-10 align-center">
             <p>{{ transactionAmount }}</p>
-            <span v-if="isUserSent" class="clr-red-1 fs25">-</span>
-            <span v-else class="clr-green-0">+</span>
+            <span v-if="isUserSent" class="clr-red-1 fs20 fw800">-</span>
+            <span v-else class="clr-green-0 fs20">+</span>
         </section>
     </section>
 </template>
@@ -23,6 +24,7 @@ export default {
         ]),
         ICON_DEFAULT_USER() { return ICON_DEFAULT_USER },
         transactionReceiverName() { return this.transaction.content.receiver.receiverName },
+        transactionSenderName() { return this.transaction.content.sender.senderName },
         transactionAmount() { return this.transaction.content.amount },
         isUserSent() { return this.user._id === this.transaction.content.sender.senderId }
     },
