@@ -5,6 +5,11 @@
 </template>
 
 
+<!-- TODO: add current bitcoin rate -->
+<!-- TODO: add balance -->
+<!-- TODO: add 3 latest transactions -->
+
+
 <script>
 import { mapGetters } from 'vuex'
 
