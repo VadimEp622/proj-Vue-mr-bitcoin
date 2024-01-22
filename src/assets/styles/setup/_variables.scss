@@ -20,7 +20,8 @@ $map-clr: (
     "main-gray": (
         "gray-0": #dcdcdc,
         "gray-1": #858f7e,
-        "gray-2": #8f98a0
+        "gray-2": #8f98a0,
+        "gray-3": #cccccc
     ),
     "main-red": (
         "red-0": #f98460,
@@ -39,6 +40,8 @@ $desktop-breakpoint: 1440px;
 // ======================== FONTS ========================
 // ************** Font Size Map **************
 $map-font-size: (
+    "18": 18px,
+    "20": 20px,
     "25": 25px,
     "34": 34px
 );
@@ -125,7 +128,8 @@ $map-margin-inline-end: (
 
 // ************** Margin Block Map **************
 $map-margin-block: (
-    "0": map-get($map-spacing, "0")
+    "0": map-get($map-spacing, "0"),
+    "20": map-get($map-spacing, "20")
 );
 
 $map-margin-block-start: (

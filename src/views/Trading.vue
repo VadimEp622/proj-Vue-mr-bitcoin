@@ -1,6 +1,5 @@
 <template>
     <section class="trading-home full details-layout">
-        <p v-if="exchangeRate" class="exchange-rate">Exchange Rate: <span>{{ exchangeRate }}</span></p>
         <section v-if="marketPriceHistory" class="market-price-history">
             <h4 class="fw400">{{ marketPriceHistory.description }}</h4>
             <section class="chart-container">
@@ -18,22 +17,14 @@ import LineChart from '@/cmps/TradingChart.vue'
 export default {
     data() {
         return {
-            exchangeRate: null,
             marketPriceHistory: null,
         }
     },
     created() {
-        this.setExchangeRate()
         this.setMarketPriceHistory()
     },
     unmounted() { },
     methods: {
-        setExchangeRate() {
-            bitcoinService.getRate()
-                .then(item => {
-                    this.exchangeRate = item
-                })
-        },
         setMarketPriceHistory() {
             bitcoinService.getMarketPriceHistory()
                 .then(item => {
@@ -81,16 +72,6 @@ export default {
 <style lang="scss">
 .trading-home {
     color: rgb(220, 220, 220);
-
-    & .exchange-rate {
-        text-align: center;
-        margin-block-start: 1.33em;
-
-        & span {
-            font-size: 1.5em;
-            font-weight: 600;
-        }
-    }
 
     & .market-price-history {
         & h4 {
