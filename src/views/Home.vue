@@ -7,10 +7,12 @@
     <p v-if="user" class="greeting text-align-center fs20 mg-bl-st-20">Welcome, <span
         class="fw600 fs25 clr-gold-0 capitalize">{{
           user.name }}</span></p>
-    <p v-if="user" class="balance text-align-center fs18">Your balance: <span class="fw600 fs25 clr-gold-0">{{
-      user.balance
-    }}</span>
-    </p>
+    <section v-if="user" class="balance text-align-center fs18 flex justify-center gap-5 align-center">
+      <p>Your balance: <span class="fw600 fs25 clr-gold-0">{{ user.balance }}</span></p>
+      <section>
+        <button class="btn-refill" @click="onTransfer(userId, null, 20)">Refill</button>
+      </section>
+    </section>
     <section class="recent-transactions mg-bl-40 flex column align-center">
       <p class="fs20 underline">Recent transactions:</p>
       <TransactionList :transactions="getRecentTransactions" />
@@ -20,7 +22,7 @@
 
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 import { bitcoinService } from '@/services/bitcoin.service.js'
 import { showErrorMsg } from '@/services/event-bus.service.js'
 import Loader from '@/cmps/app-reusable/Loader.vue'
@@ -41,11 +43,17 @@ export default {
       'user',
       'transactions'
     ]),
+    userId() {
+      return this.user._id
+    },
     getRecentTransactions() {
       return this.transactions.slice(0, 3)
     }
   },
   methods: {
+    ...mapActions([
+      'createTransaction'
+    ]),
     setExchangeRate() {
       this.isLoadingExchangeRate = true
       bitcoinService.getRate()
@@ -60,6 +68,9 @@ export default {
           this.isLoadingExchangeRate = false
         })
     },
+    onTransfer(userId, contactId, amount) {
+      this.createTransaction({ userId, contactId, amount })
+    }
   },
   components: {
     TransactionList: defineAsyncComponent({
