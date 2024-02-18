@@ -1,5 +1,5 @@
 <template>
-    <Line id="my-chart-id" :options="chartOptions" :data="chartData" />
+    <Line id="my-chart-id" :options="chartOptions" :data="chartData" :plugins="chartPlugins" />
 </template>
 
 
@@ -53,8 +53,30 @@ export default {
                             color: 'rgb(220, 220, 220)',
                         },
                     }
+                },
+                interaction: {
+                    intersect: false,
+                    mode: 'index',
+                },
+            },
+            chartPlugins: [{
+                id: 'hoverLine',
+                afterDraw(chart) {
+                    if (chart.tooltip?._active?.length) {
+                        let x = chart.tooltip._active[0].element.x
+                        let yAxis = chart.scales.y
+                        let ctx = chart.ctx
+                        ctx.save()
+                        ctx.beginPath()
+                        ctx.moveTo(x, yAxis.top)
+                        ctx.lineTo(x, yAxis.bottom)
+                        ctx.lineWidth = 2
+                        ctx.strokeStyle = 'rgba(22, 143, 255, 0.4)'
+                        ctx.stroke()
+                        ctx.restore()
+                    }
                 }
-            }
+            }]
         }
     },
     created() {
