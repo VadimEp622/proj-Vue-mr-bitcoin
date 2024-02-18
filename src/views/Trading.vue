@@ -10,6 +10,9 @@
 </template>
 
 
+<!-- TODO: make chart color green/red depending on upward/downward trend -->
+
+
 <script>
 import { bitcoinService } from '@/services/bitcoin.service'
 import LineChart from '@/cmps/TradingChart.vue'
