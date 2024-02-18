@@ -76,12 +76,12 @@ export default {
 <!-- ================================================= -->
 
 
-<!-- TODO: In contact-list do pagination, fetch 200 contacts and paginate by 20 each (infinite scrolling option will have issues here, maybe do infinite scrolling for transaction-list instead) -->
-<!-- TODO: consider how to implement receiving of funds, how to request, and who will transfer them to the user -->
 <!-- TODO: Add contacts filtering/sorting -->
+<!-- TODO: Add about page -->
 
+<!-- TODO: add pagination extracted from url in contact-index -->
+<!-- TODO: improve contact-index pagination button styling -->
 <!-- TODO: improve app-layout/details-layout for mobile and desktop (main issue -> align header with main's content) -->
-<!-- TODO: contact-details/edit and profile routes in mobile, have footer on bottom not by true device height, but by lowest viewport height -->
 <!-- TODO: new creation of contact, should place the contact as the first in the contact-list array, ONLY for first listing after creation (then regular sorting by name alphabet)  -->
 <!-- TODO: edit of contact name, should update contact names in user-transactions -->
 <!-- TODO: Add handling for invalid contact Id in contact details/edit -->
@@ -93,15 +93,7 @@ export default {
 
 
 <!-- TODO (Overall App Structure):
-I. make a user store:
-    1) in actions, there will be:
-        a) ✔ loadUser -> will get a user from userService. [High priority]
-        b) updateUser -> will update user name/balance/transactions/contacts [Mid priority]
-
-    2) ✔ user object will have id key
-    3) user object will have array of contact id's -> is this necessary? rethink and decide.
-
-II. redirect to login-page:
+I. redirect to login-page:
     1) ✔ first time entry - automatically redirect to login page
         a) ✔ no matter which route, automatically redirect to login page.
             * store user state is null.
@@ -114,11 +106,9 @@ II. redirect to login-page:
         b) ✔ checks session storage for logged-in-user, and set in store state for user
         c) find a more secure way to save user in session storage, use the secure information to fetch complete user data, and store THAT in user store
 
-III. homepage will be fancy, with a "welcome <user.name>" greeting, with user transactions history (and maybe more)
+II. add testing
 
-IV. add testing
-
-V. remove footer when responsive-main-menu is slidable, and put footer contents at bottom of responsive-main-menu
+III. remove footer when responsive-main-menu is slidable, and put footer contents at bottom of responsive-main-menu
 -->
 
 <!-- TODO (styling layouts):
@@ -152,8 +142,6 @@ II. when footer/header are disabled (display:none),
 
 
 <style lang="scss" scoped>
-// .app-wrapper {}
-
 .drawer-bg {
   position: fixed;
   height: 100vh;
@@ -172,7 +160,6 @@ II. when footer/header are disabled (display:none),
   grid-template-rows: auto 1fr auto;
 
   &:not(.header-footer-hidden) main {
-    // height: fit-content;
     align-content: start;
   }
 
