@@ -46,10 +46,15 @@ export default {
 
                     return gradient
                 },
-                radius: 0,
-                pointHoverRadius: 5,
+                pointRadius: 1,// Radius of small point
+                pointBorderWidth: 0,// Width of small point's border
+                pointHoverRadius: 1,// Radius of small point when hovered
+                pointHoverBorderWidth: 200,// Width of small point's border when hovered
+                pointHitRadius: 200,
+                pointStyle: 'line',
                 borderColor: 'rgba(75, 192, 19, .8)',
-                pointBackgroundColor: 'rgba(75, 192, 19, .8)',
+                pointBorderColor: 'transparent',
+                pointHoverBorderColor: 'white',
                 fill: true,
             }
             const data = this.marketPriceHistory.values.map(value => {
