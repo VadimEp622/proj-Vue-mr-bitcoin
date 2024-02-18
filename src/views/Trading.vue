@@ -50,6 +50,7 @@ export default {
                     return gradient
                 },
 
+                
                 // pointRadius: 1,// Radius of small point
                 pointBorderWidth: 0,// Width of small point's border
                 // pointHoverRadius: 1,// Radius of small point when hovered
